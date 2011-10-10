@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-04/ -->
+<HTML><HEAD><TITLE>DU-04</TITLE>
+<META content=iro name=description>
+<META content=iro name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-2">
+<META content="MSHTML 6.00.6000.17080" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId>
+<META http-equiv=Content-Style-Type content=text/css></HEAD>
+<BODY textwidth="100">
+<H3>A3M33PRO 2011 - Pokročilá robotika - DU-04</H3>
+<ol>
+	<li>Zkonstruujte popis robotu Mitsubishi Melfa RV-6 v 
+Denvit-Hartenberg konvenci na<br>základě návodu
+	<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Lecture/PRO-2011-Lecture-04.pdf">Denavit-Hartenberg.pdf</a> a podle dokumentace
+	<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Labs/Mitsubishi-Melfa-RV-6S-156310.pdf">MELFA-RV-6S</a></li>
+	<li>Implementujte simulátor robotu v MATLAB Robotic Toolbox.<br>
+		Robotický toolbox po rozbalení přidáte do cesty:<br>
+		>>addpath('robot');<br>
+		Robota (s rotačními klouby) vytvoříte pomocí příkazu:<br>
+		>>L{1} = link( [ alpha, a, 0, d, 0, theta_offset ],'standard');<br>
+		>>L{2} = ....<br>
+		>>.<br>
+		>>.<br>
+		>>r = robot( L, 'PRO', 'name', '' );<br>
+		Robota zobrazíte pomocí příkazu (vzorový výstup):<br>
+		>>drivebot(r);<br>
+		>>view([1;1;1]);<br>	
+	</li> 
+</ol>
+<P>Vypracovanou úlohu tvoří: 
+<ol>
+	<li>dhsim.m - implementace simulátoru v MATLAB Robotic Toolboxu.</li>
+	<li>dh.pdf - dokument obsahjící:<ol>
+		<li type="a">Nákres os pohybu a 
+		zvolených souřadných soustav, včetně označení a očíslování a vyznačených orientací úhlů. </li>
+		<li type="a">DH parametry všech os.</li>
+		<li type="a">Popis konstrukce souřadných soustav a zdůvodnění všech možných voleb.</li>
+		<li type="a">Popis implementace v MATLAB Robotic Toolboxu.</li>
+	</ol>
+	</li>
+</ol>
+<HR>
+<p><span lang="cs">Vypracovanou úlohu odevzdejte přes
+<a href="https://cw.felk.cvut.cz/upload/">www rozhraní</a>.</span></p>
+<ADDRESS>Tomas Pajdla 2011-10-10</ADDRESS></BODY></HTML>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>HW-02</TITLE>
+<META content=iro name=description>
+<META content=iro name=keywords>
+<META content=document name=resource-type>
+<META content=global name=distribution>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-2">
+<META content="MSHTML 6.00.6000.17023" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId>
+<META http-equiv=Content-Style-Type content=text/css></HEAD>
+<BODY textwidth="100">
+<H3>A3M33PRO 2011 - Pokročilá robotika - HW-02</H3>
+
+<p>Řešte pohyb v MATLABu, kreslete vše různými barvami do jednoho obrázku:</p>
+<ol>
+	<li>Simulujte pohyb se zadanou maticí R a translací o, kde o má<br>
+	význam o_{\beta'}, jako v rovnici 3.8 v [<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Lecture/PRO-2011-Lecture-02.pdf">PRO-2011-Lecture-02.pdf</a>].<br>
+	Uvažujte bázi \beta jako standardní bázi.<pre>
+% approximate rotation
+R = [0.8047   -0.5059   -0.3106
+     0.3106    0.8047   -0.5059
+     0.5059    0.3106    0.8047];
+
+% less approximate rotation
+[U,D,V] = svd(R);
+R = U*V';
+
+% translation
+o = [1;1;1];</pre></li>
+	<li>Najděte souřadnice vektorů \beta' v \beta a naopak.<br>
+	Nakreslete vektory \beta a \beta' ve standardní bázi.</li>
+	<li>Nakreslete souřadné soustavy (O=0,\beta) a (O',\beta').</li>
+	<li>Nakreslete polohové vektory bodu<pre>
+X = [1;2;3];</pre>
+	vzhledem k (O=0,\beta) a (O',\beta').</li>
+	<li>Nakreslete bod Y do kterého se pohne bod X.</li>
+</ol>
+<p>
+Vypracovanou úlohu tvoří zip archiv obsahující:
+<ol>
+	<li>motion.m - MATLAB skript/funkce s výpočty a kreslením.
+	<li>motion.pdf - případný komentář k postupu a výsledkům s kusy kódu a <br>
+	obrázky (nepovinné, pokud je motion.m dostatečně komentovaný).
+</ol>
+</p>
+<p>Vypracovanou úlohu odevzdejte přes
+<a href="https://cw.felk.cvut.cz/upload/">www rozhraní</a>.</p>
+<HR>
+<ADDRESS>Tomas Pajdla 2011-09-26</ADDRESS></BODY></HTML>
