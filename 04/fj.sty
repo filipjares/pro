@@ -1,0 +1,70 @@
+
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=%
+\setlength\hoffset{-10pt}
+\setlength\voffset{-\baselineskip}
+\normalsize
+\setlength\textwidth{40em}
+%
+\setlength\topmargin{0pt}
+\setlength\headheight{\baselineskip}
+\setlength\headsep{2\baselineskip}
+\setlength\topskip{\baselineskip}
+\setlength\textheight{45\baselineskip}
+\addtolength\textheight{\topskip}       %calc.sty avoided
+\setlength\footskip{3\baselineskip}
+%
+\if@twoside
+  \typeout{Two side layout redefined.}
+  %
+  \setlength\evensidemargin{0pt}
+  \setlength\oddsidemargin{37.5pt}
+  \setlength\marginparsep{0pt}
+  \setlength\marginparwidth{0pt}
+\else
+  \typeout{One side layout redefined.}
+  %
+  \setlength\evensidemargin{0pt}
+  \setlength\oddsidemargin{19pt}
+  \setlength\marginparsep{0pt}
+  \setlength\marginparwidth{0pt}
+\fi
+%=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=%
+
+
+% Odkazy na obrazky -------------
+\newcommand{\figref}[1]{obr.~\mbox{\ref{#1}}}
+\newcommand{\tabref}[1]{tab.~\mbox{\ref{#1}}}
+\newcommand{\mname}[1]{} %\marginpar{\tiny{#1}}}
+% -------------------------------
+% Symboly, co potrebuju v matematice
+\def\deg{{}^{\circ}}
+\def\degC{\deg\mathrm{C}}
+\def\matrix#1{\mathbb{#1}}
+\def\vect#1{\mathbf{#1}}
+\def\Laplace{\mathcal{L}}
+
+% Ceske uvozovky ----------------
+\DeclareTextCommandDefault\clqq{\leavevmode
+  \set@low@box{''}%
+  \setbox1=\hbox{l\/}\dimen1=\wd1
+  \setbox1=\hbox{l}\advance\dimen1 by -\wd1
+  \ifdim\dimen1>0pt\kern-.1em\box0\kern.1em
+    \else\kern.1em\box0\kern-.1em\fi\nobreak\hskip0pt}
+\DeclareTextCommandDefault\crqq{\edef\@SF{\spacefactor\the\spacefactor}%
+  \nobreak\kern-.07em\hbox{``}\kern.07em\@SF\relax}
+\def\uv#1{\clqq#1\crqq}
+% -------------------------------
+
+% Zdrojaky mozna budou lepsi takhle:
+%\newenvironment{code}[1]
+	%{\VerbatimEnvironment
+	%\bigskip\par\begin{minipage}{#1}\scriptsize\begin{Verbatim}}
+	%{\end{Verbatim}\end{minipage}\par\bigskip\noindent}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Zacatek prace %%
+\newcommand\mainbodystarts{
+\cleardoublepage
+\pagestyle{headings}\pagenumbering{arabic}\setcounter{page}{1}
+}
+
