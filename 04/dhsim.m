@@ -8,7 +8,7 @@
 clear L;
 clear r;
 %            theta  d      a      alpha
-L(1) = Link([0      0      0     -pi/2]);
+L(1) = Link([0      0.35   0.085 -pi/2]);
 L(2) = Link([0      0     -0.280  0]);
 L(3) = Link([0      0     -0.1      pi/2]);
 L(4) = Link([0      0.315  0     -pi/2]);
