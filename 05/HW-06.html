@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<title>HW-06</title>
+<meta content="iro" name="description">
+<meta content="iro" name="keywords">
+<meta content="document" name="resource-type">
+<meta content="global" name="distribution">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<meta content="MSHTML 6.00.6000.17080" name="GENERATOR">
+<meta content="FrontPage.Editor.Document" name="ProgId">
+<meta http-equiv="Content-Style-Type" content="text/css"></head><body textwidth="100">
+<h3>A3M33PRO 2011 - Pokročilá robotika - HW-06</h3>
+
+<p>Použijte metodu demonstrovanou v 
+<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Lecture/PRO-2011-Lecture-05-IK-6R.pdf">PRO-2011-Lecture-05-IK-6R.pdf</a> a pokračujte v práci na souboru
+<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Labs/PRO-2011-IK-6R-assignment.mws">
+PRO-2011-IK-6R-assignment.mws</a>:
+</p><ol>
+	<li>Vyberte 8 vhodn<span lang="cs">ých řádků matic Q a P 
+	(QxR a PxR v </span>
+<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Labs/PRO-2011-IK-6R-assignment.mws">
+PRO-2011-IK-6R-assignment.mws</a><span lang="cs">) tak, 
+	aby macie Q8 tvořená vybranými řádky QxR měla co 
+	nejlepší (tedy nejmenší) číslo podmíněnosti (<a href="http://en.wikipedia.org/wiki/Condition_number">condition 
+	number</a>) mezi všemi výběry. <br>
+	(Nápověda:</span><span lang="en-us"> <br>
+	&gt; ix8:=choose(14,8):&nbsp; # vytvo</span>ří pole indexů 
+	vybírajících všechny osmice ze čtrnácti prvků<br>
+	&gt; ix6:=map(x-&gt;convert({$1..14} minus 
+	convert(x,set),list),ix8): <span lang="en-us">&nbsp;# 
+	vytvo</span>ří pole šestice zbývajících indexů</li>
+	<li>Setřiďte čísla podmíněnosti od největšího do 
+	nejmenšího (sort) a nakreslete graf jejich dekadického 
+	logaritmu (plot).</li>
+	<li>Pro nelepší výběr vypočtěte matici Z.</li>
+</ol>
+
+<p>
+Vypracovanou úlohu tvoří zip archiv obsahující:
+</p><ol>
+	<li>ik62.mws - Maple worksheet obsahující funkci IK6 a výsledky individuálního mechanismu (podle čísla skupiny)</li>
+	<li>ik62.pdf - případné komentáře k výpočtu</li>
+</ol>
+<hr>
+<p>Vypracovanou úlohu odevzdejte přes
+<a href="https://cw.felk.cvut.cz/upload/">www rozhraní</a>.</p>
+<hr>
+<address>Tomas Pajdla 2011-10-24</address></body></html>

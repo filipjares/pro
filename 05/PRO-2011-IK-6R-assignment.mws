@@ -1,0 +1,297 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "" -1 256 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 257 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+258 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 12 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 12 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 12 0 
+0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Headi
+ng 1" -1 3 1 {CSTYLE "" -1 -1 "Times" 1 18 0 0 0 1 2 1 2 2 2 2 1 1 1 
+1 }1 1 0 0 8 4 1 0 1 0 2 2 0 1 }{PSTYLE "Heading 2" -1 4 1 {CSTYLE "" 
+-1 -1 "Times" 1 14 0 0 0 1 2 1 2 2 2 2 1 1 1 1 }1 1 0 0 8 2 1 0 1 0 2 
+2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 256 54 "T.Pajdla: Inverse Kinemat
+ics of a 6-DOF Manipulator. \n" }{TEXT -1 153 "[1] D.Manocha, J.F.Cann
+y. Efficient Inverse Kinematics for General 6R Manipulators. IEEE Tran
+s. on Robotics and Automation, 10(5), pp. 648-657, Oct. 2004" }}{PARA 
+0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 43 "General Mechani
+sm - Assignment\n17  Oct 2011" }}}{SECT 0 {PARA 3 "" 0 "" {TEXT 257 
+20 " Packages & settings" }{TEXT -1 0 "" }}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 213 "restart:\nwith(ListTools):\nwith(LinearAlgebra):\nwi
+th(PolynomialTools):\nwith(combinat, choose):\nwith(Groebner):\nwith(M
+atrixPolynomialAlgebra):\ninterface(rtablesize=24):\ninterface(warnlev
+el=0):\nDigits:=30:\neps:=1e-6:" }}}}{SECT 0 {PARA 3 "" 0 "" {TEXT 
+258 13 "DH-Kinematics" }}{EXCHG {PARA 0 "" 0 "" {TEXT -1 22 "Joint tra
+nsformations:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 5073 "# Two on
+e-parametric motions transformatin in DH-convention(phi, theta, a,d) i
+ndexed by i\n# c = cos(phi), s = sin(phi), lambda = cos(alpha), mu = s
+in(alpha)\ndhTs := proc(i)\nlocal M1, M2;\n   M1:=Matrix(4,4,[[+cat(`c
+`,i),-cat(`s`,i),0,         0],\n                  [ +cat(`s`,i),+cat(
+`c`,i),0,         0],\n                  [           0,          0,1,c
+at(`d`,i)],\n                  [           0,          0,0,         1]
+]);\n   M2:=Matrix(4,4,[[1,        0,          0,cat(`a`,i)],  \n     \+
+             [ 0,+cat(`lambda`,i),-cat(`mu`,i),         0],\n         \+
+         [ 0,+cat(`mu`,i),+cat(`lambda`,i),         0],\n             \+
+     [ 0,          0,          0,         1]]);\n   [M1,M2];\nend proc
+:\n#\n# Inverse of the DH-convention for one-aprametric DH rigid motio
+n transformations\ndhInvs := proc(M)\n   local M1, M2;\n   M1 := M[1];
+\n   M2 := M[2];\n   [simplify(MatrixInverse(M2),\{M2[3,2]^2+M2[3,3]^2
+=1\}),\n    simplify(MatrixInverse(M1),\{M1[1,1]^2+M1[2,1]^2=1\})];\ne
+nd proc:\n#\n# Rigid motion transformatin in DH-convention(phi, theta,
+ a,d) indexed by i\n# c = cos(phi), s = sin(phi), P = cos(alpha), R = \+
+sin(alpha)\ndhT := proc(i)\nlocal M;\n   M:=dhTs(i);\n   M[1].M[2];\ne
+nd proc:\n#\n# Inverse of the DH-convention rigid motion transformatio
+n\ndhInv := proc(M)\n   simplify(MatrixInverse(M),\{M[1,1]^2+M[2,1]^2=
+1,M[3,2]^2+M[3,3]^2=1\});\nend proc:\n#\n# Simplify using trigonometri
+c indentities c^2+s^2=1 & lambda^2+mu^2=1\ndhSimpl := proc(M,i)\n   si
+mplify(M,\{cat(`c`,i)^2+cat(`s`,i)^2=1,cat(`lambda`,i)^2+cat(`mu`,i)^2
+=1\});\nend proc:\n#\n## Direct Kinematic Task\n#\ndhDKT := proc(p)\n \+
+  subs(p,dhT(1).dhT(2).dhT(3).dhT(4).dhT(5).dhT(6));   \nend proc:\n#
+\n# Simplify using Rotation matrin in Mh\nMhSimpl := proc(M)\n simplif
+y(\n  simplify(\n   simplify(\n    simplify(M,\n            \{lx^2+ly^
+2+lz^2=1,mx^2+my^2+mz^2=1,nx^2+ny^2+nz^2=1\}),\n           \{lx*mx+ly*
+my+lz*mz=0,lx*nx+ly*ny+lz*nz=0,mx*nx+my*ny+mz*nz=0\}),\n          \{lx
+^2+mx^2+nx^2=1,ly^2+my^2+ny^2=1,lz^2+mz^2+nz^2=1\}),\n         \{lx*ly
++mx*my+nx*ny=0,lx*lz+mx*mz+nx*nz=0,lz*ly+mz*my+nz*ny=0\});\nend proc:
+\n#\n# Simplify a general motion matrix using rotation matrix identiti
+es in columns\nrcSimp := proc(M,R)\n       simplify(\n        simplify
+(\n         simplify(\n          simplify(\n           simplify(\n    \+
+        simplify(M,\{R[1,1]*R[1,1]+R[2,1]*R[2,1]+R[3,1]*R[3,1]=1\}),\n
+                \{R[1,1]*R[1,2]+R[2,1]*R[2,2]+R[3,1]*R[3,2]=0\}),\n   \+
+            \{R[1,1]*R[1,3]+R[2,1]*R[2,3]+R[3,1]*R[3,3]=0\}),\n       \+
+       \{R[1,2]*R[1,2]+R[2,2]*R[2,2]+R[3,2]*R[3,2]=1\}),\n            \+
+ \{R[1,2]*R[1,3]+R[2,2]*R[2,3]+R[3,2]*R[3,3]=0\}),\n            \{R[1,
+3]*R[1,3]+R[2,3]*R[2,3]+R[3,3]*R[3,3]=1\});\nend proc:\n#\n# Simplify \+
+a general motion matrix using rotation matrix identities in rows\nrrSi
+mp := proc(M,R)\n       simplify(\n        simplify(\n         simplif
+y(\n          simplify(\n           simplify(\n            simplify(M,
+\{R[1,1]*R[1,1]+R[1,2]*R[1,2]+R[1,3]*R[1,3]=1\}),\n                   \+
+    \{R[1,1]*R[2,1]+R[1,2]*R[2,2]+R[1,3]*R[2,3]=0\}),\n               \+
+        \{R[1,1]*R[3,1]+R[1,2]*R[3,2]+R[1,3]*R[3,3]=0\}),\n           \+
+            \{R[2,1]*R[2,1]+R[2,2]*R[2,2]+R[2,3]*R[2,3]=1\}),\n       \+
+                \{R[2,1]*R[3,1]+R[2,2]*R[3,2]+R[2,3]*R[3,3]=0\}),\n   \+
+                    \{R[3,1]*R[3,1]+R[3,2]*R[3,2]+R[3,3]*R[3,3]=1\});
+\nend proc:\n#\n# Matrix representation of a set of polynomials \nPoly
+CoeffMatrix:=proc(S,m,Ord::\{ShortTermOrder, TermOrder\}) \nlocal A,v,
+i,j,k,c,q;\n        A:=Matrix(nops(S),nops(m),storage=sparse);\n      \+
+  v:=indets(m);\n        for i from 1 to nops(S) do\n                c
+:=[coeffs(expand(S[i]),v,'q')];\n                q:=[q];\n        \011
+      for j from 1 to nops(m) do\n                        for k from 1
+ to nops(q) do\n                                if (m[j]=q[k]) then A[
+i,j]:=c[k] end if\n                        end do\n         \011      \+
+end do\n        end do;\n        Matrix(A);\nend proc:\n#\n## Cartesia
+n product of a two lists\n#\nLxL:=proc(X::list,Y::list)\n     Flatten(
+map(x->(map(y->Flatten([x,y]),Y)),X),1);\nend proc:\n#\n## n x 1 matri
+x to a list conversion\n#\nM2L:=proc(M) \n\011convert(convert(M,Vector
+),list);\nend proc:\n#\n## Highlit non-zero entries\n#\nspy:=proc(A)\n
+   map(x->`if`(simplify(x)=0,0, `if`(simplify(x)=1,1,`*`)) ,A):\nend p
+roc:\n#\n# Monomials of a set of polynomial in all indeterminates\n#\n
+PolyMonomials:=proc(S::list(ratpoly),Ord::\{ShortTermOrder, TermOrder
+\}) # Monomials of a set of polynomials\nlocal v,m,i,c,q;\n        v:=
+indets(S);\n        m:=[];\n        for i from 1 to nops(S) do\n      \+
+          c:=[coeffs(expand(S[i]),v,'q')];\n                m:=[op(m),
+q];\n        end do;\n        m:=MakeUnique(m);\n        sort(m,(t1,t2
+)->testorder(t2,t1,Ord));\nend proc:\n#\n## Monomias of a set of polyn
+omials in given indeterminates\n#\nPolyVarsMonomials:=proc(S::list(rat
+poly),Ord::\{ShortTermOrder, TermOrder\}) # Monomials of a set of poly
+nomials in variavbles of Ord\nlocal v,m,i,c,q;\n        v:=\{op(Ord)\}
+;\n        m:=[];\n        for i from 1 to nops(S) do\n               \+
+ c:=[coeffs(expand(S[i]),v,'q')];\n                m:=[op(m),q];\n    \+
+    end do;\n        m:=MakeUnique(m);\n        sort(m,(t1,t2)->testor
+der(t2,t1,Ord));\nend proc:" }}}}{SECT 0 {PARA 3 "" 0 "" {TEXT 259 27 
+"6-DOF Robot IK formulation " }}{EXCHG {PARA 0 "" 0 "" {TEXT -1 182 "G
+iven ai, di, i = 1...6, and Mh, find parameters ci, si, pi, ri subject
+ to\n\n(1)          M1       *       M2      *       M3      *       M
+4      *      M5      *      M6       = Mh " }}{PARA 0 "" 0 "" {TEXT 
+-1 71 "\n(2)   (M11*M12)*(M21*M22)*(M31*M32)*(M41*M42)*(M51*M52)*(M61*
+M62) = Mh" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 
+31 "(3) \011ci^2 + si^2 = 1 \011i = 1...6" }}{PARA 0 "" 0 "" {TEXT -1 
+32 "\n(4) \011pi^2 + ri^2 = 1 \011i = 1...6" }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 156 "[2] M. Raghavan, B. Ro
+th. Kinematic Analysis of the 6R Manipulator of General Geometry. \n  \+
+    Int.  Symposium on Robotic Research. pp. 264-269, Tokyo 1990." }}
+{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 83 "Write (1)
+ equivalently as\n\n(5)      M3 * M4 * M5 = M2^\{-1\} * M1^\{-1\} * Mh
+ * M6^\{-1\}" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 
+-1 31 "(6)    M31*M32*M41*M42*M51*M52 " }}{PARA 0 "" 0 "" {TEXT -1 0 "
+" }}{PARA 0 "" 0 "" {TEXT -1 99 "                                     \+
+=  M22^\{-1\}*M21^\{-1\}*M12^\{-1\}*M11^\{-1\}* Ah * M62^\{-1\}*M61^\{
+-1\}" }}}}{SECT 0 {PARA 3 "" 0 "" {TEXT 260 23 " Formulation & Solutio
+n" }}{EXCHG {PARA 0 "" 0 "" {TEXT -1 24 "The manipulator matrices" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 336 "M31 :=dhTs(3)[1]:\nM32 :=dh
+Ts(3)[2]:\nM41 :=dhTs(4)[1]:\nM42 :=dhTs(4)[2]:\nM51 :=dhTs(5)[1]:\nM5
+2 :=dhTs(5)[2]:\niM22:=dhInvs(dhTs(2))[1]:\niM21:=dhInvs(dhTs(2))[2]:
+\niM12:=dhInvs(dhTs(1))[1]:\niM11:=dhInvs(dhTs(1))[2]:\nMh  :=Matrix(4
+,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):\niM62:=dhIn
+vs(dhTs(6))[1]:\niM61:=dhInvs(dhTs(6))[2]:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 36 "Let us  first inspect the matrices. " }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 61 "M31,M32,M41,M42,M51,M52,\"=\",iM22,iM21,iM12
+,iM11,Mh,iM62,iM61;" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 177 "Notice th
+at the the two last columns of iM61 are free of c6, s6 and so we can g
+et six equations without the sixth variable.\nThus, take only those 6 \+
+equations to liminate c6, s6." }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 83 "M31,M32,M41,M42,M51,M52[1..4,3..4],\"=\",iM22,iM21,iM12,iM11,Mh,
+iM62,iM61[1..4,3..4];" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 66 "Do two f
+ollowing manipulations to \"simplify\" the set of equations:" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 43 "1) Multiply both sides from the le
+ft by M22" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 90 "dhInv(iM22),M3
+1,M32,M41,M42,M51,M52[1..4,3..4],\"=\",iM21,iM12,iM11,Mh,iM62,iM61[1..
+4,3..4];" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 40 "2) Multiply both side
+s from the left by " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 43 "<<1,
+0,0,0>|<0,1,0,0>|<0,0,1,0>|<0,0,d2,1>>;" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 180 "<<1,0,0,0>|<0,-1,0,0>|<0,0,1,0>|<0,0,d2,1>>.dhInv(iM
+22),M31,M32,M41,M42,M51,M52[1..4,3..4],\n\"=\",\n<<1,0,0,0>|<0,-1,0,0>
+|<0,0,1,0>|<0,0,d2,1>>.iM21,iM12,iM11,Mh,iM62,iM61[1..4,3..4];" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 156 "Do the multiplications, construct
+ the equations, and take the 6 ones we are interested in. \nDenote the
+ left hand side by ee1 and the right hand side by ee2." }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 211 "ee1:=dhSimpl((<<1,0,0,0>|<0,-1,0,0
+>|<0,0,1,0>|<0,0,d2,1>>.dhInv(iM22).M31.M32.M41.M42.M51.M52)[1..3,3..4
+],2):\nee2:=dhSimpl((<<1,0,0,0>|<0,-1,0,0>|<0,0,1,0>|<0,0,d2,1>>.iM21.
+iM12.iM11.Mh.iM62.iM61)[1..3,3..4],2):" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 107 "We have 6 equations in 10 unknowns s1, c1, s2, c2, s3, c
+3, s4, c4, s5, c5.\nLet us generate more equations. " }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 111 "To do so, denote the columns of the left and r
+ight hand side as:\n\n                            [l2 p2] = [l1 p1]" }
+}{PARA 0 "" 0 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 79 "l2:=ee1[1..3,1..1]:\np2:=ee1[1..3,2..2]:\nl1:=ee2[1..3,1..1]:\np
+1:=ee2[1..3,2..2]:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 339 "New equati
+ons can be now generated by scalar and vector operations on the column
+s.\n\n1)  p2 .  p2 =  p1 . p1      ...     1 new equation\n\n2)  p2 . \+
+ l2  =  p1 . l1       ...     1 new equation\n\n3)  p2 x l2  =  p1 x l
+1       ...     3 new equations\n\n4) (p1 . p1) l1 - 2 (p1 . l1) p1 = \+
+(p2 . p2) l2 - 2 (p2 . l2) p2     ...     3 new equations" }}{PARA 0 "
+" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 29 "    which can be d
+erived from" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT 
+-1 85 "    A x (B x C) = (A . C) B - (A . B) C\n\n    using the substi
+tution p = A = C,  l = B" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "
+" 0 "" {TEXT -1 118 "    0 = A x (B x C)  =  (A . C) B - (A . B) C \n
+\n    and thus\n\n    - (A . B) C  =   (A . C) B - 2 (A . B) C\n\n   w
+e get " }}{PARA 0 "" 0 "" {TEXT -1 2 "  " }}{PARA 0 "" 0 "" {TEXT -1 
+285 "  - (p1 . l1) p1  =  (p1 . p1) l1 - 2 (p1 .  l1) p1\n  \n  - (p2 \+
+. l2) p2  =  (p2 . p2) l2 - 2 (p2 .  l2) p2\n\n   and using\n\n    p1 \+
+= p2   &   l1 = l2\n\n   we get\n\n\n                      - (p1 . l1)
+ p1 =  - (p2 . l2) p2  \n\n(p1 . p1) l1 - 2 (p1 .  l1) p1  =  (p2 . p2
+) l2 - 2 (p2 .  l2) p2\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 54 "ad 1)
+  p2 .  p2 =  p1 . p1      ...     1 new equation" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 131 "pp1:=MhSimpl(dhSimpl(dhSimpl(dhSimpl(Transp
+ose(p1).p1,2),1),6)):\npp2:=dhSimpl(dhSimpl(dhSimpl(dhSimpl(Transpose(
+p2).p2,2),3),4),5):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 56 "ad 2)  p2 \+
+.  l2  =  p1 . l1       ...     1 new equation" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 132 "pl1:=MhSimpl(dhSimpl(dhSimpl(dhSimpl(Transpos
+e(p1).l1,2),1),6)):\npl2:=dhSimpl(dhSimpl(dhSimpl(dhSimpl(Transpose(p2
+).l2,2),3),4),5):\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 56 "ad  3) p2 \+
+x l2  =  p1 x l1       ...     3 new equations" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 329 "pxl1:=map(x->expand(x),convert(CrossProduct(c
+onvert(p1,Vector),convert(l1,Vector)),Matrix)):\npxl2:=map(x->expand(x
+),convert(CrossProduct(convert(p2,Vector),convert(l2,Vector)),Matrix))
+:\nm1x:=map(x->expand(x),MhSimpl(dhSimpl(dhSimpl(dhSimpl(pxl1,2),1),6)
+)):\nm2x:=map(x->expand(x),dhSimpl(dhSimpl(dhSimpl(dhSimpl(pxl2,2),3),
+4),5)):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 95 "ad 4) (p1 . p1) l1 - 2
+ (p1 . l1) p1 = (p2 . p2) l2 - 2 (p2 . l2) p2     ...     3 new equati
+ons" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 312 "plpl1:=map(x->expan
+d(x),ScalarMultiply(l1,pp1[1,1]) - ScalarMultiply(p1,2*pl1[1,1])):\npl
+pl2:=map(x->expand(x),ScalarMultiply(l2,pp2[1,1]) - ScalarMultiply(p2,
+2*pl2[1,1])):\nmp1:=MhSimpl(dhSimpl(dhSimpl(dhSimpl(simplify(plpl1),2)
+,1),6)):\nmp2:=dhSimpl(dhSimpl(dhSimpl(dhSimpl(dhSimpl(simplify(plpl2)
+,2),3),4),5),1):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 33 "Gather all 14
+ equations together:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 57 "E1:
+=<p1,l1,pp1,pl1,m1x,mp1>:\nE2:=<p2,l2,pp2,pl2,m2x,mp2>:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 40 "and construct its linear representation.
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 229 "Let us look at c3, s3 as on \+
+parameters and consider the monomials of the 8 remaining \nunknowns s1
+,c1,s2,c2,s4,c4,s5,c5 in the 6 equations. \n1) Notice that on the righ
+t hand side, there are the following monomials in s1,c1,s2,c2: " }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 46 "t1:=<<s1*s2,s1*c2,c1*s2,c1*c
+2,s1,c1,s2,c2,1>>:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 88 "2) Notice t
+hat on the left hand side, there are the following monomials in s4,c4,
+s5,c5: " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 46 "t2:=<<s4*s5,s4*c
+5,c4*s5,c4*c5,s4,c4,s5,c5,1>>:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 59 
+"Construct the linear representation in the above monomials:" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 119 "M1:=PolyCoeffMatrix(M2L(E1)
+,M2L(t1),plex(op(indets(tE1)))):\nM2:=PolyCoeffMatrix(M2L(E2),M2L(t2),
+plex(op(indets(tE2)))):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 9 "Check i
+t." }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "Transpose(simplify(E1
+-M1.t1));\nTranspose(simplify(E2-M2.t2));" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 3 "OK." }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 72 "Move the const
+ants from the right to the left  and denote the left hand " }}{PARA 0 
+"" 0 "" {TEXT -1 68 "side  of the equations P and the right hand side \+
+of the equations Q." }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 66 "P:= \+
+<M2[1..14,1..8]|M2[1..14,9]-M1[1..14,9]>:\nQ:=  M1[1..14,1..8]:" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 62 "Modify the corresponding monomial \+
+vectors and name them p, q. " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 25 "p:= t2:\nq:= <t1[1..8,1]>:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+79 "We have 14 equations in 17 monomials of 10 unknowns constructed fo
+rm 5 angles: " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 69 "Dimensions
+(P),`...`,Dimensions(p);\nDimensions(Q),`...`,Dimensions(q);" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 9 "Check it." }}}{EXCHG {PARA 0 "> " 
+0 "" {MPLTEXT 1 0 36 "Transpose((-P.p+Q.q)-(M1.t1-M2.t2));" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 3 "OK." }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+36 "The matrices PP, QQ are semi-sparse:" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 44 "<Transpose(p),spy(P)>,<Transpose(q),spy(Q)>;" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 38 "The set of equations can be writte
+n as" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 77 " \+
+           P     p     =        Q     q \n        14 x 9              \+
+ 14 x 8" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 
+93 "Notice that P = P(c3, s3) and Q is a constant matrix if the mechan
+ism and its pose are fixed." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 
+0 "" 0 "" {TEXT -1 62 "Split P and Q to two submatrices 8x8 P8, Q8 and
+ 6x6 P6, Q6    " }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" 
+{TEXT -1 69 "      P  =  [  P8 ]                   Q  =  [  Q8 ]      \+
+            " }}{PARA 0 "" 0 "" {TEXT -1 57 "              [ Q6  ]    \+
+                        [ Q6  ]\n" }}{PARA 0 "" 0 "" {TEXT -1 48 "Assu
+me that Q8 has full rank. Then, we can write" }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 28 "             P8  p  =  Q8  q" }
+}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 29 "        \+
+     P6  p  =  Q6  p " }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 
+"" {TEXT -1 36 "express q from the first 8 equations" }}{PARA 0 "" 0 "
+" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 82 "             q   =   in
+v(Q8)  P8  p\n\nand substitute into the remaining 6 equations" }}
+{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 42 "         \+
+    P6  p   =  Q6  inv(Q8)  P8  p" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT -1 42 "which, after moving all to the left, give
+s" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 42 "    \+
+         (P6 - Q6  inv(Q8)  P8)  p = 0" }}{PARA 0 "" 0 "" {TEXT -1 1 "
+ " }}{PARA 0 "" 0 "" {TEXT -1 19 "or when introducing" }}{PARA 0 "" 0 
+"" {TEXT -1 25 "                         " }}{PARA 0 "" 0 "" {TEXT -1 
+40 "            Z  =  (P6 - Q6  inv(Q8)  P8)" }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 7 "we get " }}{PARA 0 "" 0 "" 
+{TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 39 "                         \+
+    Z  p  =  0" }}{PARA 0 "" 0 "" {TEXT -1 24 "                       \+
+ " }}{PARA 0 "" 0 "" {TEXT -1 66 "This is a system of 6 homogeneous li
+near equations in 8 monomials." }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 0 "
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 83 "Constructing Z however, depen
+ds on the actual values in Q. The extreme case happens" }}{PARA 0 "" 
+0 "" {TEXT -1 85 "when the first 8x8 submatrix of Q is singular. Then,
+ we have to select rows from Q to" }}{PARA 0 "" 0 "" {TEXT -1 186 "get
+ Q8 regular. It is still better to select the eight rows which give us
+ Q8 with the smallest\ncondition number because inv(Q8) is then comput
+ed most robustly w.r.t. the rounding errors." }}}{EXCHG {PARA 0 "" 0 "
+" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 203 "To proceed fur
+ther, we have to choose a concrete mechanism to get numerical values i
+n P, Q.\nWe shall choose general parameters of a meachnism that will s
+imulate a real, \nslightly missaligned 3-2-1 robot." }}}{SECT 0 {PARA 
+4 "" 0 "" {TEXT -1 21 " A General Mechanism " }}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 396 "Mechanism := \{\na1=85,  a2=280,  a3=100, a4=1.0,
+ a5=-0.1, a6=0.1,\nd1=350, d2=5, d3=-1, d4=315, d5=-0.6, d6=85,\nlambd
+a1=cos(-Pi/2-Pi/100), mu1=sin(-Pi/2-Pi/100),\nlambda2=cos(Pi/110),    \+
+   mu2=sin(Pi/110),\nlambda3=cos(-Pi/2-Pi/90),  mu3=sin(-Pi/2-Pi/90),
+\nlambda4=cos(Pi/2-Pi/120),  mu4=sin(Pi/2-Pi/120),\nlambda5=cos(-Pi/2-
+Pi/95),  mu5=sin(-Pi/2-Pi/95),\nlambda6=cos(-Pi/200),      mu6=sin(-Pi
+/200)\}:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 62 "Set randomly the join
+t angles and compute the corresponding Mh" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 32 "rndTh:=Pi*RandomMatrix(1,6)/79;\n" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 626 "thetas := map(x->x[1]=x[2],convert(<conv
+ert([theta1,theta2,theta3,theta4,theta5,theta6],Vector)|\n            \+
+               convert(simplify(rndTh),Vector)>,listlist)):\nPosition \+
+:= subs(thetas,\{c1=cos(theta1),s1=sin(theta1),c2=cos(theta2),s2=sin(t
+heta2),c3=cos(theta3),s3=sin(theta3),\n                         c4=cos
+(theta4),s4=sin(theta4),c5=cos(theta5),s5=sin(theta5),c6=cos(theta6),s
+6=sin(theta6)\}):\nMP := \{op(Mechanism),op(Position)\};\nMhV := Matri
+x(4,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):\nMhV := \+
+map(x->x[1]=x[2],convert(<convert(MhV[1..3,1..4],Vector)|convert(dhDKT
+(MP)[1..3,1..4],Vector)>,listlist)):" }}}}{PARA 4 "" 0 "" {TEXT -1 0 "
+" }}}{SECT 0 {PARA 3 "" 0 "" {TEXT -1 9 " Solution" }}{EXCHG {PARA 0 "
+" 0 "" {TEXT -1 14 "Solve the IK: " }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}}}{MARK "0 0 0" 12 }{VIEWOPTS 1 1 0 3 4 1802 1 1 
+1 1 }{PAGENUMBERS 0 1 2 33 1 1 }
