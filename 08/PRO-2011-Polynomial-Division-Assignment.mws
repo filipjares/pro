@@ -1,0 +1,197 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "" -1 256 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 257 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+258 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 12 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 12 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "Times" 1 14 0 
+0 1 1 2 1 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 3 0 3 0 2 2 0 1 }{PSTYLE "Headi
+ng 1" -1 3 1 {CSTYLE "" -1 -1 "Times" 1 18 0 0 0 1 2 1 2 2 2 2 1 1 1 
+1 }1 1 0 0 8 4 1 0 1 0 2 2 0 1 }{PSTYLE "Normal" -1 256 1 {CSTYLE "" 
+-1 -1 "Times" 1 14 0 0 1 1 2 1 2 2 2 2 1 1 1 1 }1 1 0 0 0 0 3 0 3 0 2 
+2 0 1 }}
+{SECT 0 {EXCHG {PARA 256 "" 0 "" {TEXT 256 117 "PRO-2010-PolynomialDiv
+ision.mws - Polynomial division in several variables by several diviso
+rs.\nT. Pajdla, 6 Nov 2011" }}}{SECT 0 {PARA 3 "" 0 "" {TEXT 258 20 " \+
+Packages & settings" }{TEXT -1 0 "" }}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 24 "restart;\nwith(Groebner):" }}}}{SECT 0 {PARA 3 "" 0 "
+" {TEXT 259 15 "Useful commands" }{TEXT -1 0 "" }}{EXCHG {PARA 0 "" 0 
+"" {TEXT -1 21 "Lexicographical order" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 18 "mo:=plex(x,y,...);" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 32 "Leading coefficient and monomial" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 92 "LeadingTerm(f,mo);\na:=LeadingTerm(3*x^2*y+x*y^2+1,pl
+ex(x,y));\nlc:=a[1];\nlm:=a[2];\nlt:=lc*lm;" }}}{EXCHG {PARA 0 "" 0 "
+" {TEXT -1 38 "Divisibility test & the result if true" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 16 "divide(mo1,mo2);" }{TEXT -1 0 "" }}
+}{EXCHG {PARA 0 "" 0 "" {TEXT -1 16 "Length of a list" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 16 "nops([b,c,d,e]);" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 16 "List of s zeros " }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 16 "[seq(0,i=1..s)];" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+2 "or" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 35 "convert(Vector(s,s
+hape=zero),list);" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 9 "Procedure" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 140 "PolyDiv :=  proc(f,F,mo)\n
+local s,p;\n...\n[r,a]; # return the list containting the remainder \n
+       # and the list of coefficients\nend proc; " }}}{EXCHG {PARA 0 "
+" 0 "" {TEXT -1 60 "Expand all new non-trivial expressions which are c
+onstructed" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 19 "... := expand
+(...);" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 8 "Calling " }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 17 "PolyDiv(t,Lg,mo);" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 5 "While" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+32 "while (...) and (...) do\nend do;" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 3 "If " }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 25 "if ... t
+hen  ... end if; " }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 9 "Constants" }}
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 12 "true;\nfalse;" }{TEXT -1 0 
+"" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 14 "Print to debug" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 11 "print(...);" }}}}{SECT 0 {PARA 3 "
+" 0 "" {TEXT -1 20 " Division algortithm" }}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 18 "Implement here ..." }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 3 "..." }}}}{SECT 0 {PARA 3 "" 0 "" {TEXT -1 0 "" }{TEXT 260 1 " \+
+" }{TEXT -1 28 "Polynomial division - Task 1" }}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 70 "mo:=plex(...,...);\nf := x^2*y+x*y^2+y^2-1;\nf1 :=
+ x*y-1;\nf2 := y^2+x+1;" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 17 "Contin
+ue here ..." }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{SECT 
+0 {PARA 3 "" 0 "" {TEXT -1 29 " Polynomial division - Task 2" }}{PARA 
+0 "" 0 "" {TEXT -1 0 "" }}{EXCHG {PARA 0 "" 0 "" {TEXT -1 73 "See your
+ assignment at http://cw.felk.cvut.cz/ulohy and continue here ..." }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{SECT 0 {PARA 3 "" 0 "
+" {TEXT -1 0 "" }{TEXT 257 11 " Assignment" }{TEXT -1 0 "" }}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 1 "1" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 63 "f := x^3*y^2+x^2*y^3+x^2+y^2+x+y+1:\nf1 := x*y-1:\nf2 := y^2+x+1
+:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 "2" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 55 "f := x^2*y^3+x^2+y^2+x+y+1:\nf1 := x*y-1:\nf2 := y^
+2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 "3" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 61 "f := x^2*y^3+x*y^3+x^2+y^2+x+y+1:\nf1 := x*y-1
+:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 "4" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^3*y^2+y^2+x+y+1:\nf1 := x*y-
+1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 "5" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 57 "f := x^2*y^3+x^2+y^2+x^2+y+1
+:\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 
+"6" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "f := x^2*y^3+x^2+y^2+
+x^2+y+1:\nf1 := x*y-1:\nf2 := y^2+x^2+1:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 1 "7" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "f := x^2*y
+^3+x^2+y^2+x^2+y+1:\nf1 := x*y^2-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 1 "8" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "
+f := x^2*y^3+x^2+y^2+x+y^2+1:\nf1 := x*y^2-1:\nf2 := y^2+x+1:" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 1 "9" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 59 "f := x^2*y^3-x^2+y^2+x+y^2+1:\nf1 := x*y^2-1:\nf2 := \+
+y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "10" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 57 "f := x^2*y^3+x^2+y^2+x+y^2+1:\nf1 := x*y^2-
+1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "11" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^2*y^3+x^2+y^2+1:\nf1 := x*y^
+2-1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "12" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^2*y^3+x^2+y^2+1:\nf1 \+
+:= x*y^2-1:\nf2 := y+x^2:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "13" }
+}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^2*y^3+x^2+y^2+1:\nf
+1 := x*y^2-1:\nf2 := y+x^2+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "1
+4" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^2*y^3+x^2+y^2+1
+:\nf1 := x*y-1:\nf2 := y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 
+"15" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^3*y^2+x^2+x*y
++1:\nf1 := x*y-1:\nf2 := y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+2 "16" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^3*y^2+y^2+x
+*y+1:\nf1 := x*y-1:\nf2 := y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 2 "17" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^3*y^2+y^
+2+x*y+1:\nf1 := x^2+y-1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 2 "18" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^3*
+y^2+y^2+x-y+1:\nf1 := x^2+y-1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 0 "" 
+0 "" {TEXT -1 2 "19" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f :=
+ x^3*y^2+y^2+x-y+1:\nf1 := x^2+y+1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 2 "20" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 
+"f := x^3*y^2+y^2+x-y+1:\nf1 := x+y+1:\nf2 := y^2+x-1:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "21" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 61 "f := x^3*y^2+x^2*y^2+x^2*y+x+y+1:\nf1 := x*y-1:\nf2 := y^2+x+1
+:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "22" }}}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 63 "f := x^3*y^2+x^2*y^2+x^2*y^2+x+y+1:\nf1 := x*y-1:
+\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "23" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^3*y^2+x^2*y^2+x*y^2+x+y+1:\n
+f1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "24
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^3*y^2+y^2+x*y+x+
+1:\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+2 "25" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^2*y^4+x^2*y
++y^2+x^2+x+y+1:\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 
+"" {TEXT -1 2 "26" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "f := x
+^2*y^3+x^2+y^2-x^2+x+1:\nf1 := x*y-1:\nf2 := y^2+x^2+1:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "27" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 59 "f := x^2*y^3+x^2+y^2-x^2+x+1:\nf1 := x*y^2-1:\nf2 := y^2+x+1:
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "28" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 59 "f := x^2*y^3+x^2+y^2+x+y^2+1:\nf1 := x*y^2-1:\nf2 :
+= y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "29" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^2*y^3+x^2+y^2-x^2+x+1:\nf1 := x*y^
+2-x+1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "30" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 57 "f := x^2*y^3+x^2+y^2-x^2+x+1
+:\nf1 := x*y^2-1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 
+"31" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^2*y^3+x^2*y+y
+^2+1:\nf1 := x*y^2-1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 2 "32" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^2*y^3+y^
+2*x+y^2+1:\nf1 := x*y^2-1:\nf2 := y+x^2:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 2 "33" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 57 "f := x^4*
+y^3+x^2*y+y^2+x+1:\nf1 := x*y^2-1:\nf2 := y+x^2+1:" }}}{EXCHG {PARA 0 
+"" 0 "" {TEXT -1 2 "34" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f
+ := x^2*y^3+x^2+y^2+1:\nf1 := x*y^2-1:\nf2 := y+x^2-1:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "35" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 51 "f := x^3*y^2+x^2+x*y+1:\nf1 := x+y-1:\nf2 := y+x^2-1:" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "36" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 51 "f := x^3*y^2+y^2+x*y+1:\nf1 := x*y-1:\nf2 := y+x^2-1:
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "37" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 57 "f := x^3*y^2+x^2*y^3+x^3+x+1;\nf1 := x*y-1:\nf2 := \+
+y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "38" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 55 "f := x^2*y^3+x^2+y^2+x^3+x:\nf1 := x*y-1:\n
+f2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "39" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "f := x^2*y^3+x*y^3+2*x^3+x^2+3*x+3:
+\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "
+40" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "f := x^3*y^2+y^2+2*x^
+3+2*x^2+3*x+3:\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "
+" {TEXT -1 2 "41" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "f := x^
+2*y^3+x^2+y^2+x^3+3*x^2+2:\nf1 := x*y-1:\nf2 := y^2+x^2+1:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "42" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 55 "f := x^2*y^3+x^2+3*x^3+1:\nf1 := x*y^2-1:\nf2 := y^2+x+1:" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "43" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 65 "f := x^2*y^3+x^2+y^2+3*x^3+3*x^2+1:\nf1 := x*y^2-1:\n
+f2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "44" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "f := x^2*y^3-x^2+y^2+2*x^3+2*x+3:\n
+f1 := x*y^2-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "
+45" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^2*y^3+x^2+3*x^
+3+x^2+2*x+3:\nf1 := x*y^2-1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 2 "46" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^2*
+y^3+x^2+y^2+1:\nf1 := x*y^2-1:\nf2 := y+x+1:" }}}{EXCHG {PARA 0 "" 0 "
+" {TEXT -1 2 "47" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^
+2*y^3+x^2+2*x^3+x^2+2*x+2:\nf1 := x*y^2-1:\nf2 := y+x^2:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "48" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 59 "f := x^2*y^3+x^2+x^3+3*x^2+x:\nf1 := x*y^2-1:\nf2 := y+x^2+1:
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "49" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 59 "f := x^2*y^3+3*x^3+3*x^2+3*x+2:\nf1 := x*y-1:\nf2 :
+= y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "50" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 57 "f := x^3*y^2+x^2+2*x^3+3*x+3:\nf1 := x*y-
+1:\nf2 := y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "51" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 51 "f := x^3*y^2+y^2+x^3+1:\nf1 \+
+:= x*y-1:\nf2 := y+x^2-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "52" }
+}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 59 "f := x^3*y^2+y^2+2*x^3+2*x
++2:\nf1 := x^2+y-1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 2 "53" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 55 "f := x^3*y^2+2*
+y^3+y^2+1:\nf1 := x^2+y-1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 2 "54" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f := x^3*
+y^2+2*y^3+y^2+1:\nf1 := x^2+y-1:\nf2 := y-x-1:" }}}{EXCHG {PARA 0 "" 
+0 "" {TEXT -1 2 "55" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 "f :=
+ x^3*y^2+y^3+2*z+1:\nf1 := x^2+y+1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 2 "56" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 49 
+"f := x^3*y^2+y^3+2:\nf1 := x^2+y+1:\nf2 := y^2+x-1:" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 2 "57" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 53 
+"f := x^3*y^2+y^2+2*y^3+2:\nf1 := x+y+1:\nf2 := y^2+x-1:" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 2 "58" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 57 "f := x^3*y^2+x^2*y^2+2*y^3+1:\nf1 := x*y-1:\nf2 := y^2+x+1:" }
+}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "59" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 59 "f := x^3*y^2+x^2*y^2+y^3+2*y+2:\nf1 := x*y-1:\nf2 := \+
+y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "60" }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 53 "f := x^3*y^2+x^2*y^2+y^3:\nf1 := x*y-1:\nf2
+ := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "61" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 49 "f := x^3*y^2+y^3+y^2:\nf1 := x*y-1:
+\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "62" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 55 "f := x^2*y^4+x^2*y+2*y^3+1:\nf1 := \+
+x*y-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 2 "63" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^2*y^3+x^2+2*y^3+y^2+y
++2:\nf1 := x*y-1:\nf2 := y^2+x^2+1:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 2 "64" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 61 "f := x^2*y^3+x^
+2+y^3+y^2+3*y+1:\nf1 := x*y^2-1:\nf2 := y^2+x+1:" }}}{EXCHG {PARA 0 "
+" 0 "" {TEXT -1 2 "65" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 63 "f \+
+:= x^2*y^3+x^2+y^2+x^3+2*x^2+3*x:\nf1 := x*y-1:\nf2 := y^2+x+1:" }}}}}
+{MARK "0 0 0" 18 }{VIEWOPTS 1 1 0 3 4 1802 1 1 1 1 }{PAGENUMBERS 0 1 
+2 33 1 1 }
