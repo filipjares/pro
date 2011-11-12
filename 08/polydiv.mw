@@ -97,25 +97,23 @@
 with(Groebner):</Text-field>
 </Input>
 </Group>
-<Group labelreference="L15" drawlabel="true">
-<Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">mo:=plex(x,y);</Text-field>
-</Input>
-<Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEjbW9GJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNigtRiw2JVElcGxleEYnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GWC1JKG1mZW5jZWRHRiQ2JC1GIzYoLUYsNiVRInhGJ0YvRjItRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSEZXL0ZOUSwwLjMzMzMzMzNlbUYnLUYsNiVRInlGJ0YvRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOUY5RmVvRmhvRjlGZW9GaG9GOQ==">LUklcGxleEc2IjYkSSJ4R0YkSSJ5R0Yk</Equation></Text-field>
-</Output>
-</Group>
 </Section><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L8" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 <Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
-<Text-field style="Normal" layout="Normal"><Font bold="true">Procedures</Font></Text-field></Title><Presentation-Block>
+<Text-field style="Normal" layout="Normal"><Font bold="true">Ad 1.: Dokoncete implementaci algoritmu deleni polynomu, na ktere jste zacali pracovat na cviceni</Font></Text-field></Title>
+<Group labelreference="L93" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">Implementace &quot;Division algorithm&quot; podle slajdu 159: http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Lecture/PRO-2011-Lecture-08.pdf </Text-field>
+</Input>
+</Group><Presentation-Block>
 <Group view="code" labelreference="L42" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">LT := proc(p,mo)
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal"># funkce vraci leading term polynomu p dany monomialovym usporadanim mo
+LT := proc(p,mo)
 local lt;
 lt := LeadingTerm(p,mo);
 lt[1]*lt[2];
@@ -127,7 +125,8 @@ end proc;</Text-field>
 </Group>
 <Group view="code" labelreference="L13" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv :=  proc(f,F,mo)
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal"># Vypocet deleni polynomu f nekolika deliteli (polynomy) usporadanymi v seznamu F s monomialovym usporadanim mo
+PolyDiv :=  proc(f,F,mo)
 local s,p,r,a,i,divOccured,ltp,ltf;
 r := 0;
 s := nops(F);
@@ -160,15 +159,15 @@ end proc;</Text-field>
 <Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEoUG9seURpdkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiM2LC1GNjYvUSVwcm9jRicvJSVib2xkR0YxL0YzUSVib2xkRicvJStmb250d2VpZ2h0R0ZXRjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GZW4tSShtZmVuY2VkR0YkNiQtRiM2Ki1GLDYlUSJmRidGL0YyLUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkhGWi9GTlEsMC4zMzMzMzMzZW1GJy1GLDYlUSJGRidGL0YyRl9vLUYsNiVRI21vRidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOS1JJ21zcGFjZUdGJDYmLyUnaGVpZ2h0R1EmMC4wZXhGJy8lJndpZHRoR1EmMC41ZW1GJy8lJmRlcHRoR0ZlcC8lKmxpbmVicmVha0dRMWZpcnN0cHJvY25ld2xpbmVGJy1GIzYqLUY2Ni9RJmxvY2FsRidGVEZWRlhGO0Y+RkBGQkZERkZGSEZaRmZuLUZhcDYmRmNwRmZwRmlwL0ZccVElYXV0b0YnLUYjNjQtRiw2JVEic0YnRi9GMkZfby1GLDYlUSJwRidGL0YyRl9vLUYsNiVRInJGJ0YvRjJGX28tRiw2JVEiYUYnRi9GMkZfby1GLDYlUSJpRidGL0YyRl9vLUYsNiVRK2Rpdk9jY3VyZWRGJ0YvRjJGX28tRiw2JVEkbHRwRidGL0YyRl9vLUYsNiVRJGx0ZkYnRi9GMkZbcEZecEY5LUY2Ni1RIjtGJ0Y5RjtGYm9GQEZCRkRGRkZIRlpGTUZgcEZbcEZecEY5LUYjNistRiM2KC1GIzYoRl9yRjUtSSNtbkdGJDYkUSIwRidGOUZbcEZecEY5RmFzRmBwRltwRl5wRjktRiM2KC1GIzYoRmlxRjUtRiM2KC1GLDYlUSVub3BzRidGL0YyLUY2Ni1RMCZBcHBseUZ1bmN0aW9uO0YnRjlGO0Y+RkBGQkZERkZGSEZaRmZuLUZobjYkLUYjNiZGZW9GW3BGXnBGOUY5RltwRl5wRjlGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2KEZickY1LUZobjYmLUYjNiYtRiM2KC1GLDYlUSRzZXFGJ0YvRjJGZ3QtRmhuNiQtRiM2KEZqc0Zfby1GIzYoRmVyLUY2Ni1RIj1GJ0Y5RjtGPkZARkJGREZGRkhGSkZNLUYjNigtRlt0NiRRIjFGJ0Y5LUY2Ni1RIy4uRidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjIyMjIyMjJlbUYnRmZuRmlxRltwRl5wRjlGW3BGXnBGOUZbcEZecEY5RjlGW3BGXnBGOUZbcEZecEY5RjkvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2KEZcckY1RlxvRltwRl5wRjlGYXNGYHBGW3BGXnBGOS1GIzYoLUYjNiotRiM2Ki1GNjYvUSZ3aGlsZUYnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZjcS1GIzYoRlxyLUY2Ni1RIzw+RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjExMTExMTFlbUYnL0ZORmd4RmpzRltwRl5wRjlGY3EtRjY2L1EjZG9GJ0ZURlZGWEY7Rj5GQEZCRkRGRkZIRlpGZm5GW3BGXnBGOS1GYXA2JkZjcEZmcEZpcC9GXHFRNmluY3JlYXNlaW5kZW50bmV3bGluZUYnLUYjNiotRiM2KC1GIzYoRmVyRjVGZnZGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2KEZockY1LUYsNiVGPUYvRjJGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2KEZbc0Y1LUYjNigtRiw2JVEjTFRGJ0YvRjJGZ3QtRmhuNiQtRiM2KEZcckZfb0Zob0ZbcEZecEY5RjlGW3BGXnBGOUZbcEZecEY5RmFzRmBwRltwRl5wRjktRiM2KC1GIzYqLUYjNipGXnhGY3EtRiM2Ki1GIzYoRmVyLUY2Ni1RIzw9RidGOUY7Rj5GQEZCRkRGRkZIRkpGTUZpcUZbcEZecEY5RmNxLUY2Ni9RJGFuZEYnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZjcS1GIzYoRmhyRmF2Rmp5RltwRl5wRjlGW3BGXnBGOUZjcUZpeEZbcEZecEY5Rlx5LUYjNictRiM2KC1GIzYoRl5zRjUtRiM2KEZiekZndC1GaG42JC1GIzYoLUYjNilGZW8tRjY2LUZgd0Y5L0Y8RjFGPi9GQUYxRkJGREZGRkgvRktRLDAuMTY2NjY2N2VtRicvRk5GXl1sLUYjNiZGZXJGW3BGXnBGOS1GNjYtRmN3RjlGW11sRj5GXF1sRkJGREZGRkhGXV1sRmh4RltwRl5wRjlGX29GaG9GW3BGXnBGOUY5RltwRl5wRjlGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2LS1GNjYvUSNpZkYnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZjcS1GIzYoLUYsNiVRJ2RpdmlkZUYnRi9GMkZndC1GaG42JC1GIzYoRltzRl9vRl5zRltwRl5wRjlGOUZbcEZecEY5RmNxLUY2Ni9RJXRoZW5GJ0ZURlZGWEY7Rj5GQEZCRkRGRkZIRlpGZm5GXHktRiM2KC1GIzYoLUYjNihGYnJGNS1GIzYoLUYsNiVRJ3N1YnNvcEYnRi9GMkZndC1GaG42JC1GIzYoLUYjNihGZXJGYXYtRiM2Ji1GIzYpRmJyRmlcbEZgXWxGYl1sRltwRl5wRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSEZcdy9GTkZddy1GIzYoLUYjNiZGW3NGW3BGXnBGOS1GNjYtUSIvRidGOUY7Rj5GXF1sRkJGREZGRkhGXV1sRl9dbC1GIzYmRl5zRltwRl5wRjlGW3BGXnBGOUY5RltwRl5wRjlGX29GYnJGW3BGXnBGOUY5RltwRl5wRjlGW3BGXnBGOUZhc0ZgcEZbcEZecEY5LUYjNigtRiM2KEZcckY1LUYjNiZGXHItRjY2LVEqfiYjODcyMjt+RidGOUY7Rj5GQEZCRkRGRkZIRlpGZm4tRiM2KC1GLDYlUSdleHBhbmRGJ0YvRjJGZ3QtRmhuNiQtRiM2Ji1GIzYoLUYjNihGW3MtRjY2LVEiKkYnRjlGO0Y+RkBGQkZERkZGSEZdXWxGX11sRmdcbEZbcEZecEY5RmRgbEZnYGxGW3BGXnBGOUZbcEZecEY5RjlGW3BGXnBGOUY5RltwRl5wRjlGYXNGYHBGW3BGXnBGOS1GIzYoRmhyRjUtRiw2JUYxRi9GMkZbcEZecEY5RltwRl5wRjktRmFwNiZGY3BGZnBGaXAvRlxxUTZkZWNyZWFzZWluZGVudG5ld2xpbmVGJ0ZbcEZecEY5LUYjNiktRjY2L1ElZWxzZUYnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZceS1GIzYoRmVyRjUtRiM2JkZlckZcYGxGZnZGOUZbcEZecEY5RmZibEZbcEZecEY5LUY2Ni9RJ2VuZH5pZkYnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZbcEZecEY5RltwRl5wRjlGZmJsLUY2Ni9RJ2VuZH5kb0YnRlRGVkZYRjtGPkZARkJGREZGRkhGWkZmbkZbcEZecEY5RmFzRmBwRltwRl5wRjktRiM2Jy1GIzYtRmhdbEZjcUZpW2xGY3FGZF5sRlx5LUYjNictRiM2KC1GIzYoRl9yRjUtRiM2JkZfckZcYGxGW3NGOUZbcEZecEY5RmFzRmBwRltwRl5wRjktRiM2KEZcckY1LUYjNiZGXHJGX2FsRltzRjlGW3BGXnBGOUZbcEZecEY5RmZibEZbcEZecEY5RmNjbEZbcEZecEY5RltwRl5wRjlGZmJsRmZjbEZbcEZecEY5RmFzRmBwRltwRl5wRjktRmhuNiYtRiM2KEZfckZfb0ZickZbcEZecEY5RjlGXndGYXdGW3BGXnBGOUZmYmwtRjY2L1EpZW5kfnByb2NGJ0ZURlZGWEY7Rj5GQEZCRkRGRkZIRlpGZm5GW3BGXnBGOUZbcEZecEY5">Zio2JUkiZkc2IkkiRkdGJUkjbW9HRiU2Kkkic0dGJUkicEdGJUkickdGJUkiYUdGJUkiaUdGJUkrZGl2T2NjdXJlZEdGJUkkbHRwR0YlSSRsdGZHRiVGJUYlQyg+OCYiIiE+OCQtSSVub3BzRyUqcHJvdGVjdGVkRzYjOSU+OCc3Iy1JJHNlcUdGOTYkRjQvOCg7IiIiRjY+OCU5JD8oRiVGRUZFRiUwRkdGNEMnPkZDRkU+OClJJmZhbHNlR0Y5PjgqLUkjTFRHRiU2JEZHOSY/KEYlRkVGRUYlMzFGQ0Y2L0ZORk9DJD44Ky1GUzYkJkY7NiNGQ0ZVQCUtSSdkaXZpZGVHRjk2JEZRRmZuQyU+Rj0tSSdzdWJzb3BHRjk2JC9GQywmJkY9RmpuRkUqJkZRRkVGZm4hIiJGRUY9PkZHLCZGR0ZFLUknZXhwYW5kR0Y5NiMqKEZRRkVGZm5GaG9GaW5GRUZobz5GTkkldHJ1ZUdGOT5GQywmRkNGRUZFRkVAJEZZQyQ+RjMsJkYzRkVGUUZFPkZHLCZGR0ZFRlFGaG83JEYzRj1GJUYlRiU=</Equation></Text-field>
 </Output>
 </Group></Presentation-Block>
-</Section><Presentation-Block>
-<Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L11" drawlabel="true">
-<Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
-</Input>
-</Group></Presentation-Block>
+</Section>
 <Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
-<Text-field style="Normal" layout="Normal"><Font bold="true">Testovaci</Font></Text-field></Title><Presentation-Block>
-<Group view="code" labelreference="L37" drawlabel="true">
+<Text-field style="Text" layout="Heading 1">Ad 2.: </Text-field></Title>
+<Group labelreference="L65" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"><Font encoding="UTF-8">Vyd\304\233lte polynom</Font></Text-field>
+</Input>
+</Group>
+<Group labelreference="L63" drawlabel="true">
 <Input>
 <Text-field prompt="&gt; " style="Maple Input" layout="Normal">f := x^2*y+x*y^2+y^2-1;</Text-field>
 </Input>
@@ -176,45 +175,173 @@ end proc;</Text-field>
 <Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEiZkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiM2Ki1GIzYmLUklbXN1cEdGJDYlLUYsNiVRInhGJ0YvRjItSSNtbkdGJDYkUSIyRidGOS8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRictRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTkZeby1GLDYlUSJ5RidGL0YyRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZnby1GIzYmRlZGam4tRlQ2JUZgb0ZZRmduRjlGY28tRiM2JEZbcEY5LUY2Ni1RKCZtaW51cztGJ0Y5RjtGPkZARkJGREZGRkhGZm9GaG8tRlo2JFEiMUYnRjlGOS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5">LCoqJkkieEc2IiIiI0kieUdGJSIiIkYoKiZGJEYoRidGJkYoKiRGJ0YmRighIiJGKA==</Equation></Text-field>
 </Output>
 </Group>
-<Group view="code" labelreference="L38" drawlabel="true">
+<Group labelreference="L66" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := [x*y-1, y^2+x+1];</Text-field>
+<Text-field style="Text" layout="Normal">polynomy</Text-field>
+</Input>
+</Group>
+<Group labelreference="L64" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">f1 := x*y-1;
+f2 := y^2+x+1;</Text-field>
 </Input>
 <Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEiRkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtSShtZmVuY2VkR0YkNiYtRiM2KC1GIzYmLUYjNiYtRiw2JVEieEYnRi9GMi1GNjYtUTEmSW52aXNpYmxlVGltZXM7RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSYwLjBlbUYnL0ZORmluLUYsNiVRInlGJ0YvRjJGOS1GNjYtUSgmbWludXM7RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjIyMjIyMjJlbUYnL0ZORmJvLUkjbW5HRiQ2JFEiMUYnRjlGOS1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRmhuL0ZOUSwwLjMzMzMzMzNlbUYnLUYjNigtRiM2JC1JJW1zdXBHRiQ2JUZbby1GZW82JFEiMkYnRjkvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSEZhb0Zjb0ZYRltxRmRvRjkvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOUY5LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRl5xRmFxRjk=">NyQsJiomSSJ4RzYiIiIiSSJ5R0YmRidGJyEiIkYnLCgqJEYoIiIjRidGJUYnRidGJw==</Equation></Text-field>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEjZjFGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNiYtRiM2Ji1GLDYlUSJ4RidGL0YyLUY2Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GWi1GLDYlUSJ5RidGL0YyRjktRjY2LVEoJm1pbnVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZdby1JI21uR0YkNiRRIjFGJ0Y5RjkvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOQ==">LCYqJkkieEc2IiIiIkkieUdGJUYmRiYhIiJGJg==</Equation></Text-field>
 </Output>
-</Group>
-<Group view="code" labelreference="L40" drawlabel="true">
-<Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">p := f;</Text-field>
-</Input>
 <Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEicEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiM2Ki1GIzYmLUklbXN1cEdGJDYlLUYsNiVRInhGJ0YvRjItSSNtbkdGJDYkUSIyRidGOS8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRictRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTkZeby1GLDYlUSJ5RidGL0YyRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZnby1GIzYmRlZGam4tRlQ2JUZgb0ZZRmduRjlGY28tRiM2JEZbcEY5LUY2Ni1RKCZtaW51cztGJ0Y5RjtGPkZARkJGREZGRkhGZm9GaG8tRlo2JFEiMUYnRjlGOS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5">LCoqJkkieEc2IiIiI0kieUdGJSIiIkYoKiZGJEYoRidGJkYoKiRGJ0YmRighIiJGKA==</Equation></Text-field>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEjZjJGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNigtRiM2JC1JJW1zdXBHRiQ2JS1GLDYlUSJ5RidGL0YyLUkjbW5HRiQ2JFEiMkYnRjkvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZeby1GLDYlUSJ4RidGL0YyRmpuLUZaNiRRIjFGJ0Y5RjkvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOQ==">LCgqJEkieUc2IiIiIyIiIkkieEdGJUYnRidGJw==</Equation></Text-field>
 </Output>
 </Group>
-<Group view="code" labelreference="L39" drawlabel="true">
+<Group labelreference="L67" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f,F,mo);</Text-field>
+<Text-field style="Text" layout="Normal">a) Uvazujte lexikograficke usporadani s x &gt; y a vypoctete: f:(f1,f2)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L68" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f1, f2], plex(x,y));</Text-field>
 </Input>
 <Output>
 <Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNictSSNtb0dGJDYtUSomdW1pbnVzMDtGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjkvJSlzdHJldGNoeUdGOS8lKnN5bW1ldHJpY0dGOS8lKGxhcmdlb3BHRjkvJS5tb3ZhYmxlbGltaXRzR0Y5LyUnYWNjZW50R0Y5LyUnbHNwYWNlR1EsMC4yMjIyMjIyZW1GJy8lJ3JzcGFjZUdGSC1JI21uR0YkNiRRIjJGJ0Y0LUYxNi1RIitGJ0Y0RjdGOkY8Rj5GQEZCRkRGRkZJLUkjbWlHRiQ2JVEieUYnLyUnaXRhbGljR1EldHJ1ZUYnL0Y1USdpdGFsaWNGJ0Y0LUYxNi1RIixGJ0Y0RjcvRjtGWEY8Rj5GQEZCRkQvRkdRJjAuMGVtRicvRkpRLDAuMzMzMzMzM2VtRictRiM2Ji1GLDYoLUYsNiYtRlM2JVEieEYnRlZGWUZPRlJGNEZlbi1GTDYkUSIxRidGNC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGOUY0RjQvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGaW9GXHBGNEY0Rl5wRmFw">NyQsJiEiIyIiIkkieUc2IkYlNyQsJkkieEdGJ0YlRiZGJUYl</Equation></Text-field>
 </Output>
 </Group>
-<Group view="code" labelreference="L46" drawlabel="true">
+<Group labelreference="L69" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(x*y^2 + x + 1, [x*y + 1, y + 1], mo);</Text-field>
+<Text-field style="Text" layout="Normal">... a f:(f2,f1)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L70" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f2, f1], plex(x,y));</Text-field>
 </Input>
 <Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNiYtSSNtaUdGJDYlUSJ4RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEiK0YnL0Y4USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGQi8lKXN0cmV0Y2h5R0ZCLyUqc3ltbWV0cmljR0ZCLyUobGFyZ2VvcEdGQi8lLm1vdmFibGVsaW1pdHNHRkIvJSdhY2NlbnRHRkIvJSdsc3BhY2VHUSwwLjIyMjIyMjJlbUYnLyUncnNwYWNlR0ZRLUkjbW5HRiQ2JFEiMkYnRj5GPi1GOzYtUSIsRidGPkZAL0ZERjZGRUZHRklGS0ZNL0ZQUSYwLjBlbUYnL0ZTUSwwLjMzMzMzMzNlbUYnLUYjNiYtRiw2KC1GMTYlUSJ5RidGNEY3RlgtRiw2JS1GOzYtUSomdW1pbnVzMDtGJ0Y+RkBGQ0ZFRkdGSUZLRk1GT0ZSLUZVNiRRIjFGJ0Y+Rj4vJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRkJGPkY+LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRmlvRlxwRj5GPkZecEZhcA==">NyQsJkkieEc2IiIiIiIiI0YmNyRJInlHRiUhIiI=</Equation></Text-field>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNi0tSSNtb0dGJDYtUSomdW1pbnVzMDtGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjkvJSlzdHJldGNoeUdGOS8lKnN5bW1ldHJpY0dGOS8lKGxhcmdlb3BHRjkvJS5tb3ZhYmxlbGltaXRzR0Y5LyUnYWNjZW50R0Y5LyUnbHNwYWNlR1EsMC4yMjIyMjIyZW1GJy8lJ3JzcGFjZUdGSC1JI21uR0YkNiRRIjFGJ0Y0LUYxNi1RIitGJ0Y0RjdGOkY8Rj5GQEZCRkRGRkZJLUYsNiQtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ5RicvJSdpdGFsaWNHUSV0cnVlRicvRjVRJ2l0YWxpY0YnLUZMNiRRIjVGJ0Y0LyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0Y0Rk8tRiw2Ji1GTDYkUSIyRidGNC1GMTYtUTEmSW52aXNpYmxlVGltZXM7RidGNEY3RjpGPEY+RkBGQkZEL0ZHUSYwLjBlbUYnL0ZKRmlvLUZVNiVGVy1GTDYkUSIzRidGNEZdb0Y0LUYxNi1RKCZtaW51cztGJ0Y0RjdGOkY8Rj5GQEZCRkRGRkZJLUYsNiQtRlU2JUZXLUZMNiRRIjRGJ0Y0Rl1vRjRGT0ZXRjQtRjE2LVEiLEYnRjRGNy9GO0ZnbkY8Rj5GQEZCRkRGaG8vRkpRLDAuMzMzMzMzM2VtRictRiM2Ji1GLDYoLUYsNiotRiw2Ji1GWDYlUSJ4RidGZW5GaG5GZW9GV0Y0RmBwLUYsNiRGW3BGNEZPLUYsNiQtRlU2JUZXRmJvRl1vRjRGYHBGV0Y0RmpwLUZMNiRGX29GNC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGOUY0RjQvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGY3JGZnJGNEY0RmhyRltz">NyQsLCEiIiIiIiokSSJ5RzYiIiImRiUqJEYnIiIkIiIjKiRGJyIiJUYkRidGJTckLCoqJkkieEdGKEYlRidGJUYlRipGJCokRidGLEYlRidGJCIiIQ==</Equation></Text-field>
 </Output>
 </Group>
-<Group view="code" labelreference="L52" drawlabel="true">
+<Group labelreference="L71" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+<Text-field style="Text" layout="Normal">b) Uvazujte lexikograficke usporadani s y &gt; x a vypoctete: f:(f1,f2)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L72" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f1, f2], plex(y, x));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNictSSNtb0dGJDYtUSomdW1pbnVzMDtGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjkvJSlzdHJldGNoeUdGOS8lKnN5bW1ldHJpY0dGOS8lKGxhcmdlb3BHRjkvJS5tb3ZhYmxlbGltaXRzR0Y5LyUnYWNjZW50R0Y5LyUnbHNwYWNlR1EsMC4yMjIyMjIyZW1GJy8lJ3JzcGFjZUdGSC1JI21uR0YkNiRRIjJGJ0Y0LUYxNi1RIitGJ0Y0RjdGOkY8Rj5GQEZCRkRGRkZJLUkjbWlHRiQ2JVEieUYnLyUnaXRhbGljR1EldHJ1ZUYnL0Y1USdpdGFsaWNGJ0Y0LUYxNi1RIixGJ0Y0RjcvRjtGWEY8Rj5GQEZCRkQvRkdRJjAuMGVtRicvRkpRLDAuMzMzMzMzM2VtRictRiM2Ji1GLDYoLUYsNiYtRlM2JVEieEYnRlZGWUZPRlJGNEZlbi1GTDYkUSIxRidGNC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGOUY0RjQvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGaW9GXHBGNEY0Rl5wRmFw">NyQsJiEiIyIiIkkieUc2IkYlNyQsJkkieEdGJ0YlRiZGJUYl</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L73" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">... a f:(f2,f1)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L74" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f2, f1], plex(y, x));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNiktSSNtb0dGJDYtUSomdW1pbnVzMDtGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjkvJSlzdHJldGNoeUdGOS8lKnN5bW1ldHJpY0dGOS8lKGxhcmdlb3BHRjkvJS5tb3ZhYmxlbGltaXRzR0Y5LyUnYWNjZW50R0Y5LyUnbHNwYWNlR1EsMC4yMjIyMjIyZW1GJy8lJ3JzcGFjZUdGSC1JI21uR0YkNiRRIjJGJ0Y0LUYxNi1RKCZtaW51cztGJ0Y0RjdGOkY8Rj5GQEZCRkRGRkZJLUYsNiQtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ4RicvJSdpdGFsaWNHUSV0cnVlRicvRjVRJ2l0YWxpY0YnRksvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjRGT0ZXRjQtRjE2LVEiLEYnRjRGNy9GO0ZnbkY8Rj5GQEZCRkQvRkdRJjAuMGVtRicvRkpRLDAuMzMzMzMzM2VtRictRiM2Ji1GLDYoLUYsNiZGVy1GMTYtUSIrRidGNEY3RjpGPEY+RkBGQkZERkZGSS1GTDYkUSIxRidGNEY0Rl1vRlcvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRjlGNEY0LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRmFwRmRwRjRGNEZmcEZpcA==">NyQsKCEiIyIiIiokSSJ4RzYiIiIjISIiRidGKjckLCZGJ0YlRiVGJUYn</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L75" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"><Font encoding="UTF-8">c) v\303\275sledky zhodno\305\245te (p\305\231edev\305\241\303\255m hodnoty zbytk\305\257)</Font></Text-field>
+</Input>
+</Group>
+</Section>
+<Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
+<Text-field style="Text" layout="Heading 1">Ad 3.: Vydelte polynomy zadane v .mws souboru (podle cisla skupiny - moje cislo je 3)</Text-field></Title>
+<Group labelreference="L81" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">f := x^2*y^3+x*y^3+x^2+y^2+x+y+1;
+f1 := x*y-1;
+f2 := y^2+x+1;</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEiZkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiM2MC1GIzYmLUklbXN1cEdGJDYlLUYsNiVRInhGJ0YvRjItSSNtbkdGJDYkUSIyRidGOS8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRictRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTkZeby1GVDYlLUYsNiVRInlGJ0YvRjItRlo2JFEiM0YnRjlGZ25GOS1GNjYtUSIrRidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjIyMjIyMjJlbUYnL0ZORlxwLUYjNiZGVkZqbkZgb0Y5RmhvLUYjNiRGU0Y5RmhvLUYjNiQtRlQ2JUZib0ZZRmduRjlGaG9GVkZob0Zib0Zoby1GWjYkUSIxRidGOUY5LyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9Rjk=">LDAqJkkieEc2IiIiI0kieUdGJSIiJCIiIiomRiRGKUYnRihGKSokRiRGJkYpKiRGJ0YmRilGJEYpRidGKUYpRik=</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEjZjFGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNiYtRiM2Ji1GLDYlUSJ4RidGL0YyLUY2Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GWi1GLDYlUSJ5RidGL0YyRjktRjY2LVEoJm1pbnVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZdby1JI21uR0YkNiRRIjFGJ0Y5RjkvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOQ==">LCYqJkkieEc2IiIiIkkieUdGJUYmRiYhIiJGJg==</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEjZjJGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNigtRiM2JC1JJW1zdXBHRiQ2JS1GLDYlUSJ5RidGL0YyLUkjbW5HRiQ2JFEiMkYnRjkvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZeby1GLDYlUSJ4RidGL0YyRmpuLUZaNiRRIjFGJ0Y5RjkvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOQ==">LCgqJEkieUc2IiIiIyIiIkkieEdGJUYnRidGJw==</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L88" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">a) Uvazujte lexikograficke usporadani s x &gt; y a vypoctete: f:(f1,f2)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L87" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f1, f2], plex(x,y));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNigtRiw2Ji1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUTEmSW52aXNpYmxlVGltZXM7RidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEieUYnLyUnaXRhbGljR1EldHJ1ZUYnL0Y3USdpdGFsaWNGJ0YyLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0Y2LUY6Ni1RIitGJ0Y2Rj1GQEZCRkRGRkZIRkovRk1RLDAuMjIyMjIyMmVtRicvRlBGXm9GVEZqbi1GMzYkUSIxRidGNkY2LUY6Ni1RIixGJ0Y2Rj0vRkFGWkZCRkRGRkZIRkpGTC9GUFEsMC4zMzMzMzMzZW1GJy1GIzYmLUYsNigtRiw2Ji1GLDYmLUZVNiVRInhGJ0ZYRmVuRjlGUUY2RmpuLUYsNiRGUUY2RjZGY29GYXAvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj9GNkY2LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRmZwRmlwRjZGNkZbcUZecQ==">NyQsKCokSSJ5RzYiIiIjRidGJSIiIkYoRig3JCwmKiZJInhHRiZGKEYlRidGKEYkRihGLA==</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L86" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">... a f:(f2,f1)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L89" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f2, f1], plex(x,y));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNi4tRiw2Ji1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUTEmSW52aXNpYmxlVGltZXM7RidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEieUYnLyUnaXRhbGljR1EldHJ1ZUYnL0Y3USdpdGFsaWNGJ0YyLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0Y2LUY6Ni1RIitGJ0Y2Rj1GQEZCRkRGRkZIRkovRk1RLDAuMjIyMjIyMmVtRicvRlBGXm9GVEZqbi1GMzYkUSIxRidGNkZqbi1GLDYkLUZSNiVGVC1GMzYkUSI3RidGNkZnbkY2RmpuLUYsNiQtRlI2JUZULUYzNiRRIjVGJ0Y2RmduRjZGam4tRiw2JC1GUjYlRlQtRjM2JFEiNEYnRjZGZ25GNkY2LUY6Ni1RIixGJ0Y2Rj0vRkFGWkZCRkRGRkZIRkpGTC9GUFEsMC4zMzMzMzMzZW1GJy1GIzYmLUYsNigtRiw2Ki1GLDYmLUZVNiVRInhGJ0ZYRmVuRjktRlI2JUZULUYzNiRRIjNGJ0Y2RmduRjZGam5GZnEtRjo2LVEoJm1pbnVzO0YnRjZGPUZARkJGREZGRkhGSkZdb0Zfb0Zqb0Zeci1GLDYkRlFGNkY2RmhwLUYzNiRGaW5GNi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGP0Y2RjYvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGZXJGaHJGNkY2RmpyRl1z">NyQsLiokSSJ5RzYiIiIjRidGJSIiIkYoRigqJEYlIiIoRigqJEYlIiImRigqJEYlIiIlRig3JCwqKiZJInhHRiZGKEYlIiIkRihGMkYoRishIiJGJEY0IiIh</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L91" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">b) Uvazujte lexikograficke usporadani s y &gt; x a vypoctete: f:(f1,f2)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L90" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f1, f2], plex(y, x));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNiotRiw2JC1JJW1zdXBHRiQ2JS1JI21pR0YkNiVRInhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtbkdGJDYkUSIyRicvRj1RJ25vcm1hbEYnLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0ZDLUkjbW9HRiQ2LVEoJm1pbnVzO0YnRkMvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRk4vJSlzdHJldGNoeUdGTi8lKnN5bW1ldHJpY0dGTi8lKGxhcmdlb3BHRk4vJS5tb3ZhYmxlbGltaXRzR0ZOLyUnYWNjZW50R0ZOLyUnbHNwYWNlR1EsMC4yMjIyMjIyZW1GJy8lJ3JzcGFjZUdGZ25GNS1GSTYtUSIrRidGQ0ZMRk9GUUZTRlVGV0ZZRmVuRmhuLUYsNiZGPy1GSTYtUTEmSW52aXNpYmxlVGltZXM7RidGQ0ZMRk9GUUZTRlVGV0ZZL0ZmblEmMC4wZW1GJy9GaW5GY28tRjY2JVEieUYnRjlGPEZDRkgtRkA2JFEiMUYnRkNGQy1GSTYtUSIsRidGQ0ZML0ZQRjtGUUZTRlVGV0ZZRmJvL0ZpblEsMC4zMzMzMzMzZW1GJy1GIzYmLUYsNigtRiw2KC1GLDYmRjVGX28tRjM2JUZlb0Y/RkVGQ0Zqbi1GLDYkRmlwRkNGam5GZW9GQ0ZbcEY/LyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0ZORkNGQy8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0ZdcUZgcUZDRkNGYnFGZXE=">NyQsKiokSSJ4RzYiIiIjIiIiRiUhIiJJInlHRiZGJ0YpRig3JCwoKiZGJUYoRipGJ0YoKiRGKkYnRihGKkYoRic=</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L84" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal">... a f:(f2,f1)</Text-field>
+</Input>
+</Group>
+<Group labelreference="L83" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">PolyDiv(f, [f2, f1], plex(y, x));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYoLUYsNigtSSNtaUdGJDYlUSJ5RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEoJm1pbnVzO0YnL0Y4USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGQi8lKXN0cmV0Y2h5R0ZCLyUqc3ltbWV0cmljR0ZCLyUobGFyZ2VvcEdGQi8lLm1vdmFibGVsaW1pdHNHRkIvJSdhY2NlbnRHRkIvJSdsc3BhY2VHUSwwLjIyMjIyMjJlbUYnLyUncnNwYWNlR0ZRLUYsNiYtSSNtbkdGJDYkUSIyRidGPi1GOzYtUTEmSW52aXNpYmxlVGltZXM7RidGPkZARkNGRUZHRklGS0ZNL0ZQUSYwLjBlbUYnL0ZTRmhuLUYxNiVRInhGJ0Y0RjdGPkY6LUZXNiRRIjFGJ0Y+Rj4tRjs2LVEiLEYnRj5GQC9GREY2RkVGR0ZJRktGTUZnbi9GU1EsMC4zMzMzMzMzZW1GJy1GIzYmLUYsNigtRiw2KC1GLDYmLUklbXN1cEdGJDYlRmpuRlYvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRlpGMEY+LUY7Ni1RIitGJ0Y+RkBGQ0ZFRkdGSUZLRk1GT0ZSLUYsNiZGam5GWkYwRj5GZHBGXW9GPkZgby1GLDYpLUY7Ni1RKiZ1bWludXMwO0YnRj5GQEZDRkVGR0ZJRktGTUZPRlItRiw2JEZecEY+RjpGVEY6Rl1vRj4vJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRkJGPkY+LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRmBxRmNxRj5GPkZlcUZocQ==">NyQsKEkieUc2IiIiIkkieEdGJSEiIyEiIkYmNyQsKComRiciIiNGJEYmRiYqJkYnRiZGJEYmRiZGJkYmLCgqJEYnRi1GKUYnRihGKUYm</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L85" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"><Font encoding="UTF-8">c) v\303\275sledky zhodno\305\245te (p\305\231edev\305\241\303\255m hodnoty zbytk\305\257)</Font></Text-field>
+</Input>
+</Group>
+<Group labelreference="L82" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group><Presentation-Block>
+<Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L92" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L78" drawlabel="true">
+<Input>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section><Presentation-Block>
-<Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L45" drawlabel="true">
+<Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L77" drawlabel="true">
 <Input>
 <Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
