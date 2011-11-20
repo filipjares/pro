@@ -65,8 +65,8 @@
 <Font name="Error" background="[255,255,255]" bold="false" executable="false" family="Monospaced" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
-<Font name="Help Bold" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Help Notes" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Help Bold" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Equation Label" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Heading 4" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="LaTeX" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -311,7 +311,7 @@ SPol(f,g,plex(x,y));</Text-field>
 <Text-field style="Normal" layout="Normal"><Equation executable="false" style="2D Comment" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2I1EhRictRiM2Jy1GLDYlUSNmMkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjhRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZCLyUpc3RyZXRjaHlHRkIvJSpzeW1tZXRyaWNHRkIvJShsYXJnZW9wR0ZCLyUubW92YWJsZWxpbWl0c0dGQi8lJ2FjY2VudEdGQi8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRlEtRiM2MC1GOzYtUSomdW1pbnVzMDtGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRLDAuMjIyMjIyMmVtRicvRlNGWi1GIzYmLUkjbW5HRiQ2JFEjNDRGJ0Y+LUY7Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRJjAuMGVtRicvRlNGYG8tRiw2JVEiekYnRjRGN0Y+LUY7Ni1RIitGJ0Y+RkBGQ0ZFRkdGSUZLRk1GWUZlbi1GIzYoLUZpbjYkUSM2N0YnRj5GXG8tRiw2JVEieUYnRjRGN0Zcb0Zib0Y+LUY7Ni1RKCZtaW51cztGJ0Y+RkBGQ0ZFRkdGSUZLRk1GWUZlbi1GIzYnLUZpbjYkUSM3MkYnRj5GXG8tRiM2JC1JJW1zdXBHRiQ2JUZiby1GaW42JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRj5GK0Y+RmVvLUYjNihGXXFGXG8tRiw2JVEieEYnRjRGN0Zcby1GW3E2JUZdcEZdcUZgcUY+RmVvLUYjNiotRmluNiRRIjRGJ0Y+RlxvRmVxRlxvRl1wRlxvRmJvRj5GYHAtRiM2KC1GaW42JFEjODRGJ0Y+RlxvRmVxRlxvRmpwRj5GK0Y+RitGPkYrRj4=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2I1EhRictRiM2Jy1GLDYlUSNmMkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjhRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZCLyUpc3RyZXRjaHlHRkIvJSpzeW1tZXRyaWNHRkIvJShsYXJnZW9wR0ZCLyUubW92YWJsZWxpbWl0c0dGQi8lJ2FjY2VudEdGQi8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRlEtRiM2MC1GOzYtUSomdW1pbnVzMDtGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRLDAuMjIyMjIyMmVtRicvRlNGWi1GIzYmLUkjbW5HRiQ2JFEjNDRGJ0Y+LUY7Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRJjAuMGVtRicvRlNGYG8tRiw2JVEiekYnRjRGN0Y+LUY7Ni1RIitGJ0Y+RkBGQ0ZFRkdGSUZLRk1GWUZlbi1GIzYoLUZpbjYkUSM2N0YnRj5GXG8tRiw2JVEieUYnRjRGN0Zcb0Zib0Y+LUY7Ni1RKCZtaW51cztGJ0Y+RkBGQ0ZFRkdGSUZLRk1GWUZlbi1GIzYnLUZpbjYkUSM3MkYnRj5GXG8tRiM2JC1JJW1zdXBHRiQ2JUZiby1GaW42JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRj5GK0Y+RmVvLUYjNihGXXFGXG8tRiw2JVEieEYnRjRGN0Zcby1GW3E2JUZdcEZdcUZgcUY+RmVvLUYjNiotRmluNiRRIjRGJ0Y+RlxvRmVxRlxvRl1wRlxvRmJvRj5GYHAtRiM2KC1GaW42JFEjODRGJ0Y+RlxvRmVxRlxvRmpwRj5GK0Y+RitGPkYrRj4=</Equation>
 mo := plex(x,y,z);
 s:=SPol(f1,f2,mo);</Text-field>
-<Text-field style="2D Comment" size="10" readonly="true" foreground="[0,0,255]" layout="Text Output" linebreak="newline"><Equation executable="false" style="2D Comment" input-equation="">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRictRiM2Ji1GLDYlUSJzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEjOj1GJy9GOFEnbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkIvJSlzdHJldGNoeUdGQi8lKnN5bW1ldHJpY0dGQi8lKGxhcmdlb3BHRkIvJS5tb3ZhYmxlbGltaXRzR0ZCLyUnYWNjZW50R0ZCLyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGUS1GIzY2LUkmbWZyYWNHRiQ2KC1GIzYlLUkjbW5HRiQ2JFEjODhGJ0Y+LUY7Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRJjAuMGVtRicvRlNGXW8tSSVtc3VwR0YkNiUtRiw2JVEieUYnRjRGNy1GZm42JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUYjNiMtRmZuNiRRIzIxRidGPi8lLmxpbmV0aGlja25lc3NHUSIxRicvJStkZW5vbWFsaWduR1EnY2VudGVyRicvJSludW1hbGlnbkdGZXAvJSliZXZlbGxlZEdGQi1GOzYtUSIrRidGPkZARkNGRUZHRklGS0ZNL0ZQUSwwLjIyMjIyMjJlbUYnL0ZTRl5xLUZXNigtRiM2Jy1GZm42JFEjOTRGJ0Y+RmluLUYsNiVRInhGJ0Y0RjdGaW5GX29GW3BGYHBGY3BGZnBGaHBGanAtRlc2KC1GIzYnRmVvRmluRl9vRmluLUZgbzYlRmdxRmVvRmhvLUYjNiMtRmZuNiRRIjdGJ0Y+RmBwRmNwRmZwRmhwRmpwLUZXNigtRiM2Jy1GZm42JFEiNkYnRj5GaW4tRmBvNiVGYm8tRmZuNiRRIjRGJ0Y+RmhvRmluRmdxRmByRmBwRmNwRmZwRmhwRmpwLUZXNigtRiM2KS1GZm42JFEjMjVGJ0Y+RmluRmdxRmluLUYsNiVRInpGJ0Y0RjdGaW4tRmBvNiVGYm8tRmZuNiRRIjNGJ0Y+RmhvRmByRmBwRmNwRmZwRmhwRmpwLUYjNictRmZuNiRRIzIyRidGPkZpbkZncUZpbi1GYG82JUZoc0Zlb0Zoby1GOzYtUSgmbWludXM7RidGPkZARkNGRUZHRklGS0ZNRl1xRl9xLUZXNigtRiM2KS1GZm42JFEjNjdGJ0Y+RmluRmdxRmluRmV0RmluRmJvLUYjNiNGZW9GYHBGY3BGZnBGaHBGanAtRiM2Jy1GZm42JFEjMzZGJ0Y+RmluRmdxRmluLUZgbzYlRmhzRl10RmhvRmd0LUYjNilGZW9GaW4tRiM2I0ZeckZpbkZldEZpbkZib0ZqcC1GIzYnLUZmbjYkUSM0MkYnRj5GaW5GXHZGaW5GaHVGK0YrRis=</Equation></Text-field>
+<Text-field style="2D Comment" size="10" readonly="true" foreground="[0,0,255]" layout="Text Output" linebreak="newline"><Equation executable="false" style="2D Comment" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2I1EhRictRiM2Jy1GLDYlUSJzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEjOj1GJy9GOFEnbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkIvJSlzdHJldGNoeUdGQi8lKnN5bW1ldHJpY0dGQi8lKGxhcmdlb3BHRkIvJS5tb3ZhYmxlbGltaXRzR0ZCLyUnYWNjZW50R0ZCLyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGUS1GIzY3LUkmbWZyYWNHRiQ2KC1GIzYmLUkjbW5HRiQ2JFEjODhGJ0Y+LUY7Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRJjAuMGVtRicvRlNGXW8tSSVtc3VwR0YkNiUtRiw2JVEieUYnRjRGNy1GZm42JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRj4tRiM2JC1GZm42JFEjMjFGJ0Y+Rj4vJS5saW5ldGhpY2tuZXNzR1EiMUYnLyUrZGVub21hbGlnbkdRJ2NlbnRlckYnLyUpbnVtYWxpZ25HRmVwLyUpYmV2ZWxsZWRHRkItRjs2LVEiK0YnRj5GQEZDRkVGR0ZJRktGTS9GUFEsMC4yMjIyMjIyZW1GJy9GU0ZecS1GVzYoLUYjNigtRmZuNiRRIzk0RidGPkZpbi1GLDYlUSJ4RidGNEY3RmluRl9vRj5GW3BGYHBGY3BGZnBGaHBGanAtRlc2KC1GIzYoRmVvRmluRl9vRmluLUZgbzYlRmdxRmVvRmhvRj4tRiM2JC1GZm42JFEiN0YnRj5GPkZgcEZjcEZmcEZocEZqcC1GVzYoLUYjNigtRmZuNiRRIjZGJ0Y+RmluLUZgbzYlRmJvLUZmbjYkUSI0RidGPkZob0ZpbkZncUY+RmByRmBwRmNwRmZwRmhwRmpwLUZXNigtRiM2Ki1GZm42JFEjMjVGJ0Y+RmluRmdxRmluLUYsNiVRInpGJ0Y0RjdGaW4tRmBvNiVGYm8tRmZuNiRRIjNGJ0Y+RmhvRj5GYHJGYHBGY3BGZnBGaHBGanAtRiM2KC1GZm42JFEjMjJGJ0Y+RmluRmdxRmluLUZgbzYlRmhzRmVvRmhvRj4tRjs2LVEoJm1pbnVzO0YnRj5GQEZDRkVGR0ZJRktGTUZdcUZfcS1GVzYoLUYjNiotRmZuNiRRIzY3RidGPkZpbkZncUZpbkZldEZpbkZib0Y+LUYjNiRGZW9GPkZgcEZjcEZmcEZocEZqcC1GIzYoLUZmbjYkUSMzNkYnRj5GaW5GZ3FGaW4tRmBvNiVGaHNGXXRGaG9GPkZndC1GIzYqRmVvRmluLUYjNiRGXnJGPkZpbkZldEZpbkZib0Y+RmpwLUYjNigtRmZuNiRRIzQyRidGPkZpbkZcdkZpbkZodUY+RitGPkYrRj5GK0Y+">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2I1EhRictRiM2Jy1GLDYlUSJzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEjOj1GJy9GOFEnbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkIvJSlzdHJldGNoeUdGQi8lKnN5bW1ldHJpY0dGQi8lKGxhcmdlb3BHRkIvJS5tb3ZhYmxlbGltaXRzR0ZCLyUnYWNjZW50R0ZCLyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGUS1GIzY3LUkmbWZyYWNHRiQ2KC1GIzYmLUkjbW5HRiQ2JFEjODhGJ0Y+LUY7Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y+RkBGQ0ZFRkdGSUZLRk0vRlBRJjAuMGVtRicvRlNGXW8tSSVtc3VwR0YkNiUtRiw2JVEieUYnRjRGNy1GZm42JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRj4tRiM2JC1GZm42JFEjMjFGJ0Y+Rj4vJS5saW5ldGhpY2tuZXNzR1EiMUYnLyUrZGVub21hbGlnbkdRJ2NlbnRlckYnLyUpbnVtYWxpZ25HRmVwLyUpYmV2ZWxsZWRHRkItRjs2LVEiK0YnRj5GQEZDRkVGR0ZJRktGTS9GUFEsMC4yMjIyMjIyZW1GJy9GU0ZecS1GVzYoLUYjNigtRmZuNiRRIzk0RidGPkZpbi1GLDYlUSJ4RidGNEY3RmluRl9vRj5GW3BGYHBGY3BGZnBGaHBGanAtRlc2KC1GIzYoRmVvRmluRl9vRmluLUZgbzYlRmdxRmVvRmhvRj4tRiM2JC1GZm42JFEiN0YnRj5GPkZgcEZjcEZmcEZocEZqcC1GVzYoLUYjNigtRmZuNiRRIjZGJ0Y+RmluLUZgbzYlRmJvLUZmbjYkUSI0RidGPkZob0ZpbkZncUY+RmByRmBwRmNwRmZwRmhwRmpwLUZXNigtRiM2Ki1GZm42JFEjMjVGJ0Y+RmluRmdxRmluLUYsNiVRInpGJ0Y0RjdGaW4tRmBvNiVGYm8tRmZuNiRRIjNGJ0Y+RmhvRj5GYHJGYHBGY3BGZnBGaHBGanAtRiM2KC1GZm42JFEjMjJGJ0Y+RmluRmdxRmluLUZgbzYlRmhzRmVvRmhvRj4tRjs2LVEoJm1pbnVzO0YnRj5GQEZDRkVGR0ZJRktGTUZdcUZfcS1GVzYoLUYjNiotRmZuNiRRIzY3RidGPkZpbkZncUZpbkZldEZpbkZib0Y+LUYjNiRGZW9GPkZgcEZjcEZmcEZocEZqcC1GIzYoLUZmbjYkUSMzNkYnRj5GaW5GZ3FGaW4tRmBvNiVGaHNGXXRGaG9GPkZndC1GIzYqRmVvRmluLUYjNiRGXnJGPkZpbkZldEZpbkZib0Y+RmpwLUYjNigtRmZuNiRRIzQyRidGPkZpbkZcdkZpbkZodUY+RitGPkYrRj5GK0Y+</Equation></Text-field>
 </Input>
 </Group>
 <Group labelreference="L23" drawlabel="true">
@@ -342,9 +342,63 @@ s:=SPol(f1,f2,mo);</Font></Text-field>
 <Group labelreference="L25" drawlabel="true">
 <Input>
 <Text-field prompt="&gt; " style="Maple Input" size="14" layout="Normal"><Font size="14">BuchGB := proc(F,mo)
-   # here comes your code
+    local s, G, G2, addedSomething, lll, i, j, p, q, div, r;
+    G := F;
+    lll := 1;
+    do
+        G2 := G;
+        addedSomething := false;
+        
+        for i from 1 to nops(G2) do
+            for j from 1 to nops(G2) do
+                if i = j then next; end if;
+                p := G2[i];
+                q := G2[j];
+                s := SPol(p,q, mo);
+                div := PolyDiv(s, G2, mo);
+                r := div[1];
+                if r &lt;&gt; 0 then
+                    addedSomething := true;
+                    G := [op(G), r];  # set operation?
+                end if;
+            end do;
+        end do;
+        
+        if (addedSomething = false) then
+            break
+        end if;
+        lll := nops(G2) + 1;
+    end do;
+    G;
 end proc:</Font></Text-field>
 </Input>
+</Group>
+</Section>
+<Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
+<Text-field style="Heading 1" layout="Heading 1">Test</Text-field></Title>
+<Group labelreference="L107" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := [x^3 - 2*x*y, x^2*y - 2*y^2 + x];
+BuchGB(F, plex(x,y));</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYnLUkjbWlHRiQ2JVEiRkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RIzo9RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtSShtZmVuY2VkR0YkNiYtRiM2Jy1GIzYmLUYjNiQtSSVtc3VwR0YkNiUtRiw2JVEieEYnRi9GMi1JI21uR0YkNiRRIjNGJ0Y5LyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0Y5LUY2Ni1RKCZtaW51cztGJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMjIyMjIyMmVtRicvRk5GY28tRiM2KC1GaW42JFEiMkYnRjktRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTkZecEZlbkZqby1GLDYlUSJ5RidGL0YyRjlGOS1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRl1wL0ZOUSwwLjMzMzMzMzNlbUYnLUYjNigtRiM2Ji1GWTYlRmVuRmdvRlxvRmpvRmBwRjlGX28tRiM2JkZnb0Zqby1GWTYlRmBwRmdvRlxvRjktRjY2LVEiK0YnRjlGO0Y+RkBGQkZERkZGSEZib0Zkb0ZlbkY5LyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJ0Y5RjkvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGZnFGOQ==">NyQsJiokSSJ4RzYiIiIkIiIiKiZGJUYoSSJ5R0YmRighIiMsKComRiUiIiNGKkYoRigqJEYqRi5GK0YlRig=</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZlcS1GLDYmLUYsNiQtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ4RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW5HRiQ2JFEiM0YnL0Y9USdub3JtYWxGJy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGQy1JI21vR0YkNi1RKCZtaW51cztGJ0ZDLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZOLyUpc3RyZXRjaHlHRk4vJSpzeW1tZXRyaWNHRk4vJShsYXJnZW9wR0ZOLyUubW92YWJsZWxpbWl0c0dGTi8lJ2FjY2VudEdGTi8lJ2xzcGFjZUdRLDAuMjIyMjIyMmVtRicvJSdyc3BhY2VHRmduLUYsNigtRkA2JFEiMkYnRkMtRkk2LVExJkludmlzaWJsZVRpbWVzO0YnRkNGTEZPRlFGU0ZVRldGWS9GZm5RJjAuMGVtRicvRmluRmNvRjVGX28tRjY2JVEieUYnRjlGPEZDRkMtRkk2LVEiLEYnRkNGTC9GUEY7RlFGU0ZVRldGWUZiby9GaW5RLDAuMzMzMzMzM2VtRictRiw2KC1GLDYmLUYzNiVGNUZcb0ZFRl9vRmVvRkNGSC1GLDYmRlxvRl9vLUYzNiVGZW9GXG9GRUZDLUZJNi1RIitGJ0ZDRkxGT0ZRRlNGVUZXRllGZW5GaG5GNUZDRmhvLUYsNiYtRkk2LVEqJnVtaW51czA7RidGQ0ZMRk9GUUZTRlVGV0ZZRmVuRmhuLUYsNiRGYnBGQy8lK2ZvcmVncm91bmRHUShbMCwwLDBdRidGQ0Zob0ZgcUZoby1GLDYmRl1xRmpuRmJxRkNGaG9GZXFGaG8tRiw2J0ZdcUZkcEZocEY1RkNGaG9GZ3FGaG9Gam5GaG8tRiw2JkZkcEZIRjVGQ0Zob0ZqbkZob0ZpcUZoby1GLDYmLUZANiRRIjRGJ0ZDRl9vLUYzNiVGZW9GP0ZFRkNGaG9GW3JGaG9GW3JGaG9GW3JGaG8tRiw2JkZcb0Zfb0ZgckZDRmhvRmJyRmhvRmJyRmhvRmJyRmhvRmJyRmhvRmJyRmhvRmJyRmhvRmJyRmhvLUYsNiZGXXFGW3JGYnFGQ0Zoby1GLDYmRl1xRmJyRmJxRkNGaG9GZnJGaG9GZnJGaG9GZnJGaG9GZHJGaG9GZnJGaG9GZnJGaG9GZnJGaG9GZnJGaG9GYnJGaG9GYnJGaG9GYnJGaG9GYnJGaG9GZHJGaG9GZnJGaG9GZnJGaG9GZnJGaG9GZnJGaG9GYnJGaG9GYnJGaG9GYnJGaG9GYnJGaG9GZHJGaG9GZnJGaG9GZnJGaG9GZnJGaG9GZnJGYnFGQ0ZDLyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYn">N1YsJiokSSJ4RzYiIiIkIiIiKiZGJUYoSSJ5R0YmRighIiMsKComRiUiIiNGKkYoRigqJEYqRi5GK0YlRigsJCokRiVGLiEiIkYxLCRGKUYrRjMsJkYvRitGJUYoRjQsJEYpRi4sJkYvRi5GJUYyRjVGNiwkKiRGKkYnIiIlRjdGN0Y3LCRGOEYuRjpGOkY6RjpGOkY6RjosJEY4ISIlLCRGOEYrRj1GPUY9RjtGPUY9Rj1GPUY6RjpGOkY6RjtGPUY9Rj1GPUY6RjpGOkY6RjtGPUY9Rj1GPQ==</Equation></Text-field>
+</Output>
+</Group>
+<Group labelreference="L108" drawlabel="true">
+<Input>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">SPol(F[1], F[2], mo);
+SPol(F[2], F[1], mo);</Text-field>
+</Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbW9HRiQ2LVEqJnVtaW51czA7RicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y0LyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRLDAuMjIyMjIyMmVtRicvJSdyc3BhY2VHRkMtRiM2JC1JJW1zdXBHRiQ2JS1JI21pR0YkNiVRInhGJy8lJ2l0YWxpY0dRJXRydWVGJy9GMFEnaXRhbGljRictSSNtbkdGJDYkUSIyRidGLy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGLy8lK2ZvcmVncm91bmRHUShbMCwwLDBdRidGLw==">LCQqJEkieEc2IiIiIyEiIg==</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEieEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21uR0YkNiRRIjJGJy9GNlEnbm9ybWFsRicvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjw=">KiRJInhHNiIiIiM=</Equation></Text-field>
+</Output>
 </Group>
 </Section>
 <Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
@@ -365,6 +419,15 @@ end proc:</Font></Text-field>
 f2 := x*y-1;
 BuchGB([f1,f2],plex(x,y));</Font></Text-field>
 </Input>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYnLUkjbWlHRiQ2JVEjZjFGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNiYtRiM2Ji1JJW1zdXBHRiQ2JS1GLDYlUSJ4RidGL0YyLUkjbW5HRiQ2JFEiMkYnRjkvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUY2Ni1RMSZJbnZpc2libGVUaW1lcztGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GXm8tRiw2JVEieUYnRi9GMkY5LUY2Ni1RKCZtaW51cztGJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMjIyMjIyMmVtRicvRk5GZ28tRlo2JFEiMUYnRjlGOS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRidGOQ==">LCYqJkkieEc2IiIiI0kieUdGJSIiIkYoISIiRig=</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYnLUkjbWlHRiQ2JVEjZjJGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSM6PUYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYjNictRjY2LVEqJnVtaW51czA7RidGOUY7Rj5GQEZCRkRGRkZIL0ZLUSwwLjIyMjIyMjJlbUYnL0ZORlUtSSNtbkdGJDYkUSIxRidGOS1GNjYtUSIrRidGOUY7Rj5GQEZCRkRGRkZIRlRGVi1GIzYmLUYsNiVRInhGJ0YvRjItRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTkZhby1GLDYlUSJ5RidGL0YyRjlGOS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRidGOQ==">LCYhIiIiIiIqJkkieEc2IkYkSSJ5R0YnRiRGJA==</Equation></Text-field>
+</Output>
+<Output>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYzLUYsNiYtRiw2Ji1JJW1zdXBHRiQ2JS1JI21pR0YkNiVRInhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtbkdGJDYkUSIyRicvRj1RJ25vcm1hbEYnLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJy1JI21vR0YkNi1RMSZJbnZpc2libGVUaW1lcztGJ0ZDLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZOLyUpc3RyZXRjaHlHRk4vJSpzeW1tZXRyaWNHRk4vJShsYXJnZW9wR0ZOLyUubW92YWJsZWxpbWl0c0dGTi8lJ2FjY2VudEdGTi8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHRmduLUY2NiVRInlGJ0Y5RjxGQy1GSTYtUSgmbWludXM7RidGQ0ZMRk9GUUZTRlVGV0ZZL0ZmblEsMC4yMjIyMjIyZW1GJy9GaW5GYW8tRkA2JFEiMUYnRkNGQy1GSTYtUSIsRidGQ0ZML0ZQRjtGUUZTRlVGV0ZZRmVuL0ZpblEsMC4zMzMzMzMzZW1GJy1GLDYnLUZJNi1RKiZ1bWludXMwO0YnRkNGTEZPRlFGU0ZVRldGWUZgb0Zib0Zjby1GSTYtUSIrRidGQ0ZMRk9GUUZTRlVGV0ZZRmBvRmJvLUYsNiZGNUZIRmpuRkNGQ0Zmby1GLDYnRl5wRmNvRmFwRjVGQ0Zmby1GLDYnRl5wRjVGYXBGY29GQ0Zmby1GLDYnRl5wRmNvRmFwRmpuRkNGZm9GanBGZm8tRiw2JkZjb0Zdb0ZqbkZDRmZvRlxxLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJ0ZDRkMvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRic=">NyosJiomSSJ4RzYiIiIjSSJ5R0YmIiIiRikhIiJGKSwmRipGKSomRiVGKUYoRilGKSwmRipGKUYlRiksJkYlRipGKUYpLCZGKkYpRihGKUYvLCZGKUYpRihGKkYw</Equation></Text-field>
+</Output>
 </Group>
 <Group labelreference="L28" drawlabel="true">
 <Input>
@@ -373,7 +436,9 @@ BuchGB([f1,f2],plex(x,y));</Font></Text-field>
 </Group>
 <Group labelreference="L29" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" size="14" layout="Normal"></Text-field>
+<Text-field prompt="&gt; " style="Maple Input" size="14" layout="Normal"><Font size="12">f1 := x^2*y-1;
+f2 := x*y-1;
+BuchGB([f1,f2],plex(x,y));</Font></Text-field>
 </Input>
 </Group>
 </Section>
