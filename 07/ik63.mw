@@ -84,8 +84,8 @@
     <Metadata-tag id="0" category="&lt;default&gt;" name="Document Properties">
         <Metadata-attribute name="Subject" value="&lt;default&gt;"/>
         <Metadata-attribute name="Author" value="&lt;default&gt;"/>
-        <Metadata-attribute name="Title" value="&lt;default&gt;"/>
         <Metadata-attribute name="Keywords" value="&lt;default&gt;"/>
+        <Metadata-attribute name="Title" value="&lt;default&gt;"/>
     </Metadata-tag>
 </Metadata-table>
 <Task-table>
@@ -96,7 +96,7 @@
 </Task><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L1" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 <Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
@@ -120,7 +120,7 @@ eps:=1e-6:</Text-field>
 </Group><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L7" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
@@ -436,7 +436,7 @@ end proc:</Text-field>
 </Group>
 <Group labelreference="L440" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal"># rndTh := [Pi/4, Pi/20, -2*Pi/25, -9*Pi/200, -Pi/4, -11*Pi/100];</Text-field>
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal">#rndTh := [Pi/4, Pi/20, -2*Pi/25, -9*Pi/200, -Pi/4, -11*Pi/100];</Text-field>
 </Input>
 </Group>
 <Group labelreference="L442" drawlabel="true">
@@ -464,7 +464,7 @@ end proc:</Text-field>
 <Text-field style="Heading 1" layout="Heading 1"></Text-field></Title><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L438" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
@@ -480,7 +480,7 @@ end proc:</Text-field>
 <Text-field prompt="&gt; " style="Maple Input" layout="Normal">solutions := IK6(Mechanism,MhV);</Text-field>
 </Input>
 <Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEqc29sdXRpb25zRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEjOj1GJy9GM1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRj0vJSlzdHJldGNoeUdGPS8lKnN5bW1ldHJpY0dGPS8lKGxhcmdlb3BHRj0vJS5tb3ZhYmxlbGltaXRzR0Y9LyUnYWNjZW50R0Y9LyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGTC1JKG1mZW5jZWRHRiQ2Ji1GIzYoLUkobWFjdGlvbkdGJDYlLUZQNigtRiM2Ji1JJ210YWJsZUdGJDY6LUkkbXRyR0YkNiYtSSRtdGRHRiQ2KC1JI21uR0YkNiRRQTAuMjk5NDE1NDkxMDg2MTU0Mjk3MDgzOTE0MTIyNTIzRidGOS8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGZG8vJStncm91cGFsaWduR0Zkby8lKHJvd3NwYW5HUSIxRicvJStjb2x1bW5zcGFuR0ZbcEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlLUY2Ni1RKiZ1bWludXMwO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZocC1GX282JFFAMS45ODg5Nzc4MDY3NTE2MzgwMjQzOTk1NDA3NzUxM0YnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUEwLjczMTM5NTM2MDk3MTU0MDQ1Mjg3ODA5MDM4MTE1MEYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUEwLjY2OTcxODAxNzUzMzI3NTM5NTc0NDQ2NTg4MTM0OUYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUAyLjQ5NzE1Mzk3NTYxNDUwNDEwMjAyNzk3MDgwOTIyRidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQTAuMTU0OTk3NDAyMjY4MDI5OTQ3OTMyMjI2Mzg1NDU3RidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLyUmYWxpZ25HUSVheGlzRicvRmNvUSliYXNlbGluZUYnL0Zmb1EnY2VudGVyRicvRmhvUSd8ZnJsZWZ0fGhyRicvJS9hbGlnbm1lbnRzY29wZUdGMS8lLGNvbHVtbndpZHRoR1ElYXV0b0YnLyUmd2lkdGhHRl50LyUrcm93c3BhY2luZ0dRJjEuMGV4RicvJS5jb2x1bW5zcGFjaW5nR1EmMC44ZW1GJy8lKXJvd2xpbmVzR1Elbm9uZUYnLyUsY29sdW1ubGluZXNHRml0LyUmZnJhbWVHRml0LyUtZnJhbWVzcGFjaW5nR1EsMC40ZW1+MC41ZXhGJy8lKmVxdWFscm93c0dGPS8lLWVxdWFsY29sdW1uc0dGPS8lLWRpc3BsYXlzdHlsZUdGPS8lJXNpZGVHUSZyaWdodEYnLyUwbWlubGFiZWxzcGFjaW5nR0ZmdC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjkvSSttc2VtYW50aWNzR0YkUSpDb2xWZWN0b3JGJy8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Zhdi8lK2FjdGlvbnR5cGVHUS5ydGFibGVhZGRyZXNzRicvJSlydGFibGVpZEdRKjE0NDg4NjcxMkYnLUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRictRlU2JS1GUDYoLUYjNiYtRmZuNjotRmluNiYtRlxvNigtRl9vNiRRQTAuMjk3NzUzMTcwMzkwMjMyODI1MzYxODkxMTYxMDUxRidGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUAxLjkyODQxNDI5MDUyODUzNDY5NzQzMDE4MzgxNzI2RidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQTAuODMyMTcyOTg3MzUwODk2MzUxNjM0NDAwNTAyOTczRidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQTAuNjM1OTk3OTc5NDI2NzMzNzM2NzU0NjkxODk1MjI0RidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQDIuNDY0OTI4NTAyNTkxNTkxNDAyODEwMTM0NzM3MTFGJ0Y5RjlGYm9GZW9GZ29GaW9GXHBGYm9GZW9GZ28tRmluNiYtRlxvNigtRiM2JUZkcC1GX282JFFBMC4xMTQ2NjgxMzE4NTYwMjc5NDUwMTE2MTQ1NTc0NzFGJ0Y5RjlGYm9GZW9GZ29GaW9GXHBGYm9GZW9GZ29GYXNGZHNGZnNGaHNGanNGXHRGX3RGYXRGZHRGZ3RGanRGXHVGXnVGYXVGY3VGZXVGZ3VGanVGXHZGX3ZGOUY5RmF2RmR2Rmd2RmF2Rmp2L0Zed1EqMTQ0ODg1ODE2RidGXHZGX3ZGOUY5RmR2Rmd2Rlx2Rl92Rjk=">NyQtJkknVmVjdG9yRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiNiNJJ2NvbHVtbkdGKTYjL0kkJWlkR0YpIio3bilbOS1GJDYjL0YuIio7ZSlbOQ==</Equation></Text-field>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEqc29sdXRpb25zRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVEjOj1GJy9GM1Enbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRj0vJSlzdHJldGNoeUdGPS8lKnN5bW1ldHJpY0dGPS8lKGxhcmdlb3BHRj0vJS5tb3ZhYmxlbGltaXRzR0Y9LyUnYWNjZW50R0Y9LyUnbHNwYWNlR1EsMC4yNzc3Nzc4ZW1GJy8lJ3JzcGFjZUdGTC1JKG1mZW5jZWRHRiQ2Ji1GIzYoLUkobWFjdGlvbkdGJDYlLUZQNigtRiM2Ji1JJ210YWJsZUdGJDY6LUkkbXRyR0YkNiYtSSRtdGRHRiQ2KC1JI21uR0YkNiRRQTAuMjk5NDE1NDkxMDg2MTU0MjQwNzgxMjYzNDY0MTg3RidGOS8lKXJvd2FsaWduR1EhRicvJSxjb2x1bW5hbGlnbkdGZG8vJStncm91cGFsaWduR0Zkby8lKHJvd3NwYW5HUSIxRicvJStjb2x1bW5zcGFuR0ZbcEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlLUY2Ni1RKiZ1bWludXMwO0YnRjlGO0Y+RkBGQkZERkZGSC9GS1EsMC4yMjIyMjIyZW1GJy9GTkZocC1GX282JFFAMS45ODg5Nzc4MDY3NTE2MzgwMzYxMDgyNzUzNjQwM0YnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUEwLjczMTM5NTM2MDk3MTU0MDQ1NTYyNjUyNDU4NjA5OEYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUEwLjY2OTcxODAxNzUzMzI3NTM4ODc4NjgzNjAwMTMxNUYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUAyLjQ5NzE1Mzk3NTYxNDUwNDE3NDcwODYxMDk3MDMyRidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQTAuMTU0OTk3NDAyMjY4MDI5ODE2OTc1OTc2MTY1NzY2RidGOUY5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLyUmYWxpZ25HUSVheGlzRicvRmNvUSliYXNlbGluZUYnL0Zmb1EnY2VudGVyRicvRmhvUSd8ZnJsZWZ0fGhyRicvJS9hbGlnbm1lbnRzY29wZUdGMS8lLGNvbHVtbndpZHRoR1ElYXV0b0YnLyUmd2lkdGhHRl50LyUrcm93c3BhY2luZ0dRJjEuMGV4RicvJS5jb2x1bW5zcGFjaW5nR1EmMC44ZW1GJy8lKXJvd2xpbmVzR1Elbm9uZUYnLyUsY29sdW1ubGluZXNHRml0LyUmZnJhbWVHRml0LyUtZnJhbWVzcGFjaW5nR1EsMC40ZW1+MC41ZXhGJy8lKmVxdWFscm93c0dGPS8lLWVxdWFsY29sdW1uc0dGPS8lLWRpc3BsYXlzdHlsZUdGPS8lJXNpZGVHUSZyaWdodEYnLyUwbWlubGFiZWxzcGFjaW5nR0ZmdC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjkvSSttc2VtYW50aWNzR0YkUSpDb2xWZWN0b3JGJy8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Zhdi8lK2FjdGlvbnR5cGVHUS5ydGFibGVhZGRyZXNzRicvJSlydGFibGVpZEdRLC0xMzQ1NDI2NzI4RictRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSC9GS1EmMC4wZW1GJy9GTlEsMC4zMzMzMzMzZW1GJy1GVTYlLUZQNigtRiM2Ji1GZm42Oi1GaW42Ji1GXG82KC1GX282JFFBMC4yOTc3NTMxNzAzOTAyMzI3ODcxMzQyMDkxNzI5NDNGJ0Y5RmJvRmVvRmdvRmlvRlxwRmJvRmVvRmdvLUZpbjYmLUZcbzYoLUYjNiVGZHAtRl9vNiRRQDEuOTI4NDE0MjkwNTI4NTM0NzA3NDEwNjEyNzg3NzFGJ0Y5RjlGYm9GZW9GZ29GaW9GXHBGYm9GZW9GZ28tRmluNiYtRlxvNigtRiM2JUZkcC1GX282JFFBMC44MzIxNzI5ODczNTA4OTYzNDk4NDIyNTYzMDM1NzJGJ0Y5RjlGYm9GZW9GZ29GaW9GXHBGYm9GZW9GZ28tRmluNiYtRlxvNigtRiM2JUZkcC1GX282JFFBMC42MzU5OTc5Nzk0MjY3MzM3MjkyODQxMzk5NDI1MDNGJ0Y5RjlGYm9GZW9GZ29GaW9GXHBGYm9GZW9GZ28tRmluNiYtRlxvNigtRiM2JUZkcC1GX282JFFAMi40NjQ5Mjg1MDI1OTE1OTE0NTIzNTMwOTY4MjM2NEYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znby1GaW42Ji1GXG82KC1GIzYlRmRwLUZfbzYkUUEwLjExNDY2ODEzMTg1NjAyNzg1MDgxODYxMTY2NTIyMUYnRjlGOUZib0Zlb0Znb0Zpb0ZccEZib0Zlb0Znb0Zhc0Zkc0Zmc0Zoc0Zqc0ZcdEZfdEZhdEZkdEZndEZqdEZcdUZedUZhdUZjdUZldUZndUZqdUZcdkZfdkY5RjlGYXZGZHZGZ3ZGYXZGanYvRl53USwtMTM0NTYyNjk3NkYnRlx2Rl92RjlGOUZkdkZndkZcdkZfdkY5">NyQtJkknVmVjdG9yRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiNiNJJ2NvbHVtbkdGKTYjL0kkJWlkR0YpIStHblVYOC1GJDYjL0YuISt3cGlYOA==</Equation></Text-field>
 </Output>
 </Group>
 <Group labelreference="L449" drawlabel="true">
@@ -490,7 +490,13 @@ end proc:</Text-field>
 </Group>
 <Group labelreference="L456" drawlabel="true">
 <Input>
-<Text-field prompt="&gt; " style="Maple Input" layout="Normal">MatrixDiffs := []:
+<Text-field prompt="&gt; " style="Maple Input" layout="Normal"># zadana matice je ve tvaru
+Mh := Matrix(4,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):
+# porovnani meho vysledku se zadanou matici (dosazeni konkretnich zadanych hodnot)
+Mh := Matrix(4,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):
+Mh := subs(evalf(MhV), Mh):
+#
+MatrixDiffs := []:
 diffs := []:
 for i from 1 to nops(solutions) do
     thetas := map(x-&gt;x[1]=x[2],
@@ -499,12 +505,10 @@ for i from 1 to nops(solutions) do
     Position := subs(thetas,
         {c1=cos(theta1),s1=sin(theta1),c2=cos(theta2),s2=sin(theta2),c3=cos(theta3),s3=sin(theta3),
          c4=cos(theta4),s4=sin(theta4),c5=cos(theta5),s5=sin(theta5),c6=cos(theta6),s6=sin(theta6)}):
-    # moje reseni
+    # kontrolovany vysledek
     M := subs(Mechanism,Position, dhT(1).dhT(2).dhT(3).dhT(4).dhT(5).dhT(6)):
-    # zadana matice je ve tvaru
-    Mh := Matrix(4,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):
-    # porovnani meho vysledku se zadanou matici (dosazeni konkretnich zadanych hodnot)
-    DD := M - subs(MhV, Mh);
+    # porovnani vysledku se zadanim
+    DD := evalf(M - Mh);
     MatrixDiffs := [op(MatrixDiffs), DD]:
     diffs := [op(diffs), Norm(DD, Frobenius)]:
 end do:
@@ -512,7 +516,7 @@ end do:
 max(diffs);</Text-field>
 </Input>
 <Output>
-<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output">JCI/RXkqcHRMakQqZXEwKjRrXCMhI1U=</Equation></Text-field>
+<Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output">JCI/Myk0ZGQkM01YKSo0eTRuJjQjISNV</Equation></Text-field>
 </Output>
 </Group>
 <Group labelreference="L461" drawlabel="true">
@@ -522,13 +526,13 @@ max(diffs);</Text-field>
 </Group><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L434" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L431" drawlabel="true">
 <Input>
-<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Text-field style="Text" layout="Normal"><Equation executable="false" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYkLUkjbWlHRiQ2I1EhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
-</Group></Presentation-Block><RTable handle="144886712">TTdSMApJNlJUQUJMRV9TQVZFLzE0NDg4NjcxMlgqJSlhbnl0aGluZ0c2IjYiW2dsISMlISEhIiciJyQiP0JENzlSMyhIYWgzIlw6JSpIISNJJCE/OHYyYSpSQyFRO3YxeSgqKSk+ISNIJCE/XTZRITR5R1hTOig0TyZSSihGKSQhP1w4KWVZV2RSdktgPCE9KHAnRikkIT9BNDMoei0tVF05YyhSOihcI0YsJCE/ZGFRRUEkeiUqSCFvQVMoKlw6RilGJg==</RTable><RTable handle="144885816">TTdSMApJNlJUQUJMRV9TQVZFLzE0NDg4NTgxNlgqJSlhbnl0aGluZ0c2IjYiW2dsISMlISEhIiciJyQiP141OyIqPU9ER0IhUnFKdihIISNJJCE/RTxRPUl1cE0mRzBIOSVHPiEjSCQhP3RIXStXal5qKjNOKClIPEspRikkIT9DXyo9cGFudExuVXp6KmZqRikkIT82UFo4NUdTImYiZi0mR1xZI0YsJCE/cnViOTssWHotYz04b1k2RilGJg==</RTable>
+</Group></Presentation-Block><RTable handle="-1345426728">TTdSMApJOFJUQUJMRV9TQVZFLy0xMzQ1NDI2NzI4WColKWFueXRoaW5nRzYiNiJbZ2whIyUhISEiJyInJCI/KD1rTUUieVNVOiczIlw6JSpIISNJJCE/LmtgRjNoLlE7djF5KCopKT4hI0gkIT8pNCdlQ2xpYi9hcjRPJlJKKEYpJCE/OjgrT295KVF2S2A8IT0ocCdGKSQhP0txNGgzWjwvWGh2UjooXCNGLCQhP21kO3dmKHAiKUghb0FTKCpcOkYpRiY=</RTable><RTable handle="-1345626976">TTdSMApJOFJUQUJMRV9TQVZFLy0xMzQ1NjI2OTc2WColKWFueXRoaW5nRzYiNiJbZ2whIyUhISEiJyInJCI/Vkg8NFU4KHlLLVJxSnYoSCEjSSQhP3IoeTcxVDJaYEcwSDklRz4hI0gkIT9zTkljQSUpXGoqM04oKUg8SylGKSQhPy5EJSpSVEdIUHRFJXp6KmZqRikkIT9rQm80YEJYImYiZi0mR1xZI0YsJCE/QF9tNic9MyZ5LWM9OG9ZNkYpRiY=</RTable>
 </Worksheet>
