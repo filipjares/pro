@@ -13,3 +13,12 @@ save('t0.mat', 't0', '-ascii');
 save('t1.mat', 't1', '-ascii');
 save('t2.mat', 't2', '-ascii');
 save('t3.mat', 't3', '-ascii');
+
+% Spocitat a ulozit transformacni matice MhV
+MhV0 = RobCoordsToMhVMatrix(P0);
+MhV1 = RobCoordsToMhVMatrix(P1);
+MhV2 = RobCoordsToMhVMatrix(P2);
+
+save('MhV0.mat', 'MhV0', '-ascii');
+save('MhV1.mat', 'MhV1', '-ascii');
+save('MhV2.mat', 'MhV2', '-ascii');
