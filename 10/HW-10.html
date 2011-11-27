@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-10/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2"><title>HW-10</title>
+<meta content="iro" name="description">
+<meta content="iro" name="keywords">
+<meta content="document" name="resource-type">
+<meta content="global" name="distribution">
+
+<meta content="MSHTML 6.00.6000.17080" name="GENERATOR">
+<meta content="FrontPage.Editor.Document" name="ProgId">
+<meta http-equiv="Content-Style-Type" content="text/css"></head>
+<body textwidth="100">
+<h3>A3M33PRO 2011 - Pokročilá robotika - HW-10</h3>
+
+<ol>
+	<li>Stáhněte si přístupové funkce k robotu s Vaším 
+	číslem NN z&nbsp; <br>
+	<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-10/NN">http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-10/NN</a><br>
+&nbsp;</li>
+	<li>Napolohujte robota do nulov<span lang="cs">é t0 a 
+	dvou dalších t1, t2 </span>netriviálních poloh, 
+	<br>odečtěte jeho kartézské pozice P0, P1, P2 (převod na rotační matici <a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/Labs/anglesToMtx.m">anglesToMtx.m</a>)<br>
+	a uložte si je spolu s kloubovými pozicemi:<br><br>&gt;&gt; r = proRobOpen; % create robot 
+	<br>&gt;&gt; proServoOn(r); %<br>&gt;&gt; t0 = [0;0;0;0;0;0]; % zero joint position<br>&gt;&gt; proRobMove(r,t0); % move it<br>&gt;&gt; P0 = proRobGetCoords(r); % get the cartesian 
+	coordinates<br>&gt;&gt; % move to t0, t1 and get P0, P1 
+	<br>&gt;&gt; save pos.mat t0 t1 t2 P0 P1 P2<br>&gt;&gt; proServoOff(r); 
+	<br>&gt;&gt; proRobClose(r);<br><br>Data pos.mat se objeví v příslušných 
+	<br>
+	<a href="http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-10/NN">http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-10/NN</a><br>&nbsp;</li>
+	<li>Vypočtěte kloubové pozice z IKU a z nich zjistěte 
+	offsety kloubů:<br>
+&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; Zadejte kinemantiku robotu Mitsubishi a ke všem nulovým hodnotám parametrů alpha a d
+	přičtěte malou <br>
+&nbsp;&nbsp;&nbsp; perturbaci. Zkuste 1 mm, 0.1 mm, 0.01 mm, 
+	0.001 mm a 0.0001 mm. Tím se vyhnete singularitě. <br>
+&nbsp;&nbsp;&nbsp; Porovnejte vypočtené offsety pro různé 
+	velikosti singularit.<br>
+	<br>
+&nbsp;&nbsp;&nbsp; Perturbace odstrante a najděte, kde 
+	algoritmus pro obecnou IK, který jsme naprogramovali, 
+	selže.</li>
+	</ol>
+	<p>
+Vypracovanou úlohu tvoří zip archiv obsahující:
+</p><ol>
+	<li>cal10<span lang="en-us">_01</span>.mws - Maple worksheet obsahující implementaci 
+	kalibrace</li>
+	<li>cal1<span lang="en-us">0_01</span>.pdf - případné komentáře k výpočtu</li>
+</ol>
+<p></p>
+<p>Vypracovanou úlohu odevzdejte přes
+<a href="https://cw.felk.cvut.cz/upload/">www rozhraní</a>.</p>
+<address>Tomas Pajdla 2011-11-20</address>
+</body></html>
