@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://cmp.felk.cvut.cz/cmp/courses/PRO/2011/HomeWorks/HW-11/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2"><title>HW-11</title>
+<meta content="iro" name="description">
+<meta content="iro" name="keywords">
+<meta content="document" name="resource-type">
+<meta content="global" name="distribution">
+
+<meta content="MSHTML 6.00.6000.17080" name="GENERATOR">
+<meta content="FrontPage.Editor.Document" name="ProgId">
+<meta http-equiv="Content-Style-Type" content="text/css"></head>
+<body textwidth="100">
+<h3>A3M33PRO 2011 - Pokročilá robotika - HW-11</h3>
+
+<ol>
+	<li>Nastavte generátor náhodných čísel:<br>
+	    &gt;&gt;randn('seed',N); % stary matlab<br>
+	    &gt;&gt;rng(N); % novy matlab <br>
+	    	kde N je Vaše pořadí v seznamu studentů a vygenerujte 
+	    náhodnou matici<br>
+        &gt;&gt;A = randn(3);
+	 </li>
+	 <li>Vypočtěte SVD rozklad matice A a ověřte správnost výsledku.</li>
+	<li>Najděte matici A', aby hod(A')=2 a maticová norma ||A-A'|| byla minimální.Vypočtěte normu ||A-A'|| pomocí SVD.</li>
+	<li>Perturbujte matici A':<br>
+	&gt;&gt;E = tau*randn(3);<br>
+	&gt;&gt;B = A' + E;<br>
+	pro tau = 10^(-3), 10^(-6), 10^(-9).</li>
+	<li>Najděte matici B' k B, jako jste našli A' k A
+	a dále pomocí SVD najděte báze řešení soustav<br>
+	A' x = 0<br>
+	B' y = 0<br>
+	a spočtěte min(||x-y||,||x+y||).</li>
+	<li>Najděte vektor, na kterém se realizuje norma matice A'.</li>
+	<li>Porovnejte normy matic E a B-B'.</li>
+	<li>Vytvořte matici<br>
+	&gt;&gt;C = randn(6,3);<br>
+	vypočtěte SVD rozklad, ověřte jeho správnost a pozorujte velikost matic rozkladu.</li>
+	<li>Vypočtěte inv(A) pomocí SVD bez užití finkce inv.</li>
+	<li>Vytvořte vektor<br>
+	&gt;&gt;b = A' * randn(3,1);<br>
+	a pomocí SVD najděte řešení soustav<br>
+	A  x = b<br>
+	A' x = b<br>
+	Vyjděte z rovnice [A | -b] [x;1] = 0, najděte y, která řeší<br>
+	[A|-b] y = 0<br>
+	a z y dopočtěte x.
+    </li>
+	<li>Pro body x na kružnici nakreslete jejich obrazy A x, 
+	A' x, B x, B' x, pro 2x2 matice A, A', B, B', generované 
+	obdobně, jako v úlohách výše.<br>
+	</li>
+
+</ol>
+<p>
+Vypracovanou úlohu tvoří zip archiv obsahující:
+</p><ol>
+	<li>hw11.m - Matlab skript řešící úlohu</li>
+	<li>hw11.pdf - případné komentáře</li>
+</ol>
+<p></p>
+<p>Vypracovanou úlohu odevzdejte přes
+<a href="https://cw.felk.cvut.cz/upload/">www rozhraní</a>.</p>
+<address>Tomas Pajdla 2011-11-29</address>
+</body></html>
