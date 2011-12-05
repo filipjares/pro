@@ -1,0 +1,522 @@
+{VERSION 6 0 "IBM INTEL NT" "6.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 
+0 0 1 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 1 }
+{CSTYLE "" -1 256 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+257 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 258 "" 1 12 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 1 12 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 }{CSTYLE "" -1 260 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 261 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+262 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 
+{CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 1 0 0 0 
+0 1 0 1 0 2 2 0 1 }{PSTYLE "Heading 1" -1 3 1 {CSTYLE "" -1 -1 "Times
+" 1 18 0 0 0 1 2 1 2 2 2 2 1 1 1 1 }1 1 0 0 8 4 1 0 1 0 2 2 0 1 }
+{PSTYLE "Error" -1 8 1 {CSTYLE "" -1 -1 "Courier" 1 10 255 0 255 1 2 
+2 2 2 2 1 1 1 3 1 }1 1 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output
+" -1 11 1 {CSTYLE "" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }
+3 3 0 0 0 0 1 0 1 0 2 2 0 1 }{PSTYLE "Maple Output" -1 12 1 {CSTYLE "
+" -1 -1 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 1 1 1 1 }1 3 0 0 0 0 1 0 1 0 
+2 2 0 1 }}
+{SECT 0 {EXCHG {PARA 0 "" 0 "" {TEXT 256 92 "IRO 2011: Inverse Kinemat
+ics of  a manipulator with two axes of motion\nT.Pajdla, 4 Dec  2011" 
+}}}{SECT 0 {PARA 3 "" 0 "" {TEXT 257 20 " Packages & settings" }{TEXT 
+-1 0 "" }}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 69 "with(LinearAlgebra
+):\nwith(PolynomialTools):\ninterface(rtablesize=20):" }}}}{SECT 0 
+{PARA 3 "" 0 "" {TEXT 258 14 " DH-Kinematics" }{TEXT -1 0 "" }}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 27 "Functions for DH kinematics" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 3725 "# Joint transformations:\n# Two o
+ne-parametric motions transformatin in DH-convention(phi, theta, a,d) \+
+indexed by i\n# c = cos(phi), s = sin(phi), P = cos(alpha), R = sin(al
+pha)\ndhTs := proc(i)\nlocal M1, M2;\n   M1:=Matrix(4,4,[[+cat(`c`,i),
+-cat(`s`,i),0,         0],\n                  [ +cat(`s`,i),+cat(`c`,i
+),0,         0],\n                  [           0,          0,1,cat(`D
+`,i)],\n                  [           0,          0,0,         1]]);\n
+   M2:=Matrix(4,4,[[1,        0,          0,cat(`A`,i)],  \n          \+
+        [ 0,+cat(`P`,i),-cat(`R`,i),         0],\n                  [ \+
+0,+cat(`R`,i),+cat(`P`,i),         0],\n                  [ 0,        \+
+  0,          0,         1]]);\n   [M1,M2];\nend proc:\n# Inverse of t
+he DH-convention for one-aprametric DH rigid motion transformations\nd
+hInvs := proc(M)\n   local M1, M2;\n   M1 := M[1];\n   M2 := M[2];\n  \+
+ [simplify(MatrixInverse(M2),\{M2[3,2]^2+M2[3,3]^2=1\}),\n    simplify
+(MatrixInverse(M1),\{M1[1,1]^2+M1[2,1]^2=1\})];\nend proc:\n# Rigid mo
+tion transformatin in DH-convention(phi, theta, a,d) indexed by i\n# c
+ = cos(phi), s = sin(phi), P = cos(alpha), R = sin(alpha)\ndhT := proc
+(i)\nlocal M;\nM:=Matrix(4,4,[[+cat(`c`,i),-cat(`s`,i)*cat(`P`,i),+cat
+(`s`,i)*cat(`R`,i),+cat(`A`,i)*cat(`c`,i)],\n               [+cat(`s`,
+i),+cat(`c`,i)*cat(`P`,i),-cat(`c`,i)*cat(`R`,i),+cat(`A`,i)*cat(`s`,i
+)],\n               [         0,             cat(`R`,i),            ca
+t(`P`,i),            cat(`D`,i)],\n               [         0,        \+
+              0,                     0,                     1]]);\nend
+ proc:\n# Inverse of the DH-convention rigid motion transformation\ndh
+Inv := proc(M)\n   simplify(MatrixInverse(M),\{M[1,1]^2+M[2,1]^2=1,M[3
+,2]^2+M[3,3]^2=1\});\nend proc:\n# Simplify using the trigonometric in
+dentities c^2+s^2=1 & P^2+R^2=1\ndhSimpl := proc(M,i)\n   simplify(M,
+\{cat(`c`,i)^2+cat(`s`,i)^2=1,cat(`P`,i)^2+cat(`R`,i)^2=1\});\nend pro
+c:\n# Simplify a general motion matrix using rotation matrix identitie
+s in columns\nrcSimp := proc(M,R)\n       simplify(\n        simplify(
+\n         simplify(\n          simplify(\n           simplify(\n     \+
+       simplify(M,\{R[1,1]*R[1,1]+R[2,1]*R[2,1]+R[3,1]*R[3,1]=1\}),\n \+
+               \{R[1,1]*R[1,2]+R[2,1]*R[2,2]+R[3,1]*R[3,2]=0\}),\n    \+
+           \{R[1,1]*R[1,3]+R[2,1]*R[2,3]+R[3,1]*R[3,3]=0\}),\n        \+
+     \{R[1,2]*R[1,2]+R[2,2]*R[2,2]+R[3,2]*R[3,2]=1\}),\n             \+
+\{R[1,2]*R[1,3]+R[2,2]*R[2,3]+R[3,2]*R[3,3]=0\}),\n             \{R[1,
+3]*R[1,3]+R[2,3]*R[2,3]+R[3,3]*R[3,3]=1\});\nend proc:\n# Simplify a g
+eneral motion matrix using rotation matrix identities in rows\nrrSimp \+
+:= proc(M,R)\n      simplify(\n        simplify(\n         simplify(\n
+          simplify(\n           simplify(\n            simplify(M,\{R[
+1,1]*R[1,1]+R[1,2]*R[1,2]+R[1,3]*R[1,3]=1\}),\n                       \+
+\{R[1,1]*R[2,1]+R[1,2]*R[2,2]+R[1,3]*R[2,3]=0\}),\n                   \+
+    \{R[1,1]*R[3,1]+R[1,2]*R[3,2]+R[1,3]*R[3,3]=0\}),\n               \+
+        \{R[2,1]*R[2,1]+R[2,2]*R[2,2]+R[2,3]*R[2,3]=1\}),\n           \+
+            \{R[2,1]*R[3,1]+R[2,2]*R[3,2]+R[2,3]*R[3,3]=0\}),\n       \+
+                \{R[3,1]*R[3,1]+R[3,2]*R[3,2]+R[3,3]*R[3,3]=1\});\nend
+ proc:\n# Matrix representation of a set of polynomials \nPolyCoeffMat
+rix:=proc(S,m) \nlocal A,v,i,j,k,c,q;\n        A:=Matrix(nops(S),nops(
+m),storage=sparse);\n        v:=indets(m);\n        for i from 1 to no
+ps(S) do\n                c:=[coeffs(expand(S[i]),v,'q')];\n          \+
+      q:=[q];\n        \011      for j from 1 to nops(m) do\n         \+
+               for k from 1 to nops(q) do\n                           \+
+     if (m[j]=q[k]) then A[i,j]:=c[k] end if\n                        \+
+end do\n         \011      end do\n        end do;\n        Matrix(A);
+\nend proc:\n# n x 1 matrix to a list conversion\nM2L:=proc(M) \n\011c
+onvert(convert(M,Vector),list);\nend proc:" }}}}{SECT 0 {PARA 3 "" 0 "
+" {TEXT 259 31 " IK solution for a general case" }}{EXCHG {PARA 0 "" 
+0 "" {TEXT -1 16 "The formulation:" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}
+{PARA 0 "" 0 "" {TEXT -1 91 "(1)\011M1*M2 = Mh\n\nor equivalently\n\n(
+2)\011M1 = Mh*M2^\{1\}\n\ni.e.\n\n(3)\011M11*M12 = Mh*M22^\{1\}*M21^\{
+1\}" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 30 "Construct the motion matrices:" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 189 "M11:=dhTs(1)[1]:\nM12:=dhTs(1)[2]:\niM21:=dhInvs(dhT
+s(2))[2]:\niM22:=dhInvs(dhTs(2))[1]:\nMh:=Matrix(4,4,[[Lx,Mx,Nx,Qx],[L
+y,My,Ny,Qy],[Lz,Mz,Nz,Qz],[0,0,0,1]]):\nLhs:=M11.M12:\nRhs:=Mh.iM22.iM
+21:" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 41 "See the equation (3) in se
+parate matrices" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 27 "M11,M12,
+ \"=\", Mh,iM22,iM21;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6(-%'RTABLEG6%
+\"*!=b`9-%'MATRIXG6#7&7&%#c1G,$%#s1G!\"\"\"\"!F07&F.F,F0F07&F0F0\"\"\"
+%#D1G7&F0F0F0F3%'MatrixG-F$6%\"*kHOX\"-F(6#7&7&F3F0F0%#A1G7&F0%#P1G,$%
+#R1GF/F07&F0FBF@F0F5F6Q\"=6\"-F$6%\"*+rOX\"-F(6#7&7&%#LxG%#MxG%#NxG%#Q
+xG7&%#LyG%#MyG%#NyG%#QyG7&%#LzG%#MzG%#NzG%#QzGF5F6-F$6%\"*w<PX\"-F(6#7
+&7&F3F0F0,$%#A2GF/7&F0%#P2G%#R2GF07&F0,$F`oF/F_oF0F5F6-F$6%\"*)ev`9-F(
+6#7&7&%#c2G%#s2GF0F07&,$F[pF/FjoF0F07&F0F0F3,$%#D2GF/F5F6" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 29 "as well as in their  product:" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 14 "Lhs, \"=\", Rhs;" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6%-%'RTABLEG6%\"*c$y`9-%'MATRIXG6#7&7&%#c1G,$*&%#s1G\"
+\"\"%#P1GF0!\"\"*&F/F0%#R1GF0*&F,F0%#A1GF07&F/*&F,F0F1F0,$*&F,F0F4F0F2
+*&F/F0F6F07&\"\"!F4F1%#D1G7&F=F=F=F0%'MatrixGQ\"=6\"-F$6%\"*gcQX\"-F(6
+#7&7&,&*&%#LxGF0%#c2GF0F0*&,&*&%#MxGF0%#P2GF0F0*&%#NxGF0%#R2GF0F2F0%#s
+2GF0F2,&*&FLF0FVF0F0*&FOF0FMF0F0,&*&FQF0FUF0F0*&FTF0FRF0F0,(*&FZF0%#D2
+GF0F2*&FLF0%#A2GF0F2%#QxGF07&,&*&%#LyGF0FMF0F0*&,&*&%#MyGF0FRF0F0*&%#N
+yGF0FUF0F2F0FVF0F2,&*&F`oF0FVF0F0*&FboF0FMF0F0,&*&FdoF0FUF0F0*&FfoF0FR
+F0F0,(*&FjoF0FinF0F2*&F`oF0F[oF0F2%#QyGF07&,&*&%#LzGF0FMF0F0*&,&*&%#Mz
+GF0FRF0F0*&%#NzGF0FUF0F2F0FVF0F2,&*&FdpF0FVF0F0*&FfpF0FMF0F0,&*&FhpF0F
+UF0F0*&FjpF0FRF0F0,(*&F^qF0FinF0F2*&FdpF0F[oF0F2%#QzGF0F?F@" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 175 "Notice that the last two columns \+
+on the right hand side are free of c2, s2 and the third row on the lef
+t hand side is free of c1, s1, and D1, D2, are only in the last column
+s." }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 148 "Thus, we can get the follo
+wing 6 linear equations for the six variables c1, s1, D1, c2, s2, D2 b
+y choosing the six corresponding elements carefully:" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 119 "<Lhs[1,3],Lhs[2,3],Lhs[3,1],Lhs[3,2],Lhs
+[1,4],Lhs[3,4]>, \"=\", <Rhs[1,3],Rhs[2,3],Rhs[3,1],Rhs[3,2],Rhs[1,4],
+Rhs[3,4]>;\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6%-%'RTABLEG6%\"*scNX\"-
+%'MATRIXG6#7(7#*&%#s1G\"\"\"%#R1GF.7#,$*&%#c1GF.F/F.!\"\"7#\"\"!7#F/7#
+*&F3F.%#A1GF.7#%#D1G&%'VectorG6#%'columnGQ\"=6\"-F$6%\"*_dNX\"-F(6#7(7
+#,&*&%#MxGF.%#R2GF.F.*&%#NxGF.%#P2GF.F.7#,&*&%#MyGF.FMF.F.*&%#NyGF.FPF
+.F.7#,&*&%#LzGF.%#c2GF.F.*&,&*&%#MzGF.FPF.F.*&%#NzGF.FMF.F4F.%#s2GF.F4
+7#,&*&FZF.F\\oF.F.*&FgnF.FenF.F.7#,(*&FJF.%#D2GF.F4*&%#LxGF.%#A2GF.F4%
+#QxGF.7#,(*&,&*&FinF.FMF.F.*&F[oF.FPF.F.F.FdoF.F4*&FZF.FgoF.F4%#QzGF.F
+=" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 37 "Move all terms to the left h
+and side:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 145 "E6:= <Lhs[1,4
+],Lhs[3,4],Lhs[3,2],Lhs[3,1],Lhs[2,3],Lhs[1,3]> - <Rhs[1,4],Rhs[3,4],R
+hs[3,2],Rhs[3,1],Rhs[2,3],Rhs[1,3]>:\nE6, \"=\", ZeroMatrix(6,1);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6%-%'RTABLEG6%\"*KeNX\"-%'MATRIXG6#7(7#,
+**&%#c1G\"\"\"%#A1GF/F/*&,&*&%#MxGF/%#R2GF/F/*&%#NxGF/%#P2GF/F/F/%#D2G
+F/F/*&%#LxGF/%#A2GF/F/%#QxG!\"\"7#,*%#D1GF/*&,&*&%#MzGF/F5F/F/*&%#NzGF
+/F8F/F/F/F9F/F/*&%#LzGF/F<F/F/%#QzGF>7#,(%#R1GF/*&FIF/%#s2GF/F>*&,&*&F
+EF/F8F/F/*&FGF/F5F/F>F/%#c2GF/F>7#,&*&FIF/FTF/F>*&FQF/FOF/F/7#,(*&F.F/
+FMF/F>*&%#MyGF/F5F/F>*&%#NyGF/F8F/F>7#,(*&%#s1GF/FMF/F/F3F>F6F>&%'Vect
+orG6#%'columnGQ\"=6\"-F$6%\"*?&)RX\"-F(6#7(7#\"\"!FjoFjoFjoFjoFjo%'Mat
+rixG" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 39 "Express it in the followi
+ng matrix form" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 84 "t1:=<<D2,
+D1,c2,s2,c1,s1,1>>:\nT1:=PolyCoeffMatrix(M2L(E6),M2L(t1)):\nE6, \"=\",
+ T1, t1;\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6&-%'RTABLEG6%\"*KeNX\"-%'
+MATRIXG6#7(7#,**&%#c1G\"\"\"%#A1GF/F/*&,&*&%#MxGF/%#R2GF/F/*&%#NxGF/%#
+P2GF/F/F/%#D2GF/F/*&%#LxGF/%#A2GF/F/%#QxG!\"\"7#,*%#D1GF/*&,&*&%#MzGF/
+F5F/F/*&%#NzGF/F8F/F/F/F9F/F/*&%#LzGF/F<F/F/%#QzGF>7#,(%#R1GF/*&FIF/%#
+s2GF/F>*&,&*&FEF/F8F/F/*&FGF/F5F/F>F/%#c2GF/F>7#,&*&FIF/FTF/F>*&FQF/FO
+F/F/7#,(*&F.F/FMF/F>*&%#MyGF/F5F/F>*&%#NyGF/F8F/F>7#,(*&%#s1GF/FMF/F/F
+3F>F6F>&%'VectorG6#%'columnGQ\"=6\"-F$6%\"*%)*)RX\"-F(6#7(7)F2\"\"!F[p
+F[pF0F[p,&F:F/F=F>7)FCF/F[pF[pF[pF[p,&FHF/FJF>7)F[pF[p,&FRF>FSF/,$FIF>
+F[pF[pFM7)F[pF[pFapFQF[pF[pF[p7)F[pF[pF[pF[p,$FMF>F[p,&FfnF>FhnF>7)F[p
+F[pF[pF[pF[pFM,&F3F>F6F>%'MatrixG-F$6%\"*GpSX\"-F(6#7)7#F97#FA7#FT7#FO
+7#F.7#F]o7#F/Fhp" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 60 "Construct the
+ reduced row echelon form to find the solution:" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 58 "T3:=ReducedRowEchelonForm(T1):\nT3[1..6,1..6];
+\nT3[1..6,7];\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#-%'RTABLEG6%\"*C$3a
+9-%'MATRIXG6#7(7(\"\"\"\"\"!F-F-F-F-7(F-F,F-F-F-F-7(F-F-F,F-F-F-7(F-F-
+F-F,F-F-7(F-F-F-F-F,F-7(F-F-F-F-F-F,%'MatrixG" }}{PARA 12 "" 1 "" 
+{XPPMATH 20 "6#-%'RTABLEG6%\"*c?TX\"-%'MATRIXG6#7(7#*(,**(%#LxG\"\"\"%
+#A2GF0%#R1GF0F0*&%#QxGF0F2F0!\"\"*(%#A1GF0%#MyGF0%#R2GF0F5*(F7F0%#NyGF
+0%#P2GF0F5F0,&*&%#MxGF0F9F0F0*&%#NxGF0F<F0F0F5F2F57#,$*(,:*,F2F0%#LzGF
+0F1F0F?F0F9F0F5*,F2F0FGF0F1F0FAF0F<F0F5**F2F0%#QzGF0F?F0F9F0F0**F2F0FJ
+F0FAF0F<F0F0*,F2F0%#MzGF0F9F0F/F0F1F0F0**F2F0FMF0F9F0F4F0F5*,F2F0%#NzG
+F0F<F0F/F0F1F0F0**F2F0FPF0F<F0F4F0F5**F7F0FMF0)F9\"\"#F0F8F0F5*,F7F0FM
+F0F9F0F;F0F<F0F5*,F7F0FPF0F<F0F8F0F9F0F5**F7F0FPF0)F<FTF0F;F0F5F0F=F5F
+2F5F57#,$*(,&*&FMF0F<F0F0*&FPF0F9F0F5F0F2F0,**&)FMFTF0FXF0F0*,FTF0FMF0
+F<F0FPF0F9F0F5*&)FPFTF0FSF0F0*$)FGFTF0F0F5F57#,$*(FGF0F2F0FinF5F57#*&,
+&*&F8F0F9F0F0*&F;F0F<F0F0F0F2F57#,$*&F=F0F2F5F5&%'VectorG6#%'columnG" 
+}}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 64 "We see that we can easily compu
+te  c1, s1, c2, s2, D1, and D2 as" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 89 "D2s:=-T3[1,7];\nD1s:=-T3[2,7];\nc2s:=-T3[3,7];\ns2s:=
+-T3[4,7];\nc1s:=-T3[5,7];\ns1s:=-T3[6,7];" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%$D2sG,$*(,**(%#LxG\"\"\"%#A2GF*%#R1GF*F**&%#QxGF*F,F*
+!\"\"*(%#A1GF*%#MyGF*%#R2GF*F/*(F1F*%#NyGF*%#P2GF*F/F*,&*&%#MxGF*F3F*F
+**&%#NxGF*F6F*F*F/F,F/F/" }}{PARA 12 "" 1 "" {XPPMATH 20 "6#>%$D1sG*(,
+:*,%#R1G\"\"\"%#LzGF)%#A2GF)%#MxGF)%#R2GF)!\"\"*,F(F)F*F)F+F)%#NxGF)%#
+P2GF)F.**F(F)%#QzGF)F,F)F-F)F)**F(F)F3F)F0F)F1F)F)*,F(F)%#MzGF)F-F)%#L
+xGF)F+F)F)**F(F)F6F)F-F)%#QxGF)F.*,F(F)%#NzGF)F1F)F7F)F+F)F)**F(F)F;F)
+F1F)F9F)F.**%#A1GF)F6F))F-\"\"#F)%#MyGF)F.*,F>F)F6F)F-F)%#NyGF)F1F)F.*
+,F>F)F;F)F1F)FAF)F-F)F.**F>F)F;F))F1F@F)FCF)F.F),&*&F,F)F-F)F)*&F0F)F1
+F)F)F.F(F." }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$c2sG*(,&*&%#MzG\"\"\"
+%#P2GF)F)*&%#NzGF)%#R2GF)!\"\"F)%#R1GF),**&)F(\"\"#F))F*F3F)F)*,F3F)F(
+F)F*F)F,F)F-F)F.*&)F,F3F))F-F3F)F)*$)%#LzGF3F)F)F." }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#>%$s2sG*(%#LzG\"\"\"%#R1GF',**&)%#MzG\"\"#F')%#P2GF-F
+'F'*,F-F'F,F'F/F'%#NzGF'%#R2GF'!\"\"*&)F1F-F')F2F-F'F'*$)F&F-F'F'F3" }
+}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$c1sG,$*&,&*&%#MyG\"\"\"%#R2GF*F**&
+%#NyGF*%#P2GF*F*F*%#R1G!\"\"F0" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$s
+1sG*&,&*&%#MxG\"\"\"%#R2GF)F)*&%#NxGF)%#P2GF)F)F)%#R1G!\"\"" }}}}
+{SECT 0 {PARA 3 "" 0 "" {TEXT 260 1 " " }{TEXT 261 53 "A numerical exa
+mple for a general and a special cases" }}{PARA 0 "" 0 "" {TEXT -1 47 
+"Simulate the mechanism = direct kinematics task" }}{EXCHG {PARA 0 "" 
+0 "" {TEXT -1 22 "(4)         M1*M2 = Mh" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 65 "M1x := dhT(1):\nM2x := dhT(2):\nMhx := M1x.M2x:\nMhx,
+ \"=\", M1x, M2x;" }}{PARA 12 "" 1 "" {XPPMATH 20 "6&-%'RTABLEG6%\"*ou
+TX\"-%'MATRIXG6#7&7&,&*&%#c1G\"\"\"%#c2GF/F/*(%#s1GF/%#P1GF/%#s2GF/!\"
+\",(*(F.F/F4F/%#P2GF/F5**F2F/F3F/F0F/F8F/F5*(F2F/%#R1GF/%#R2GF/F/,(*(F
+.F/F4F/F<F/F/**F2F/F3F/F0F/F<F/F/*(F2F/F;F/F8F/F/,**(F.F/%#A2GF/F0F/F/
+**F2F/F3F/FCF/F4F/F5*(F2F/F;F/%#D2GF/F/*&F.F/%#A1GF/F/7&,&*&F2F/F0F/F/
+*(F.F/F3F/F4F/F/,(*(F2F/F4F/F8F/F5**F.F/F3F/F0F/F8F/F/*(F.F/F;F/F<F/F5
+,(*(F2F/F4F/F<F/F/**F.F/F3F/F0F/F<F/F5*(F.F/F;F/F8F/F5,**(F2F/FCF/F0F/
+F/**F.F/F3F/FCF/F4F/F/*(F.F/F;F/FFF/F5*&F2F/FHF/F/7&*&F;F/F4F/,&*(F;F/
+F0F/F8F/F/*&F3F/F<F/F/,&*(F;F/F0F/F<F/F5*&F3F/F8F/F/,(*(F;F/FCF/F4F/F/
+*&F3F/FFF/F/%#D1GF/7&\"\"!FaoFaoF/%'MatrixGQ\"=6\"-F$6%\"*GGUX\"-F(6#7
+&7&F.,$*&F2F/F3F/F5*&F2F/F;F/FG7&F2*&F.F/F3F/,$*&F.F/F;F/F5FY7&FaoF;F3
+F_oF`oFbo-F$6%\"*;jUX\"-F(6#7&7&F0,$*&F4F/F8F/F5*&F4F/F<F/*&FCF/F0F/7&
+F4*&F0F/F8F/,$*&F0F/F<F/F5*&FCF/F4F/7&FaoF<F8FFF`oFbo" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 41 "Set the fixed parameters of the mechanism
+" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 99 "px := \{al1=-Pi/3,A1=1,
+al2=Pi/2,A2=-2\}; \npxx := \{P1=cos(al1),R1=sin(al1),P2=cos(al2),R2=si
+n(al2)\};  " }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%#pxG<&/%#A1G\"\"\"/%$
+al1G,$*&\"\"$!\"\"%#PiGF(F./%$al2G,$*&\"\"#F.F/F(F(/%#A2G!\"#" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$pxxG<&/%#P1G-%$cosG6#%$al1G/%#R1G-%
+$sinGF*/%#P2G-F)6#%$al2G/%#R2G-F/F3" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 
+-1 45 "Set the controled parameters of the mechanism" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 94 "qx := \{th1=0.1,D1=1,th2=0.1,D2=2\};\nqxx
+ := \{c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2)\};  " }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#>%#qxG<&/%$th1G$\"\"\"!\"\"/%#D1GF)/%$th2GF(
+/%#D2G\"\"#" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$qxxG<&/%#c1G-%$cosG6
+#%$th1G/%#s1G-%$sinGF*/%#c2G-F)6#%$th2G/%#s2G-F/F3" }}}{EXCHG {PARA 0 
+"" 0 "" {TEXT -1 29 "Solve  DK  of this mechanism." }}}{EXCHG {PARA 0 
+"> " 0 "" {MPLTEXT 1 0 211 "MhX:=subs(qx,subs(qxx,subs(px,subs(pxx,Mhx
+))));\nhx:=\{Lx=MhX[1,1],Ly=MhX[2,1],Lz=MhX[3,1],Mx=MhX[1,2],\n     My
+=MhX[2,2],Mz=MhX[3,2],Nx=MhX[1,3],Ny=MhX[2,3],\n     Nz=MhX[3,3],Qx=Mh
+X[1,4],Qy=MhX[2,4],Qz=MhX[3,4]\}:\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#>%$MhXG-%'RTABLEG6%\"*c'Ha9-%'MATRIXG6#7&7&$\"+N$*\\])*!#5,$*&$\"+K3n
+\"*\\!#6\"\"\"\"\"$#F6\"\"#!\"\"$\"+\")*>+\\\"F0,&$\"+<q&4v*F0F:*&$\"+
+k;M$)**F5F6F7F8F:7&F;,$*&$\"+E3-v\\F0F6F7F8F6$!+M$*\\][F0,&$\"+'z0<)>F
+0F:*&$\"+_;/]**F0F6F7F8F67&F1$\"+++++]F0FD,&*&$\"+k;M$)**F5F6F7F8F6F9F
+67&\"\"!FXFXF6%'MatrixG" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 17 "Now so
+lve the IK:" }}}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{EXCHG {PARA 0 "> " 0 
+"" {MPLTEXT 1 0 61 "evalf(subs(hx,subs(px,subs(pxx,[c1s,s1s,c2s,s2s,D1
+s,D2s]))));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#7($\"+c;/]**!#5$\"+r;M$
+)**!#6$\"+`;/]**F&$\"+k;M$)**F)$\"+d********F&$\"+-+++?!\"*" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 19 "which indeed equals" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 60 "evalf(subs(qx,[cos(th1),sin(th1),co
+s(th2),sin(th2),D1,D2]));" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#7($\"+`;/
+]**!#5$\"+l;M$)**!#6F$F'$\"\"\"\"\"!$\"\"#F," }}}{EXCHG {PARA 0 "" 0 "
+" {TEXT -1 61 "But there may be problems for some (very natural) param
+eters:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 465 "qx := \{th1=0,D1
+=0,th2=0,D2=0\};\nqxx := \{c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(
+th2)\};  \npx := \{al1=-Pi/2,A1=1,al2=Pi/2,A2=-1\}; \npxx := \{P1=cos(
+al1),R1=sin(al1),P2=cos(al2),R2=sin(al2)\};\nMhX:= subs(qx,subs(qxx,su
+bs(px,subs(pxx,Mhx))));\nMh;\nhx:=\{Lx=MhX[1,1],Ly=MhX[2,1],Lz=MhX[3,1
+],Mx=MhX[1,2],\n     My=MhX[2,2],Mz=MhX[3,2],Nx=MhX[1,3],Ny=MhX[2,3],
+\n     Nz=MhX[3,3],Qx=MhX[1,4],Qy=MhX[2,4],Qz=MhX[3,4]\};\nsubs(hx,eva
+l(subs(subs(px,pxx),[c1s,s1s,D1s,c2s,s2s,D2s])));" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%#qxG<&/%$th1G\"\"!/%#D1GF(/%$th2GF(/%#D2GF(" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#>%$qxxG<&/%#c1G-%$cosG6#%$th1G/%#s1G-%$sinGF
+*/%#c2G-F)6#%$th2G/%#s2G-F/F3" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%#px
+G<&/%#A1G\"\"\"/%$al1G,$*&\"\"#!\"\"%#PiGF(F./%#A2GF./%$al2G,$*&F-F.F/
+F(F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%$pxxG<&/%#P1G-%$cosG6#%$al1G
+/%#R1G-%$sinGF*/%#P2G-F)6#%$al2G/%#R2G-F/F3" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%$MhXG-%'RTABLEG6%\"*;]VX\"-%'MATRIXG6#7&7&\"\"\"\"\"!
+F/F/7&F/F.F/F/7&F/F/F.F/7&F/F/F/F.%'MatrixG" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#-%'RTABLEG6%\"*+rOX\"-%'MATRIXG6#7&7&%#LxG%#MxG%#NxG%#Q
+xG7&%#LyG%#MyG%#NyG%#QyG7&%#LzG%#MzG%#NzG%#QzG7&\"\"!F;F;\"\"\"%'Matri
+xG" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%#hxG<./%#QyG\"\"!/%#QzGF(/%#Qx
+GF(/%#LxG\"\"\"/%#LyGF(/%#LzGF(/%#MxGF(/%#MyGF//%#MzGF(/%#NxGF(/%#NyGF
+(/%#NzGF/" }}{PARA 8 "" 1 "" {TEXT -1 43 "Error, numeric exception: di
+vision by zero\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 44 "Why? Let us s
+ubstitute into T1 and simplify:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 75 "T1x:=subs(px,subs(pxx,subs(hx,T1)));\nT1xe:=evalf(GaussianElim
+ination(T1x));" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%$T1xG-%'RTABLEG6%\"*_\"Ra9-%'MATRIXG6#7(7)\"\"!F.F.F.
+\"\"\"F.!\"\"7)F.F/F.F.F.F.F.7)F.F.F/F.F.F.F07)F.F.F.F0F.F.F.F-7)F.F.F
+.F.F.F0F.%'MatrixG" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%%T1xeG-%'RTABL
+EG6%\"*%)GWX\"-%'MATRIXG6#7(7)$\"\"!F/$\"\"\"F/F/F/F/F/F/7)F.F/F0F/F/F
+/$!\"\"F/7)F/F/F/F3F/F/F/7)F/F/F/F/F0F/F37)F/F/F/F/F/F3F/7)F/F/F/F/F/F
+/F/%'MatrixG" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 38 "to see that the m
+atrix T1 is singular." }}}}{SECT 0 {PARA 3 "" 0 "" {TEXT 262 38 " A st
+ep towards the \"regular solution\"" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }
+}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 9 "Lhs, Rhs;" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6$-%'RTABLEG6%\"*c$y`9-%'MATRIXG6#7&7&%#c1G,$*&%#s1G\"
+\"\"%#P1GF0!\"\"*&F/F0%#R1GF0*&F,F0%#A1GF07&F/*&F,F0F1F0,$*&F,F0F4F0F2
+*&F/F0F6F07&\"\"!F4F1%#D1G7&F=F=F=F0%'MatrixG-F$6%\"*gcQX\"-F(6#7&7&,&
+*&%#LxGF0%#c2GF0F0*&,&*&%#MxGF0%#P2GF0F0*&%#NxGF0%#R2GF0F2F0%#s2GF0F2,
+&*&FJF0FTF0F0*&FMF0FKF0F0,&*&FOF0FSF0F0*&FRF0FPF0F0,(*&FXF0%#D2GF0F2*&
+FJF0%#A2GF0F2%#QxGF07&,&*&%#LyGF0FKF0F0*&,&*&%#MyGF0FPF0F0*&%#NyGF0FSF
+0F2F0FTF0F2,&*&F^oF0FTF0F0*&F`oF0FKF0F0,&*&FboF0FSF0F0*&FdoF0FPF0F0,(*
+&FhoF0FgnF0F2*&F^oF0FinF0F2%#QyGF07&,&*&%#LzGF0FKF0F0*&,&*&%#MzGF0FPF0
+F0*&%#NzGF0FSF0F2F0FTF0F2,&*&FbpF0FTF0F0*&FdpF0FKF0F0,&*&FfpF0FSF0F0*&
+FhpF0FPF0F0,(*&F\\qF0FgnF0F2*&FbpF0FinF0F2%#QzGF0F?F@" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 60 "Use all equations from (3) to form a set \+
+of linear equations" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 152 "E7:
+= convert(Lhs[1..3,1..4],Vector)-convert(Rhs[1..3,1..4],Vector):\nE7, \+
+\"=\", ZeroMatrix(12,1):\nT71:=PolyCoeffMatrix(M2L(E7),M2L(t1)):\nE7, \+
+\"=\", T71, t1;\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6&-%'RTABLEG6%\"*Ku
+NX\"-%'MATRIXG6#7.7#,(%#c1G\"\"\"*&%#LxGF.%#c2GF.!\"\"*&,&*&%#MxGF.%#P
+2GF.F.*&%#NxGF.%#R2GF.F2F.%#s2GF.F.7#,(%#s1GF.*&%#LyGF.F1F.F2*&,&*&%#M
+yGF.F7F.F.*&%#NyGF.F:F.F2F.F;F.F.7#,&*&%#LzGF.F1F.F2*&,&*&%#MzGF.F7F.F
+.*&%#NzGF.F:F.F2F.F;F.F.7#,(*&F>F.%#P1GF.F2*&F0F.F;F.F2*&F4F.F1F.F27#,
+(*&F-F.FTF.F.*&F@F.F;F.F2*&FBF.F1F.F27#,(%#R1GF.*&FJF.F;F.F2*&FLF.F1F.
+F27#,(*&F>F.FhnF.F.*&F6F.F:F.F2*&F9F.F7F.F27#,(*&F-F.FhnF.F2*&FDF.F:F.
+F2*&FFF.F7F.F27#,(FTF.*&FNF.F:F.F2*&FPF.F7F.F27#,**&F-F.%#A1GF.F.*&,&F
+^oF.F_oF.F.%#D2GF.F.*&F0F.%#A2GF.F.%#QxGF27#,**&F>F.F\\pF.F.*&,&FcoF.F
+doF.F.F_pF.F.*&F@F.FapF.F.%#QyGF27#,*%#D1GF.*&,&FgoF.FhoF.F.F_pF.F.*&F
+JF.FapF.F.%#QzGF2&%'VectorG6#%'columnGQ\"=6\"-F$6%\"*3KXX\"-F(6#7.7)\"
+\"!F^r,$F0F2F4F.F^rF^r7)F^rF^r,$F@F2FBF^rF.F^r7)F^rF^r,$FJF2FLF^rF^rF^
+r7)F^rF^r,&F5F2F8F.F_rF^r,$FTF2F^r7)F^rF^r,&FCF2FEF.FarFTF^rF^r7)F^rF^
+r,&FMF2FOF.FcrF^rF^rFhn7)F^rF^rF^rF^rF^rFhn,&F^oF2F_oF27)F^rF^rF^rF^r,
+$FhnF2F^r,&FcoF2FdoF27)F^rF^rF^rF^rF^rF^rFfo7)F^pF^rF^rF^rF\\pF^r,&F`p
+F.FbpF27)FgpF^rF^rF^rF^rF\\p,&FhpF.FipF27)F^qF.F^rF^rF^rF^r,&F_qF.F`qF
+2%'MatrixG-F$6%\"*GpSX\"-F(6#7)7#F_p7#F\\q7#F17#F;7#F-7#F>7#F.Fgs" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 49 "and see what happens for the \"deg
+enerate\" values:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 102 "T71x:
+=subs(px,subs(pxx,subs(hx,T71)));\nT71xe:=evalf(GaussianElimination(T7
+1x)):\n<Transpose(t1),T71xe>;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%%T7
+1xG-%'RTABLEG6%\"*w'fa9-%'MATRIXG6#7.7)\"\"!F.!\"\"F.\"\"\"F.F.7)F.F.F
+.F.F.F0F.7)F.F.F.F/F.F.F.F27)F.F.F.F.F.F.F.7)F.F.F0F.F.F.F/7)F.F.F.F.F
+.F/F.7)F.F.F.F.F0F.F/F3F67)F0F.F.F.F.F0F.7)F.F0F.F.F.F.F.%'MatrixG" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#-%'RTABLEG6%\"*![ja9-%'MATRIXG6#7/7)%#
+D2G%#D1G%#c2G%#s2G%#c1G%#s1G\"\"\"7)$F2\"\"!F5F5F5F5F4F57)F5F4F5F5F5F5
+F57)F5F5F4F5F5F5$!\"\"F57)F5F5F5F8F5F5F57)F5F5F5F5F4F5F87)F5F5F5F5F5F8
+F57)F5F5F5F5F5F5F5F=F=F=F=F=%'MatrixG" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 105 "We see that \+
+not all 7-tuples of rows of T71x provide a uniquelly solvable system. \+
+For instance, the first" }}{PARA 0 "" 0 "" {TEXT -1 102 "6 rows of for
+ms a submatrix of rank equal to four. Nevertheless, the solution can b
+e obtained from all" }}{PARA 0 "" 0 "" {TEXT -1 40 "12 equations which
+ provide matrix T71xe." }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 
+0 "" {TEXT -1 103 "Alternatively, we can use less linear equations and
+ add non-linear constraints among the variables. For" }}{PARA 0 "" 0 "
+" {TEXT -1 28 "instance, we may proceed as:" }}{PARA 0 "" 0 "" {TEXT 
+-1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 37 "  c1 = 1 => s1= 0 using s1^2+c1
+^2 = 1" }}{PARA 0 "" 0 "" {TEXT -1 7 "-s2 = 0" }}{PARA 0 "" 0 "" 
+{TEXT -1 6 "D1 = 0" }}{PARA 0 "" 0 "" {TEXT -1 21 "D2 + s1 = 0 => D2 =
+ 0" }}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{PARA 0 "" 0 "" {TEXT -1 83 "to \+
+get the solution when using one additional trigonometric identity s1^2
++c1^2 = 1." }}}}}{MARK "0 0 0" 92 }{VIEWOPTS 1 1 0 3 4 1802 1 1 1 1 }
+{PAGENUMBERS 0 1 2 33 1 1 }{RTABLE_HANDLES 145355180 145362964 
+145367100 145371776 145375588 145378356 145385660 145355672 145355752 
+145355832 145398520 145398984 145406928 145408324 145412056 145417468 
+145422828 145426316 145429656 145435016 145439152 145442884 145357432 
+145453208 145459676 145463480 }{RTABLE 
+M7R0
+I6RTABLE_SAVE/145355180X,%)anythingG6"6"[gl!"%!!!#1"%"%%#c1G%#s1G""!F),$F(!""F'
+F)F)F)F)"""F)F)F)%#D1GF,6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145362964X,%)anythingG6"6"[gl!"%!!!#1"%"%"""""!F(F(F(%#P1G%#R1GF(
+F(,$F*!""F)F(%#A1GF(F(F'6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145367100X,%)anythingG6"6"[gl!"%!!!#1"%"%%#LxG%#LyG%#LzG""!%#MxG%
+#MyG%#MzGF*%#NxG%#NyG%#NzGF*%#QxG%#QyG%#QzG"""6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145371776X,%)anythingG6"6"[gl!"%!!!#1"%"%"""""!F(F(F(%#P2G,$%#R2G
+!""F(F(F+F)F(,$%#A2GF,F(F(F'6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145375588X,%)anythingG6"6"[gl!"%!!!#1"%"%%#c2G,$%#s2G!""""!F+F)F'
+F+F+F+F+"""F+F+F+,$%#D2GF*F,6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145378356X,%)anythingG6"6"[gl!"%!!!#1"%"%%#c1G%#s1G""!F),$*&F("""
+%#P1GF,!""*&F'F,F-F,%#R1GF)*&F(F,F0F,,$*&F'F,F0F,F.F-F)*&F'F,%#A1GF,*&F(F,F5F,%
+#D1GF,6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145385660X,%)anythingG6"6"[gl!"%!!!#1"%"%,&*&%#LxG"""%#c2GF*F**&,
+&*&%#MxGF*%#P2GF*F**&%#NxGF*%#R2GF*!""F*%#s2GF*F4,&*&%#LyGF*F+F*F**&,&*&%#MyGF*
+F0F*F**&%#NyGF*F3F*F4F*F5F*F4,&*&%#LzGF*F+F*F**&,&*&%#MzGF*F0F*F**&%#NzGF*F3F*F
+4F*F5F*F4""!,&*&F)F*F5F*F**&F-F*F+F*F*,&*&F8F*F5F*F**&F:F*F+F*F*,&*&FAF*F5F*F**
+&FCF*F+F*F*FH,&*&F/F*F3F*F**&F2F*F0F*F*,&*&F<F*F3F*F**&F>F*F0F*F*,&*&FEF*F3F*F*
+*&FGF*F0F*F*FH,(*&FRF*%#D2GF*F4*&F)F*%#A2GF*F4%#QxGF*,(*&FUF*FgnF*F4*&F8F*FinF*
+F4%#QyGF*,(*&FXF*FgnF*F4*&FAF*FinF*F4%#QzGF*F*6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145355672X*%)anythingG6"6"[gl!#%!!!"'"'*&%#s1G"""%#R1GF),$*&%#c1G
+F)F*F)!""""!F**&F-F)%#A1GF)%#D1G6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145355752X*%)anythingG6"6"[gl!#%!!!"'"',&*&%#MxG"""%#R2GF*F**&%#N
+xGF*%#P2GF*F*,&*&%#MyGF*F+F*F**&%#NyGF*F.F*F*,&*&%#LzGF*%#c2GF*F**&,&*&%#MzGF*F
+.F*F**&%#NzGF*F+F*!""F*%#s2GF*F>,&*&F6F*F?F*F**&F9F*F7F*F*,(*&F'F*%#D2GF*F>*&%#
+LxGF*%#A2GF*F>%#QxGF*,(*&,&*&F;F*F+F*F**&F=F*F.F*F*F*FEF*F>*&F6F*FHF*F>%#QzGF*6
+"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145355832X*%)anythingG6"6"[gl!#%!!!"'"',**&%#c1G"""%#A1GF*F**&,&*
+&%#MxGF*%#R2GF*F**&%#NxGF*%#P2GF*F*F*%#D2GF*F**&%#LxGF*%#A2GF*F*%#QxG!"",*%#D1G
+F**&,&*&%#MzGF*F0F*F**&%#NzGF*F3F*F*F*F4F*F**&%#LzGF*F7F*F*%#QzGF9,(%#R1GF**&FC
+F*%#s2GF*F9*&,&*&F?F*F3F*F**&FAF*F0F*F9F*%#c2GF*F9,&*&FCF*FMF*F9*&FJF*FHF*F*,(*
+&F)F*FFF*F9*&%#MyGF*F0F*F9*&%#NyGF*F3F*F9,(*&%#s1GF*FFF*F*F.F9F1F96"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145398520X,%)anythingG6#%%zeroG6"[gl!""!!!#!"'""6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145398984X.%)anythingG6"6"[gl!"!!!!#!"'"(!!E\[l06$""%""$,$%#LzG!"
+"6$""&""(,&*&%#MyG"""%#R2GF4F-*&%#NyGF4%#P2GF4F-6$""#F0,&*&F,F4%#A2GF4F4%#QzGF-
+6$""'F0,&*&%#MxGF4F5F4F-*&%#NxGF4F8F4F-6$F*F)F+6$F4F4,&FBF4FDF46$F*F0%#R1G6$F:F
+4,&*&%#MzGF4F5F4F4*&%#NzGF4F8F4F46$F4F/%#A1G6$F@F@FJ6$F4F0,&*&%#LxGF4F=F4F4%#Qx
+GF-6$F:F:F46$F)F),&*&FNF4F8F4F4*&FPF4F5F4F-6$F*F*,&FfnF-FgnF46$F/F/,$FJF-6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145406928X,%)anythingG6"6"[gl!"%!!!#("(""%#D2G%#D1G%#c2G%#s2G%#c1
+G%#s1G"""6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145408324X.%)anythingG6"6"[gl!"!!!!#!"'"'!!E\[l'6$"""F)F)6$""'F+F
+)6$""#F-F)6$""%F/F)6$""$F1F)6$""&F3F)6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145412056X,%)anythingG6"6"[gl!#!!!!"!"'!!E\[l'"""*(,**(%#LxGF(%#A
+2GF(%#R1GF(F(*&%#QxGF(F.F(!""*(%#A1GF(%#MyGF(%#R2GF(F1*(F3F(%#NyGF(%#P2GF(F1F(,
+&*&%#MxGF(F5F(F(*&%#NxGF(F8F(F(F1F.F1""#,$*(,:*,F.F(%#LzGF(F-F(F;F(F5F(F1*,F.F(
+FCF(F-F(F=F(F8F(F1**F.F(%#QzGF(F;F(F5F(F(**F.F(FFF(F=F(F8F(F(*,F.F(%#MzGF(F5F(F
+,F(F-F(F(**F.F(FIF(F5F(F0F(F1*,F.F(%#NzGF(F8F(F,F(F-F(F(**F.F(FLF(F8F(F0F(F1**F
+3F(FIF(F5F>F4F(F1*,F3F(FIF(F5F(F7F(F8F(F1*,F3F(FLF(F8F(F4F(F5F(F1**F3F(FLF(F8F>
+F7F(F1F(F9F1F.F1F1""$,$*(,&*&FIF(F8F(F(*&FLF(F5F(F1F(F.F(,**&FIF>F8F>F(**FIF(F8
+F(FLF(F5F(!"#*&FLF>F5F>F(*$FCF>F(F1F1""&*&,&*&F4F(F5F(F(*&F7F(F8F(F(F(F.F1""%,$
+*(FCF(F.F(FXF1F1""',$*&F9F(F.F1F16"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145417468X,%)anythingG6"6"[gl!"%!!!#1"%"%,&*&%#c1G"""%#c2GF*F**(%
+#s1GF*%#P1GF*%#s2GF*!"",&*&F-F*F+F*F**(F)F*F.F*F/F*F**&%#R1GF*F/F*""!,(*(F)F*F/
+F*%#P2GF*F0**F-F*F.F*F+F*F9F*F0*(F-F*F5F*%#R2GF*F*,(*(F-F*F/F*F9F*F0**F)F*F.F*F
++F*F9F*F**(F)F*F5F*F<F*F0,&*(F5F*F+F*F9F*F**&F.F*F<F*F*F6,(*(F)F*F/F*F<F*F***F-
+F*F.F*F+F*F<F*F**(F-F*F5F*F9F*F*,(*(F-F*F/F*F<F*F***F)F*F.F*F+F*F<F*F0*(F)F*F5F
+*F9F*F0,&*(F5F*F+F*F<F*F0*&F.F*F9F*F*F6,**(F)F*%#A2GF*F+F*F***F-F*F.F*FQF*F/F*F
+0*(F-F*F5F*%#D2GF*F**&F)F*%#A1GF*F*,**(F-F*FQF*F+F*F***F)F*F.F*FQF*F/F*F**(F)F*
+F5F*FTF*F0*&F-F*FVF*F*,(*(F5F*FQF*F/F*F**&F.F*FTF*F*%#D1GF*F*6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145422828X,%)anythingG6"6"[gl!"%!!!#1"%"%%#c1G%#s1G""!F),$*&F("""
+%#P1GF,!""*&F'F,F-F,%#R1GF)*&F(F,F0F,,$*&F'F,F0F,F.F-F)*&F'F,%#A1GF,*&F(F,F5F,%
+#D1GF,6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145426316X,%)anythingG6"6"[gl!"%!!!#1"%"%%#c2G%#s2G""!F),$*&F("""
+%#P2GF,!""*&F'F,F-F,%#R2GF)*&F(F,F0F,,$*&F'F,F0F,F.F-F)*&%#A2GF,F'F,*&F5F,F(F,%
+#D2GF,6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145429656X,%)anythingG6"6"[gl!"%!!!#1"%"%,&*$-%$cosG6#$"""!""""#F
+-*&-%$sinGF+F/-F*6#,$%#PiG#F.""$F-F.,&*&F1F-F)F-F-*(F)F-F3F-F1F-F-*&-F2F4F-F1F-
+""!,(*(F)F-F1F--F*6#,$F6#F-F/F-F.**F1F-F3F-F)F-FAF-F.*(F1F-F=F--F2FBF-F-,(*&F1F
+/FAF-F.*(F)F/F3F-FAF-F-*(F=F-F)F-FGF-F.,&*(F)F-F=F-FAF-F-*&F3F-FGF-F-F>,(*(F)F-
+F1F-FGF-F-**F1F-F3F-F)F-FGF-F-*(F1F-F=F-FAF-F-,(*&F1F/FGF-F-*(F)F/F3F-FGF-F.FMF
+.,&FKF.*&F3F-FAF-F-F>,*F(!"#F0F/F<F/F)F-,*F:FYF;FY*&F)F-F=F-FYF1F-,(F<FYF3F/F-F
+-F-6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145435016X,%)anythingG6"6"[gl!"%!!!#1"%"%,&*$-%$cosG6#""!""#"""*&
+-%$sinGF+F--F*6#,$%#PiG#!""F-F.F7,&*&F0F.F)F.F.*(F)F.F2F.F0F.F.*&-F1F3F.F0F.F,,
+(*(F)F.F0F.-F*6#,$F5#F.F-F.F7**F0F.F2F.F)F.F?F.F7*(F0F.F<F.-F1F@F.F.,(*&F0F-F?F
+.F7*(F)F-F2F.F?F.F.*(F<F.F)F.FEF.F7,&*(F)F.F<F.F?F.F.*&F2F.FEF.F.F,,(*(F)F.F0F.
+FEF.F.**F0F.F2F.F)F.FEF.F.*(F0F.F<F.F?F.F.,(*&F0F-FEF.F.*(F)F-F2F.FEF.F7FKF7,&F
+IF7*&F2F.F?F.F.F,,(F(F7F/F.F)F.,(F9F7F:F7F0F.,$F;F7F.6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145439152X.%)anythingG6"6"[gl!"!!!!#!"'"(!!E\[l06$""%""$""!6$""&"
+"(,$-%$sinG6#,$%#PiG#"""""#!""6$F7F.F+6$""'F.F+6$F*F)F+6$F6F6F+6$F*F.-F16#,$F4#
+F8F76$F7F6-%$cosGF26$F6F-F66$F;F;F?6$F6F.F86$F7F7F66$F)F)F/6$F*F*F06$F-F-,$F?F8
+6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145442884X.%)anythingG6"6"[gl!"!!!!#!"'"(!!E\[l*6$""&""'$!""""!6$
+""#""(F+6$""$""%F+6$"""F5$F-F-6$F3F)$F5F-6$F/F5F66$F3F0F+6$F5F/F86$F/F2F86"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145357432X*%)anythingG6"6"[gl!#%!!!"-"-,(%#c1G"""*&%#LxGF)%#c2GF)
+!""*&,&*&%#MxGF)%#P2GF)F)*&%#NxGF)%#R2GF)F-F)%#s2GF)F),(%#s1GF)*&%#LyGF)F,F)F-*
+&,&*&%#MyGF)F2F)F)*&%#NyGF)F5F)F-F)F6F)F),&*&%#LzGF)F,F)F-*&,&*&%#MzGF)F2F)F)*&
+%#NzGF)F5F)F-F)F6F)F),(*&F8F)%#P1GF)F-*&F+F)F6F)F-*&F/F)F,F)F-,(*&F(F)FLF)F)*&F
+:F)F6F)F-*&F<F)F,F)F-,(%#R1GF)*&FCF)F6F)F-*&FEF)F,F)F-,(*&F8F)FTF)F)*&F1F)F5F)F
+-*&F4F)F2F)F-,(*&F(F)FTF)F-*&F>F)F5F)F-*&F@F)F2F)F-,(FLF)*&FGF)F5F)F-*&FIF)F2F)
+F-,**&F(F)%#A1GF)F)*&,&FYF)FZF)F)%#D2GF)F)*&F+F)%#A2GF)F)%#QxGF-,**&F8F)F^oF)F)
+*&,&FgnF)FhnF)F)FaoF)F)*&F:F)FcoF)F)%#QyGF-,*%#D1GF)*&,&FjnF)F[oF)F)FaoF)F)*&FC
+F)FcoF)F)%#QzGF-6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145453208X.%)anythingG6"6"[gl!"!!!!#!"-"(!!E\[l@6$"#6""",&*&%#MyG
+F*%#R2GF*F**&%#NyGF*%#P2GF*F*6$""%""$,&*&%#MxGF*F1F*!""*&%#NxGF*F.F*F*6$"#7F*,&
+*&%#MzGF*F.F*F**&%#NzGF*F1F*F*6$""&F4,&*&F-F*F1F*F8*&F0F*F.F*F*6$""'""(%#R1G6$F
+CF3,$%#LyGF86$""#FHF*6$F4F3,&*&F?F*F1F*F**&FAF*F.F*F86$FHF4,&FRF8FSF*6$F)FH%#A1
+G6$F)FI,&*&FMF*%#A2GF*F*%#QyGF86$FOF3,&FEF*FFF86$"#5FCFW6$"")FC,$FJF86$F*FCF*6$
+FjnFI,&*&%#LxGF*FenF*F*%#QxGF86$FIFI,&*&F7F*F.F*F8*&F:F*F1F*F86$F\oFI,&F,F8F/F8
+6$F<FI,&*&%#LzGF*FenF*F*%#QzGF86$F*F3,&F6F*F9F86$""*FI,(%#P1GF*F>F8F@F86$F3F3,$
+FboF86$FOF4FL6$F*F4Ffp6$F3FH,$FdpF86$F4F4,$F]pF86$FIFHFJ6$F<FOF*6$FCFCFdp6$FjnF
+*,&FfoF*FgoF*6$FHF3F\q6"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145459676X.%)anythingG6"6"[gl!"!!!!#!"-"(!!E\[l@6$"#6"""-%$sinG6#
+,$%#PiG#F*""#6$""%""$""!6$"#7F*-%$cosGF-6$""&F4,$F8!""6$""'""(-F,6#,$F/#F=F16$F
+;F3F56$F1F?F*6$F4F3,$F+F=6$F?F4F+6$F)F?F*6$F)F@F56$F1F3F86$"#5F;F*6$"")F;,$FAF=
+6$F*F;F*6$FNF@F=6$F@F@F56$FPF@FH6$F7F@F56$F*F3F56$""*F@,&-F9FBF*F8F=6$F3F3F=6$F
+1F4F56$F*F4F=6$F3F?,$FenF=6$F4F4F56$F@F?FA6$F7F1F*6$F;F;Fen6$FNF*F56$F?F3F56"
+}
+{RTABLE 
+M7R0
+I6RTABLE_SAVE/145463480X,%)anythingG6"6"[gl!"%!!!#fp"."(%#D2G$"""""!F*F*F*F*F*F
+*F*F*F*F*F*%#D1GF*F(F*F*F*F*F*F*F*F*F*F*%#c2GF*F*F(F*F*F*F*F*F*F*F*F*%#s2GF*F*F
+*$!""F*F*F*F*F*F*F*F*F*%#c1GF*F*F*F*F(F*F*F*F*F*F*F*%#s1GF(F*F*F*F*F.F*F*F*F*F*
+F*F)F*F*F.F*F.F*F*F*F*F*F*F*6"
+}
+
