@@ -297,18 +297,19 @@ end proc:
 R2Deg := proc(x) evalf(x.180/Pi); end proc:
 # Definice robotu, zadane polohy
 # DH parametry robotu Mitsubishi Melfa RV6S
-alpha1:=-Pi/2: alpha2:=0: alpha3:=-Pi/2:
-alpha4:=Pi/2: alpha5:=-Pi/2: alpha6:=0:
 df := 0.01;
+dfa := evalf(df.Pi/180);
+alpha1:=-Pi/2+dfa: alpha2:=0+dfa: alpha3:=-Pi/2+dfa:
+alpha4:=Pi/2+dfa: alpha5:=-Pi/2+dfa: alpha6:=0+dfa:
 Mechanism := {
 a1=85,  a2=280,  a3=100, a4=0+df, a5=0+df, a6=0+df,
-d1=350, d2=0+df, d3=0+df, d4=315, d5=+df, d6=85,
-lambda1=cos(alpha1)+df, mu1=sin(alpha1),
-lambda2=cos(alpha2),    mu2=sin(alpha2)+df,
-lambda3=cos(alpha3)+df, mu3=sin(alpha3),
-lambda4=cos(alpha4)+df, mu4=sin(alpha4),
-lambda5=cos(alpha5)+df, mu5=sin(alpha5),
-lambda6=cos(alpha6),    mu6=sin(alpha6)+df};
+d1=350, d2=0+df, d3=0+df, d4=315, d5=0+df, d6=85,
+lambda1=cos(alpha1), mu1=sin(alpha1),
+lambda2=cos(alpha2), mu2=sin(alpha2),
+lambda3=cos(alpha3), mu3=sin(alpha3),
+lambda4=cos(alpha4), mu4=sin(alpha4),
+lambda5=cos(alpha5), mu5=sin(alpha5),
+lambda6=cos(alpha6), mu6=sin(alpha6)};
 # Parametry transformaci
 # Pozice nulta a treti jsou stejne (t0 = t3, P0 = P3);
 MhV0 := ImportMatrix("MhV0.mat", source=Matlab);
@@ -318,10 +319,8 @@ t1 := convert(ImportMatrix("t1.mat", source=Matlab), Vector):
 MhV2 := ImportMatrix("MhV2.mat", source=Matlab);
 t2 := convert(ImportMatrix("t2.mat", source=Matlab), Vector):
 # 
-# 
-# 
 # Reseni ulohy
-# Vypocet
+# Vypocet inverzni kinematicke ulohy
 MhV := Matrix(4,4,[[lx,mx,nx,rx],[ly,my,ny,ry],[lz,mz,nz,rz],[0,0,0,1]]):
 M0 := map(x->x[1]=x[2],convert(<convert(MhV[1..3,1..4],Vector)|convert(MhV0[1..3,1..4],Vector)>,listlist)):
 M1 := map(x->x[1]=x[2],convert(<convert(MhV[1..3,1..4],Vector)|convert(MhV1[1..3,1..4],Vector)>,listlist)):
@@ -329,20 +328,41 @@ M2 := map(x->x[1]=x[2],convert(<convert(MhV[1..3,1..4],Vector)|convert(MhV2[1..3
 solutions0 := IK6(Mechanism,M0);
 solutions1 := IK6(Mechanism,M1);
 solutions2 := IK6(Mechanism,M2);
-<R2Deg(solutions0[1]) - t0|R2Deg(solutions0[2]) - t0|R2Deg(solutions0[3]) - t0|R2Deg(solutions0[4]) - t0>;
-<R2Deg(solutions1[1]) - t1|R2Deg(solutions1[2]) - t1>; #|R2Deg(solutions1[3]) - t1|R2Deg(solutions1[4]) - t1>;
-<R2Deg(solutions2[1]) - t2|R2Deg(solutions2[2]) - t2>; #|R2Deg(solutions2[3]) - t2|R2Deg(solutions2[4]) - t2>;
-
+# - s0 odpovida mym resenim inverzni kinematicke ulohy (vyjadrenym ve stupnich); predpokladam, ze jedno z nich by melo primo odpovidat hledanym offsetum
+# - d1 a d2 odpovidaji rozdilum zadanych kloubovych souradnic a jim odpovidajicich, mnou vypoctenych, reseni inverzni kinematicke ulohy;
+# - mezi nekterym ze sloupcu s0 a d1 (resp. s0 a d2) by melo dojit ke shode. tento sloupec odpovida hledanym offsetum
+s0:=<R2Deg(solutions0[1])|R2Deg(solutions0[2])|R2Deg(solutions0[3])|R2Deg(solutions0[4])>;
+d1:=<R2Deg(solutions1[1]) - t1|R2Deg(solutions1[2]) - t1|R2Deg(solutions1[3]) - t1|R2Deg(solutions1[4]) - t1>;
+d2:=<R2Deg(solutions2[1]) - t2|R2Deg(solutions2[2]) - t2|R2Deg(solutions2[3]) - t2|R2Deg(solutions2[4]) - t2>;
+# Procedura pro nalezeni sloupcu s nejvetsi mirou shody
+findMinimalDifference := proc(s0, xx)
+    minimum := infinity: minI := 0: minJ := 0:
+    for i from 1 to Dimensions(s0)[2] do
+        for j from 1 to Dimensions(d1)[2] do
+            # norm of difference
+            nod := Norm(s0[1..6,i] - xx[1..6,j]):
+            if nod < minimum then
+                minimum := nod:
+                minI := i; minJ := j:
+            end if:
+        end do:
+    end do:
+    [minI, minJ, minimum]:
+end proc:
+# prvni dve cisla jsou indexy odpovidajici sloupcum, ktere se v s0 a d1 (resp. s0 a d2) nejvice shoduji; treti cislo je norma rozdilu techto sloupcu
+d01 := findMinimalDifference(s0,d1);
+d02 := findMinimalDifference(s0,d2);
+d01[1];
+# Nejlepsi nalezeny offset:
+s0[1..6,d01[1]];
+# spodni odhad "chyby" tohoto offsetu:
+max(d01[3], d02[3]);
 # 
 # Zavery, pozorovani
-# - pro hodnoty df z {1, 0.1} nedala procedura IK6 zadna reseni
-# - pro hodnotu df = 0.01 dala procedura IK6 pro polohu odpovidajici zadanym nulovym kloubovym souradnicim ctyri reseni, pro ostatni polohy dve reseni
-# - pro hodnotu df = 0.001 dala procedura IK6 pro kazdou ze zadanych poloh ctyri reseni
-# - pro hodnotu df = 0.0001 skoncila procedura IK6  chybou "Error, (in LinearAlgebra:-LA_Main:-SingularValues) Matrix of type complex(extended_numeric) required for output object(s) [U, Vt]" souvisejici s volanim funkce SingularValues pro SVD rozklad
-# 
-# 
-ExportMatrix("sol0.mat", convert(solutions0, Matrix),target=Matlab);
-ExportMatrix("sol1.mat", convert(solutions1, Matrix),target=Matlab);
-ExportMatrix("sol2.mat", convert(solutions2, Matrix),target=Matlab);
+# - Vyzkousel jsem vypocitat offsety pro hodnoty perturbaci z {1., 0.1, 0.01, 0.001, 0.0001}
+# - Spodni odhad chyby offsetu byl nejmensi pro perturbaci df = 0.01
+#?ExportMatrix
+#ExportMatrix("sol0.mat", convert(solutions0, Matrix),target=Matlab);
+#convert(solutions0, Matrix);
 
 # 
