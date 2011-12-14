@@ -301,14 +301,20 @@ D1s:=-Te7[3,4];
 D2s:=-Te7[2,4];
 D3s:=-Te7[1,4];
 # Compare the results
-subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-
-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+# Uloha mela dve ruzna reseni. Puvodnim hodnotam odpovida prvni reseni, odvozene z prvniho reseni pro s2 (s2s[1]).
 # So it works!
 # Now try:
 # 
-# 1)  Digits:=20, 10, 5,2              <- nemusime rozkopirovavat, staci okomentovat
+# 1)  Digits:=20, 10, 5,2
 # 2)  {th1=0.0,th2=0.2,th3=0.0} <- tohle delat nemusime
 # 3)  {th1=0.1,th2=0.0,th3=0.3}
 # 
 # Was there any problem? If so, why and what can be done?
-
+# Ad 1)
+# - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
+# - pro Digits = 20:     errors := [5.*10^(-19), -7.*10^(-19), -2.*10^(-19), -1.1*10^(-19), 4.*10^(-20), 3.*10^(-20), -1.*10^(-20), 7.3*10^(-20), 4.*10^(-20)];
+# - pro Digits = 10:     errors := [3.6*10^(-8), -2.2*10^(-8), -2.0*10^(-8), -3.*10^(-10), 1.5*10^(-9), 3.*10^(-10), -1.*10^(-10), 9.4*10^(-10), 0.];
+# - pro Digits = 5:       errors := [-0.14e-2, 0.9e-3, 0.83e-3, 0.10e-3, 0.3e-4, -0.3e-4, 0.1e-4, -0.60e-4, 0.4e-4];
+# - pro Digits = 2:       errors := [-.7, -.7, 8.3, -s3+.30, -2.8, 8.4, .52, 1.1, 1.0];
+# 
