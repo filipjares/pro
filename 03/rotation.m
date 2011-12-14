@@ -55,6 +55,7 @@ X2 = X - o;
 
 plot_vector([0 0 0]', X, 'g', 'x');
 plot_vector(o, X2, 'm', 'x''');
+axis equal tight;
 
 %% 5.
 % Nakreslete bod Y do kterého se pohne bod X.
@@ -64,7 +65,6 @@ Y = R'*X + o - o;
 plot_vector(o, Y, 'k', 'y''');
 hold off;
 grid on;
-axis equal;
 
 %% Část odpovídající třetímu domácímu úkolu následuje:
 %
@@ -84,27 +84,61 @@ axis equal;
 %          3. o_\beta je vlastním vektorem R'
 
 %% 2. Najděte osy pohybů (R,o=[0;0;0]) a (R,o=[1;1;1]). Nakreslete je do obrázku.
-% osu pohybu (R,o=[0;0;0]) znázorníme jako 'r'; osu pohybu (R,o=[1;1;1]) jako 'a'
 
+% (1) osu pohybu (R,o=[0;0;0]) znázorníme jako 'r';
+% (2) osu pohybu (R,o=[1;1;1]) jako 'a'
+% Protoze maji pohyby (1) a (2) stejnou matici R, budou jejich osy pohybu
+% rovnobezne
+
+% Pohyb (1)
 I = eye(3);
 r = null(R' - I);
 
 hold on;
 plot_vector([0 0 0]', r, 'r', 'r');
 
-% pro (R,o=[1;1;1]):
+% Pohyb (2) -- pro (R,o=[1;1;1]):
 o_beta = -o;
-a = null((R' - I)^2);
-p = pinv((R' - I)^2)*(R' - I)*o_beta;
+a = null((R' - I)^2);                   % == lambda * null(R' - I)
+p = pinv((R' - I)^2)*(R' - I)*o_beta;   % bod na ose pohybu
 plot_vector(p - 2*a, 4*a, 'g', 'a');
 
 %% 3. Najděte osu rotace r a nakreslete ji. Jaký má osa rotace vztah k ose pohybu a?
 
+% Osa rotace pohybu (1) i (2) prochazi bodem O = [0 0 0]' a ma smerovy
+% vektor odpovidajici r. (V pripade pohybu (1) je osa rotacetotozna s osou
+% pohybu)
+
 r = null(R' - I);
 
-% osa rotace je rovnoběžná k ose pohybu
+% Osa rotace je rovnobezna k ose pohybu
     
 %% 4. Pozorovaný vztah dokažte. (Použijte rovnici (R'-I)^2*x_\beta = (R'-I)*o_\beta.)
+
+% Osa rotace:
+% pro poby na ose rotace x, plati:
+%     R'*x == x,                neboli
+%     (R' - I)*x == [0 0 0]'
+%
+% Vektory na ose rotace (a tedy i smerovy vektor osy rotace -- osa rotace
+% prochazi nulou) patri do jadra matice (R' - I)
+%
+% Osa pohybu:
+% Vektory xi na ose pohybu splnuji rovnici
+%     ((R' - I)^2)*xi == (R' - I)*o_beta.
+% Vezmeme-li rozdil dvou ruznych bodu lezicich
+% na ose pohybu x1, x2, mame z predchoziho vztahu:
+%     ((R' - I)^2)*(x1 - x2) == (R' - I)*o_beta - (R' - I)*o_beta == 0.
+% Smerove vektory osy pohybu tedy patri do jadra matice (R' - I)^2
+%
+% Pro rotacni matici R a jednotkovou matici I plati, ze v pruseciku
+% jadra a oboru hodnot matice (R' - I) lezi pouze nulovy vektor.
+% Z toho vyplyva, ze jadro matice (R' - I) je stejne jako jadro
+% matice (R' - I)^2. Z toho vyplyva, ze smerove vektory osy rotace
+% a osy pohybu lezi ve stejnem jednorozmernem podprostoru a osa
+% pohybu a osa rotace jsou tedy rovnobezne.
+
+
 %% 5. Najděte rovinu p kolmou na osu rotace, množinu jejích generátorů (vektory, které
 %     ji generují), a nakreslete generátory.
 
