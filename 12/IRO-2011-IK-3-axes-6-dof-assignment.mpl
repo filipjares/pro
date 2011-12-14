@@ -302,7 +302,7 @@ D2s:=-Te7[2,4];
 D3s:=-Te7[1,4];
 # Compare the results
 subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-
-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
 # So it works!
 # Now try:
 # 
