@@ -174,7 +174,9 @@ alphasMech := {al1=-Pi/3,al2=Pi/5,al3=-Pi/7};
 Mech := {A1=1,A2=1,A3=1,P1=cos(al1),R1=sin(al1),P2=cos(al2),R2=sin(al2),P3=cos(al3),R3=sin(al3)};  
 Mech:=map(f->subs(alphasMech,f),Mech);
 # Set the controled parameters of the mechanism
-thetasPos := {th1=0.1,th2=0.2,th3=0.3};
+#thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
+thetasPos := {th1=0.0,th2=0.2,th3=0.0}; # Ad 2)
+#thetasPos := {th1=0.1,th2=0.0,th3=0.3}; # Ad 3)
 Pos := {D1=1,D2=2,D3=3,c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2),c3=cos(th3),s3=sin(th3)};  
 Pos:=map(f->subs(thetasPos,f),Pos);
 
@@ -312,9 +314,17 @@ errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D
 # 
 # Was there any problem? If so, why and what can be done?
 # Ad 1)
+# Vysledky:
 # - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
 # - pro Digits = 20:     errors := [5.*10^(-19), -7.*10^(-19), -2.*10^(-19), -1.1*10^(-19), 4.*10^(-20), 3.*10^(-20), -1.*10^(-20), 7.3*10^(-20), 4.*10^(-20)];
 # - pro Digits = 10:     errors := [3.6*10^(-8), -2.2*10^(-8), -2.0*10^(-8), -3.*10^(-10), 1.5*10^(-9), 3.*10^(-10), -1.*10^(-10), 9.4*10^(-10), 0.];
 # - pro Digits = 5:       errors := [-0.14e-2, 0.9e-3, 0.83e-3, 0.10e-3, 0.3e-4, -0.3e-4, 0.1e-4, -0.60e-4, 0.4e-4];
 # - pro Digits = 2:       errors := [-.7, -.7, 8.3, -s3+.30, -2.8, 8.4, .52, 1.1, 1.0];
 # 
+# Pro Digits 2 ... rozebrat, diskutovat
+# 
+# Ad 2) Vypada to, ze s touto alternativou neni problem, jedine jsem si vsimnul,, ze pro ... vysel rozdil vysledku oproti puvodni hodnote na vyssi pocet platnych mist:
+#     errors := [-1.1*10^(-28), 8.*10^(-29), 6.2*10^(-29), 1.12237272943531195877167605453*10^(-29), 0., -5.*10^(-30), 1.*10^(-30), -8.28206014728042101468891029684*10^(-30), 0.];
+# Ad 3)
+# 
+# errors := [85.7501584186986577918080150277, -40.2733354310711825340178500433, -58.2000000000000000000000000000, .759789785329616305287181717792, .716068712538095648988665635750-2.42307868090623158171247814139*s3, 0., 0., 3.0*10^(-30), -2.*10^(-30)];
