@@ -174,9 +174,9 @@ alphasMech := {al1=-Pi/3,al2=Pi/5,al3=-Pi/7};
 Mech := {A1=1,A2=1,A3=1,P1=cos(al1),R1=sin(al1),P2=cos(al2),R2=sin(al2),P3=cos(al3),R3=sin(al3)};  
 Mech:=map(f->subs(alphasMech,f),Mech);
 # Set the controled parameters of the mechanism
-thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
+#thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
 #thetasPos := {th1=0.0,th2=0.2,th3=0.0}; # Ad 2)
-#thetasPos := {th1=0.1,th2=0.0,th3=0.3}; # Ad 3)
+thetasPos := {th1=0.1,th2=0.0,th3=0.3}; # Ad 3)
 Pos := {D1=1,D2=2,D3=3,c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2),c3=cos(th3),s3=sin(th3)};  
 Pos:=map(f->subs(thetasPos,f),Pos);
 
@@ -283,8 +283,8 @@ T5:=GaussianElimination(T5):
 `Dim`,`=`, Dimension(T5);
 `R`,`=`, Rank(T5);
     #T5[9,11];
-eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
-#eq5:=convert(T5[6,1..ColumnDimension(T5)].t5,set);
+#eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
+eq5:=convert(T5[6,1..ColumnDimension(T5)].t5,set);
 c3s:=solve(eq5);
 # Solve for s3
 E6:=simplify(subs(c3s[1],T5.t5)):
@@ -313,7 +313,7 @@ D3s:=-Te7[1,4];
 # Compare the results
 evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
 s2s;
-errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s[1] union c3s union s2s union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
 # Uloha mela dve ruzna reseni. Puvodnim hodnotam odpovida prvni reseni, odvozene z prvniho reseni pro s2 (s2s[1]).
 # So it works!
 # Now try:
@@ -328,13 +328,13 @@ errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D
 # al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
 # th1=0.1	th2=0.2	th3=0.3	D1=1	D2=2	D3=3
 # vliv volby Digits na presnost ziskanych reseni
-# Vypoctena byla dve reseni. Zadane poloze odpovida prvni z nich. Odchylky tohoto prvniho reseni od zadaneho jsou pro ruzne hodnoty promenne Digits uvedny v sekci 3.
+# Vypoctena byla dve reseni (dve reseni pro s2). Zadane poloze odpovida prvni z nich. Odchylky tohoto prvniho reseni od zadaneho jsou pro ruzne hodnoty promenne Digits uvedny v sekci 3.
 # 2. b
 # 
 # al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
 # th1=0.1	th2=0.0	th3=0.3	D1=1	D2=2	D3=3
 # 
-# Typesetting:-Parse:-ConvertTo1D, "first argument to _Inert_ASSIGN must be assignable";
+# Vypoctena byla dve reseni.  Prvni z nich dalo: errors:=[85.7501584186986577918080150277,-40.2733354310711825340178500433,-58.2000000000000000000000000000,1. 10^(-30),0.,0.,0.,3.0 10^(-30),-2. 10^(-30)]  u druheho byla navic velka chyba i v promenne s3    Problem se mi nepodarilo vyresit.  ;
 # 3. Vliv Digits na presnost ziskanych vysledku
 # Ziskane hodnoty errors pro zadani 2.a.:
 # - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
