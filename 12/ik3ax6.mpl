@@ -174,8 +174,8 @@ alphasMech := {al1=-Pi/3,al2=Pi/5,al3=-Pi/7};
 Mech := {A1=1,A2=1,A3=1,P1=cos(al1),R1=sin(al1),P2=cos(al2),R2=sin(al2),P3=cos(al3),R3=sin(al3)};  
 Mech:=map(f->subs(alphasMech,f),Mech);
 # Set the controled parameters of the mechanism
-#thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
-thetasPos := {th1=0.0,th2=0.2,th3=0.0}; # Ad 2)
+thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
+#thetasPos := {th1=0.0,th2=0.2,th3=0.0}; # Ad 2)
 #thetasPos := {th1=0.1,th2=0.0,th3=0.3}; # Ad 3)
 Pos := {D1=1,D2=2,D3=3,c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2),c3=cos(th3),s3=sin(th3)};  
 Pos:=map(f->subs(thetasPos,f),Pos);
@@ -209,7 +209,7 @@ E1:=simplify(subs(MhS,subs(Mech,E)));
 # Solve for c2
 # Extract monomials in such an order that c2 is the last variable
 t1:=<<PolyVarMonomials(M2L(E1),plex(D3,D2,D1,s3,c3,s1,c1,s2,c2))>>:
-Transpose(t1);
+Transpose(t1):
 
 # Express the equations in the matrix form w.r.t. the monomials
 T1:=PolyCoeffMatrix(M2L(E1),M2L(t1)):
@@ -223,7 +223,10 @@ Dimension(T1);
 
 # tady Rank(T1) je jenom pomucka pro nas, melo by tady byt cislo radky...
 # The last column is a polynomial in 1 variable, i.e. c2, solve it
+Rank(T1);
+T1[15,21];
 eq1:=convert(T1[Rank(T1),1..ColumnDimension(T1)].t1,set);
+#eq1:=convert(T1[15,1..ColumnDimension(T1)].t1,set);
 c2s:=solve(eq1);
 # Solve for s2 
 Dimension(E1);
@@ -239,9 +242,10 @@ T2:=GaussianElimination(T2):
 <Transpose(t2),spy(T2)>;
 # Dimension(T2);
 # Rank(T2);
-# T2[14,18]; # v T2 na predposlednim a predpredposlednim radku jsou to skoro nuly
+T2[13,18]; # v T2 na predposlednim a predpredposlednim radku jsou to skoro nuly
 # The last column is a polynomial in 1 variable, i.e. s2, solve it
 eq2:=convert(T2[Rank(T2),1..ColumnDimension(T2)].t2,set);
+#eq2:=convert(T2[13,1..ColumnDimension(T2)].t2,set);
 s2s:=solve(eq2);
 # Solve for c1
 E3:=simplify(subs(s2s[1],T2.t2)):   # nezapomenout taky na druhe reseni... pouzit i s2s[2]
@@ -252,8 +256,9 @@ T3:=GaussianElimination(T3):
     <Transpose(t3),spy(T3)>;
 `Dim`,`=`, Dimension(T3);
 `R`,`=`, Rank(T3);
-    #T3[9,13];
+    T3[9,13];
 eq3:=convert(T3[Rank(T3),1..ColumnDimension(T3)].t3,set);
+#eq3:=convert(T3[9,1..ColumnDimension(T3)].t3,set);
 c1s:=solve(eq3);
 # Solve for s1
 E4:=simplify(subs(c1s[1],T3.t3)):
@@ -264,8 +269,9 @@ T4:=GaussianElimination(T4):
     <Transpose(t4),spy(T4)>;
 `Dim`,`=`, Dimension(T4);
 `R`,`=`, Rank(T4);
-    #T4[9,11];
+    T4[8,11];
 eq4:=convert(T4[Rank(T4),1..ColumnDimension(T4)].t4,set);
+#eq4:=convert(T4[8,1..ColumnDimension(T4)].t4,set);
 s1s:=solve(eq4);
 # Solve for c3
 E5:=simplify(subs(s1s[1],T4.t4)):
@@ -278,6 +284,7 @@ T5:=GaussianElimination(T5):
 `R`,`=`, Rank(T5);
     #T5[9,11];
 eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
+#eq5:=convert(T5[6,1..ColumnDimension(T5)].t5,set);
 c3s:=solve(eq5);
 # Solve for s3
 E6:=simplify(subs(c3s[1],T5.t5)):
@@ -288,8 +295,9 @@ T6:=GaussianElimination(T6):
     <Transpose(t6),spy(T6)>;
 `Dim`,`=`, Dimension(T6);
 `R`,`=`, Rank(T6);
-    #T6[9,11];
+    T6[5,6];
 eq6:=convert(T6[Rank(T6),1..ColumnDimension(T6)].t6,set);
+#eq6:=convert(T6[5,1..ColumnDimension(T6)].t6,set);
 s3s:=solve(eq6);
 # Solve for D1, D2, D3
 E7:=simplify(subs(s3s[1],T6.t6)):
@@ -303,28 +311,31 @@ D1s:=-Te7[3,4];
 D2s:=-Te7[2,4];
 D3s:=-Te7[1,4];
 # Compare the results
+s2s;
 errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
 # Uloha mela dve ruzna reseni. Puvodnim hodnotam odpovida prvni reseni, odvozene z prvniho reseni pro s2 (s2s[1]).
 # So it works!
 # Now try:
 # 
 # 1)  Digits:=20, 10, 5,2
-# 2)  {th1=0.0,th2=0.2,th3=0.0} <- tohle delat nemusime
+# 2)  {th1=0.0,th2=0.2,th3=0.0}
 # 3)  {th1=0.1,th2=0.0,th3=0.3}
 # 
 # Was there any problem? If so, why and what can be done?
+# Odpovedi
+# Digits
 # Ad 1)
 # Vysledky:
 # - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
 # - pro Digits = 20:     errors := [5.*10^(-19), -7.*10^(-19), -2.*10^(-19), -1.1*10^(-19), 4.*10^(-20), 3.*10^(-20), -1.*10^(-20), 7.3*10^(-20), 4.*10^(-20)];
 # - pro Digits = 10:     errors := [3.6*10^(-8), -2.2*10^(-8), -2.0*10^(-8), -3.*10^(-10), 1.5*10^(-9), 3.*10^(-10), -1.*10^(-10), 9.4*10^(-10), 0.];
 # - pro Digits = 5:       errors := [-0.14e-2, 0.9e-3, 0.83e-3, 0.10e-3, 0.3e-4, -0.3e-4, 0.1e-4, -0.60e-4, 0.4e-4];
-# - pro Digits = 2:       errors := [-.7, -.7, 8.3, -s3+.30, -2.8, 8.4, .52, 1.1, 1.0];
+# - pro Digits = 2:       errors := [-6.6, 1.0, 6.3, -.51, 1.1, .88, 0., .70, .51];
 # 
-# Pro Digits 2 ... rozebrat, diskutovat
-# 
-# Ad 2) Vypada to, ze s touto alternativou neni problem, jedine jsem si vsimnul,, ze pro ... vysel rozdil vysledku oproti puvodni hodnote na vyssi pocet platnych mist:
+# Typesetting:-Parse:-ConvertTo1D, "first argument to _Inert_ASSIGN must be assignable";
+# {th1=0.0,th2=0.2,th3=0.0}
+# Ad 2) Vypada to, ze s touto alternativou neni problem, jedine jsem si vsimnul,, ze pro s3 a s1 vysel rozdil vysledku oproti puvodni hodnote na vyssi pocet platnych mist:
 #     errors := [-1.1*10^(-28), 8.*10^(-29), 6.2*10^(-29), 1.12237272943531195877167605453*10^(-29), 0., -5.*10^(-30), 1.*10^(-30), -8.28206014728042101468891029684*10^(-30), 0.];
-# Ad 3)
-# 
+# {th1=0.1,th2=0.0,th3=0.3}
 # errors := [85.7501584186986577918080150277, -40.2733354310711825340178500433, -58.2000000000000000000000000000, .759789785329616305287181717792, .716068712538095648988665635750-2.42307868090623158171247814139*s3, 0., 0., 3.0*10^(-30), -2.*10^(-30)];
+
