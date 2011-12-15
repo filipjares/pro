@@ -311,6 +311,7 @@ D1s:=-Te7[3,4];
 D2s:=-Te7[2,4];
 D3s:=-Te7[1,4];
 # Compare the results
+evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
 s2s;
 errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
 # Uloha mela dve ruzna reseni. Puvodnim hodnotam odpovida prvni reseni, odvozene z prvniho reseni pro s2 (s2s[1]).
@@ -323,8 +324,19 @@ errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D
 # 
 # Was there any problem? If so, why and what can be done?
 # Odpovedi
-# {th1=0.1,th2=0.2,th3=0.3}; vliv volby Digits na presnost ziskanych reseni
-# Vysledky:
+# 2. a. podle zadani na webu 
+# al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
+# th1=0.1	th2=0.2	th3=0.3	D1=1	D2=2	D3=3
+# vliv volby Digits na presnost ziskanych reseni
+# Vypoctena byla dve reseni. Zadane poloze odpovida prvni z nich. Odchylky tohoto prvniho reseni od zadaneho jsou pro ruzne hodnoty promenne Digits uvedny v sekci 3.
+# 2. b
+# 
+# al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
+# th1=0.1	th2=0.0	th3=0.3	D1=1	D2=2	D3=3
+# 
+# Typesetting:-Parse:-ConvertTo1D, "first argument to _Inert_ASSIGN must be assignable";
+# 3. Vliv Digits na presnost ziskanych vysledku
+# Ziskane hodnoty errors pro zadani 2.a.:
 # - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
 # - pro Digits = 20:     errors := [5.*10^(-19), -7.*10^(-19), -2.*10^(-19), -1.1*10^(-19), 4.*10^(-20), 3.*10^(-20), -1.*10^(-20), 7.3*10^(-20), 4.*10^(-20)];
 # - pro Digits = 10:     errors := [3.6*10^(-8), -2.2*10^(-8), -2.0*10^(-8), -3.*10^(-10), 1.5*10^(-9), 3.*10^(-10), -1.*10^(-10), 9.4*10^(-10), 0.];
@@ -334,9 +346,10 @@ errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D
 # Je zrejme, ze zvolena hodnota promenne Digits ovlivnuje presnost ziskanych reseni.
 # 
 # Typesetting:-Parse:-ConvertTo1D, "first argument to _Inert_ASSIGN must be assignable";
+# 
 # {th1=0.0,th2=0.2,th3=0.0}
 # Vypada to, ze s touto alternativou neni problem, jedine jsem si vsimnul,, ze pro s3 a s1 vysel rozdil vysledku oproti puvodni hodnote na vyssi pocet platnych mist:
 #     errors := [-1.1*10^(-28), 8.*10^(-29), 6.2*10^(-29), 1.12237272943531195877167605453*10^(-29), 0., -5.*10^(-30), 1.*10^(-30), -8.28206014728042101468891029684*10^(-30), 0.];
 # {th1=0.1,th2=0.0,th3=0.3}
-# errors := [85.7501584186986577918080150277, -40.2733354310711825340178500433, -58.2000000000000000000000000000, .759789785329616305287181717792, .716068712538095648988665635750-2.42307868090623158171247814139*s3, 0., 0., 3.0*10^(-30), -2.*10^(-30)];
+# 
 
