@@ -309,7 +309,7 @@ s2s;
 errors2a1 := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
 # Vypocet pro druhe reseni (pouziti s2s[2])
 # Solve for c1
-E3:=simplify(subs(s2s[1],T2.t2)):   # druhe reseni... pouziti s2s[2]
+E3:=simplify(subs(s2s[2],T2.t2)):   # druhe reseni... pouziti s2s[2]
 t3:=<<PolyVarMonomials(M2L(E3),plex(D3,D2,D1,s3,c3,s1,c1))>>:
 T3:=PolyCoeffMatrix(M2L(E3),M2L(t3)):
     #<Transpose(t3),spy(T3)>;
