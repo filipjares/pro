@@ -173,10 +173,10 @@ Mhx := M1x.M2x.M3x:
 alphasMech := {al1=-Pi/3,al2=Pi/5,al3=-Pi/7}; 
 Mech := {A1=1,A2=1,A3=1,P1=cos(al1),R1=sin(al1),P2=cos(al2),R2=sin(al2),P3=cos(al3),R3=sin(al3)};  
 Mech:=map(f->subs(alphasMech,f),Mech);
+# Reseni pro 2.a - uloha ma dve reseni
+# Vypocet  spolecny pro obe dve reseni
 # Set the controled parameters of the mechanism
-#thetasPos := {th1=0.1,th2=0.2,th3=0.3}; # Ad 0), 1)
-#thetasPos := {th1=0.0,th2=0.2,th3=0.0}; # Ad 2)
-thetasPos := {th1=0.1,th2=0.0,th3=0.3}; # Ad 3)
+thetasPos := {th1=0.1,th2=0.2,th3=0.3};
 Pos := {D1=1,D2=2,D3=3,c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2),c3=cos(th3),s3=sin(th3)};  
 Pos:=map(f->subs(thetasPos,f),Pos);
 
@@ -226,12 +226,9 @@ Dimension(T1);
 Rank(T1);
 T1[15,21];
 eq1:=convert(T1[Rank(T1),1..ColumnDimension(T1)].t1,set);
-#eq1:=convert(T1[15,1..ColumnDimension(T1)].t1,set);
 c2s:=solve(eq1);
 # Solve for s2 
-Dimension(E1);
-E1[1];
-E2[1];
+#Dimension(E1);
 # Substitute the solution for s2 back to equations and repeat the above procedure
 E2:=simplify(subs(c2s[1],T1.t1)):
 t2:=<<PolyVarMonomials(M2L(E2),plex(D3,D2,D1,s3,c3,s1,c1,s2))>>:
@@ -245,10 +242,10 @@ T2:=GaussianElimination(T2):
 T2[13,18]; # v T2 na predposlednim a predpredposlednim radku jsou to skoro nuly
 # The last column is a polynomial in 1 variable, i.e. s2, solve it
 eq2:=convert(T2[Rank(T2),1..ColumnDimension(T2)].t2,set);
-#eq2:=convert(T2[13,1..ColumnDimension(T2)].t2,set);
 s2s:=solve(eq2);
+# Vypocet pro prvni reseni (pouziti s2s[1])
 # Solve for c1
-E3:=simplify(subs(s2s[1],T2.t2)):   # nezapomenout taky na druhe reseni... pouzit i s2s[2]
+E3:=simplify(subs(s2s[1],T2.t2)):   # prvni reseni... pouziti s2s[1]
 t3:=<<PolyVarMonomials(M2L(E3),plex(D3,D2,D1,s3,c3,s1,c1))>>:
 T3:=PolyCoeffMatrix(M2L(E3),M2L(t3)):
     #<Transpose(t3),spy(T3)>;
@@ -258,7 +255,6 @@ T3:=GaussianElimination(T3):
 `R`,`=`, Rank(T3);
     T3[9,13];
 eq3:=convert(T3[Rank(T3),1..ColumnDimension(T3)].t3,set);
-#eq3:=convert(T3[9,1..ColumnDimension(T3)].t3,set);
 c1s:=solve(eq3);
 # Solve for s1
 E4:=simplify(subs(c1s[1],T3.t3)):
@@ -271,7 +267,6 @@ T4:=GaussianElimination(T4):
 `R`,`=`, Rank(T4);
     T4[8,11];
 eq4:=convert(T4[Rank(T4),1..ColumnDimension(T4)].t4,set);
-#eq4:=convert(T4[8,1..ColumnDimension(T4)].t4,set);
 s1s:=solve(eq4);
 # Solve for c3
 E5:=simplify(subs(s1s[1],T4.t4)):
@@ -283,8 +278,7 @@ T5:=GaussianElimination(T5):
 `Dim`,`=`, Dimension(T5);
 `R`,`=`, Rank(T5);
     #T5[9,11];
-#eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
-eq5:=convert(T5[6,1..ColumnDimension(T5)].t5,set);
+eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
 c3s:=solve(eq5);
 # Solve for s3
 E6:=simplify(subs(c3s[1],T5.t5)):
@@ -297,7 +291,6 @@ T6:=GaussianElimination(T6):
 `R`,`=`, Rank(T6);
     T6[5,6];
 eq6:=convert(T6[Rank(T6),1..ColumnDimension(T6)].t6,set);
-#eq6:=convert(T6[5,1..ColumnDimension(T6)].t6,set);
 s3s:=solve(eq6);
 # Solve for D1, D2, D3
 E7:=simplify(subs(s3s[1],T6.t6)):
@@ -311,30 +304,241 @@ D1s:=-Te7[3,4];
 D2s:=-Te7[2,4];
 D3s:=-Te7[1,4];
 # Compare the results
-evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
+solution2a1 := evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
 s2s;
-errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s[1] union c3s union s2s union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
-# Uloha mela dve ruzna reseni. Puvodnim hodnotam odpovida prvni reseni, odvozene z prvniho reseni pro s2 (s2s[1]).
-# So it works!
-# Now try:
+errors2a1 := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[1] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+# Vypocet pro druhe reseni (pouziti s2s[2])
+# Solve for c1
+E3:=simplify(subs(s2s[1],T2.t2)):   # druhe reseni... pouziti s2s[2]
+t3:=<<PolyVarMonomials(M2L(E3),plex(D3,D2,D1,s3,c3,s1,c1))>>:
+T3:=PolyCoeffMatrix(M2L(E3),M2L(t3)):
+    #<Transpose(t3),spy(T3)>;
+T3:=GaussianElimination(T3):
+    <Transpose(t3),spy(T3)>;
+`Dim`,`=`, Dimension(T3);
+`R`,`=`, Rank(T3);
+    T3[9,13];
+eq3:=convert(T3[Rank(T3),1..ColumnDimension(T3)].t3,set);
+c1s:=solve(eq3);
+# Solve for s1
+E4:=simplify(subs(c1s[1],T3.t3)):
+t4:=<<PolyVarMonomials(M2L(E4),plex(D3,D2,D1,s3,c3,s1))>>:
+T4:=PolyCoeffMatrix(M2L(E4),M2L(t4)):
+    #<Transpose(t4),spy(T4)>;
+T4:=GaussianElimination(T4):
+    <Transpose(t4),spy(T4)>;
+`Dim`,`=`, Dimension(T4);
+`R`,`=`, Rank(T4);
+    T4[8,11];
+eq4:=convert(T4[Rank(T4),1..ColumnDimension(T4)].t4,set);
+s1s:=solve(eq4);
+# Solve for c3
+E5:=simplify(subs(s1s[1],T4.t4)):
+t5:=<<PolyVarMonomials(M2L(E5),plex(D3,D2,D1,s3,c3))>>:
+T5:=PolyCoeffMatrix(M2L(E5),M2L(t5)):
+    #<Transpose(t5),spy(T5)>;
+T5:=GaussianElimination(T5):
+    <Transpose(t5),spy(T5)>;
+`Dim`,`=`, Dimension(T5);
+`R`,`=`, Rank(T5);
+    #T5[9,11];
+eq5:=convert(T5[Rank(T5),1..ColumnDimension(T5)].t5,set);
+c3s:=solve(eq5);
+# Solve for s3
+E6:=simplify(subs(c3s[1],T5.t5)):
+t6:=<<PolyVarMonomials(M2L(E6),plex(D3,D2,D1,s3))>>:
+T6:=PolyCoeffMatrix(M2L(E6),M2L(t6)):
+    #<Transpose(t6),spy(T6)>;
+T6:=GaussianElimination(T6):
+    <Transpose(t6),spy(T6)>;
+`Dim`,`=`, Dimension(T6);
+`R`,`=`, Rank(T6);
+    T6[5,6];
+eq6:=convert(T6[Rank(T6),1..ColumnDimension(T6)].t6,set);
+s3s:=solve(eq6);
+# Solve for D1, D2, D3
+E7:=simplify(subs(s3s[1],T6.t6)):
+t7:=<<PolyVarMonomials(M2L(E7),plex(D3,D2,D1))>>:
+T7:=PolyCoeffMatrix(M2L(E7),M2L(t7)):
+    #<Transpose(t7),spy(T7)>;
+Te7:=ReducedRowEchelonForm(T7[1..3,1..4]):
+    <Transpose(t7),spy(T7)>;
+    #Te7[1..3,1..4];
+D1s:=-Te7[3,4];
+D2s:=-Te7[2,4];
+D3s:=-Te7[1,4];
+# Compare the results
+solution2a2 := evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
+s2s;
+errors2a2 := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s[2] union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]);
+# Reseni pro 2.b
+# Set the controled parameters of the mechanism
+thetasPos := {th1=0.1,th2=0.0,th3=0.3};
+Pos := {D1=1,D2=2,D3=3,c1=cos(th1),s1=sin(th1),c2=cos(th2),s2=sin(th2),c3=cos(th3),s3=sin(th3)};  
+Pos:=map(f->subs(thetasPos,f),Pos);
+
+# Solve  DK  of this mechanism.
+MhX:=evalf(subs(Pos,subs(Mech,Mhx)));
+
+# Extract the values from MhX in a suitable form for further substitutions.
+MhS:={Lx=MhX[1,1],Mx=MhX[1,2],Nx=MhX[1,3],Qx=MhX[1,4],
+      Ly=MhX[2,1],My=MhX[2,2],Ny=MhX[2,3],Qy=MhX[2,4],
+      Lz=MhX[3,1],Mz=MhX[3,2],Nz=MhX[3,3],Qz=MhX[3,4]}:
+
+# Copy the general equations derived above to a new matrix E
+E := Matrix(15, 1,[[c1*c2-s1*P1*s2-Lx*c3+(Mx*P3-Nx*R3)*s3],
+                      [s1*c2+c1*P1*s2-Ly*c3+(My*P3-Ny*R3)*s3],
+                      [R1*s2-Lz*c3+(Mz*P3-Nz*R3)*s3],
+                      [(-c1*s2-s1*P1*c2)*P2+s1*R1*R2-Lx*s3-(Mx*P3-Nx*R3)*c3],
+                      [(-s1*s2+c1*P1*c2)*P2-c1*R1*R2-Ly*s3-(My*P3-Ny*R3)*c3],
+                      [R1*c2*P2+P1*R2-Lz*s3-(Mz*P3-Nz*R3)*c3],
+                      [-(-c1*s2-s1*P1*c2)*R2+s1*R1*P2-Mx*R3-Nx*P3],
+                      [-(-s1*s2+c1*P1*c2)*R2-c1*R1*P2-My*R3-Ny*P3],
+                      [-R1*c2*R2+P1*P2-Mz*R3-Nz*P3],
+                      [(c1*c2-s1*P1*s2)*A2+s1*R1*D2+c1*A1+(Mx*R3+Nx*P3)*D3+Lx*A3-Qx],
+                      [(s1*c2+c1*P1*s2)*A2-c1*R1*D2+s1*A1+(My*R3+Ny*P3)*D3+Ly*A3-Qy],
+                      [R1*s2*A2+P1*D2+D1+(Mz*R3+Nz*P3)*D3+Lz*A3-Qz],
+                      [c1^2+s1^2-1],
+                      [c2^2+s2^2-1],
+                      [c3^2+s3^2-1]]);
+# Substitute mechanism and position values into the equations 
+E1:=simplify(subs(MhS,subs(Mech,E)));
+# Solve for c2
+# Extract monomials in such an order that c2 is the last variable
+t1:=<<PolyVarMonomials(M2L(E1),plex(D3,D2,D1,s3,c3,s1,c1,s2,c2))>>:
+Transpose(t1):
+
+# Express the equations in the matrix form w.r.t. the monomials
+T1:=PolyCoeffMatrix(M2L(E1),M2L(t1)):
+<Transpose(t1),spy(T1)>:
+
+# Simplify the equations by using Linear Algebra
+T1:=GaussianElimination(T1):
+# <Transpose(t1),spy(T1)>;
+
+   # Dimension(T1);
+
+   # tady Rank(T1) je jenom pomucka pro nas, melo by tady byt cislo radky...
+   # The last column is a polynomial in 1 variable, i.e. c2, solve it
+   # Rank(T1);
+   # T1[15,21..22];
+eq1:=convert(T1[Rank(T1),1..ColumnDimension(T1)].t1,set):
+c2s:=solve(eq1);
+# Solve for s2 
+# Substitute the solution for s2 back to equations and repeat the above procedure
+E2:=simplify(subs(c2s[1],T1.t1)):
+t2:=<<PolyVarMonomials(M2L(E2),plex(D3,D2,D1,s3,c3,s1,c1,s2))>>:
+T2:=PolyCoeffMatrix(M2L(E2),M2L(t2)):
+# <Transpose(t2),spy(T2)>;
+# T2[14,18];
+T2:=GaussianElimination(T2):
+<Transpose(t2),spy(T2)>;
+#`Dim`,`=`,Dimension(T2);
+#`R`,`=`,Rank(T2);
+#T2[12,15..18]; # v T2 na predposlednim a predpredposlednim radku jsou to skoro nuly
+# The last column is a polynomial in 1 variable, i.e. s2, solve it
+eq2:=convert(T2[12,1..ColumnDimension(T2)].t2,set):
+s2s:=solve(eq2);
+# Solve for c1
+E3:=simplify(subs(s2s[1],T2.t2)):   # s2s[1] == s2s[2]
+t3:=<<PolyVarMonomials(M2L(E3),plex(D3,D2,D1,s3,c3,s1,c1))>>:
+T3:=PolyCoeffMatrix(M2L(E3),M2L(t3)):
+    #<Transpose(t3),spy(T3)>;
+T3:=GaussianElimination(T3):
+    <Transpose(t3),spy(T3)>;
+#`Dim`,`=`, Dimension(T3);
+#`rank`,`=`, Rank(T3);
+    #T3[9,13..14];
+eq3:=convert(T3[9,1..ColumnDimension(T3)].t3,set);
+c1s:=solve(eq3);
+# Solve for s1
+E4:=simplify(subs(c1s[1],T3.t3)):
+t4:=<<PolyVarMonomials(M2L(E4),plex(D3,D2,D1,s3,c3,s1))>>:
+T4:=PolyCoeffMatrix(M2L(E4),M2L(t4)):
+    #<Transpose(t4),spy(T4)>;
+T4:=GaussianElimination(T4):
+    <Transpose(t4),spy(T4)>;
+#`Dim`,`=`, Dimension(T4);
+#`rank`,`=`, Rank(T4);
+    #T4[8,10..11];
+eq4:=convert(T4[8,1..ColumnDimension(T4)].t4,set);
+s1s:=solve(eq4);
+# Solve for c3
+E5:=simplify(subs(s1s[1],T4.t4)):
+t5:=<<PolyVarMonomials(M2L(E5),plex(D3,D2,D1,s3,c3))>>:
+T5:=PolyCoeffMatrix(M2L(E5),M2L(t5)):
+    #<Transpose(t5),spy(T5)>;
+T5:=GaussianElimination(T5):
+    <Transpose(t5),spy(T5)>;
+#`Dim`,`=`, Dimension(T5);
+#`rank`,`=`, Rank(T5);
+    #T5[6,7..8];
+eq5:=convert(T5[6,1..ColumnDimension(T5)].t5,set);
+c3s:=solve(eq5);
+# Solve for s3
+E6:=simplify(subs(c3s[1],T5.t5)):
+t6:=<<PolyVarMonomials(M2L(E6),plex(D3,D2,D1,s3))>>:
+T6:=PolyCoeffMatrix(M2L(E6),M2L(t6)):
+    #<Transpose(t6),spy(T6)>;
+T6:=GaussianElimination(T6):
+    <Transpose(t6),spy(T6)>;
+#`Dim`,`=`, Dimension(T6);
+#`rank`,`=`, Rank(T6);
+    #T6[5,5..6];
+eq6:=convert(T6[5,1..ColumnDimension(T6)].t6,set);
+s3s:=solve(eq6);
+# Solve for D1, D2, D3
+E7:=simplify(subs(s3s[1],T6.t6)):
+t7:=<<PolyVarMonomials(M2L(E7),plex(D3,D2,D1))>>:
+T7:=PolyCoeffMatrix(M2L(E7),M2L(t7)):
+#Dimension(T7);
+    <Transpose(t7),T7[1..6,1..4]>;   # dalsi radky (od sedmeho) uz jsou jenom nuly
+Te7:=ReducedRowEchelonForm(T7[1..2,1..4]): # treti radek je prakticky nulovy
+    <Transpose(t7),Te7[1..2,1..4]>;
+# ziskalvame nekonecne mnoho reseni s parametrem t:
+D1s:=t;
+D2s:=-Te7[2,4] - Te7[2,3].D1s;
+D3s:=-Te7[1,4] - Te7[1,3].D1s;
+
+
+# kontrola:
+T7[1,1].D3s + T7[1,2].D2s + D1s + T7[1,4];
+T7[2,2].D2s + T7[2,3].D1s + T7[2,4];
+# Compare the results
+# Ziskali jsme nekonecnou mnozinu reseni parametrizovanou parametrem t:
+solution2b := evalf(subs(s3s, c3s, s2s, c2s, s1s, c1s, [D1s, D2s, D3s, arctan(s3,c3), arctan(s2,c2), arctan(s1,c1)]));
+# Hodnotam ze zadani (th1=0.1	th2=0.0	th3=0.3	D1=1	D2=2	D3=3) odpovida hodnota parametru t == 1
+subs({t=1},solution2b);
+errors2b := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({t=1},subs({D3=D3s,D2=D2s,D1=D1s} union s3s union c3s union s2s union c2s union s1s union c1s,[D3,D2,D1,s3,c3,s2,c2,s1,c1]));
+# Shrnuti odpovedi
+# 2. a
 # 
-# 1)  Digits:=20, 10, 5,2
-# 2)  {th1=0.0,th2=0.2,th3=0.0}
-# 3)  {th1=0.1,th2=0.0,th3=0.3}
-# 
-# Was there any problem? If so, why and what can be done?
-# Odpovedi
-# 2. a. podle zadani na webu 
 # al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
 # th1=0.1	th2=0.2	th3=0.3	D1=1	D2=2	D3=3
-# vliv volby Digits na presnost ziskanych reseni
-# Vypoctena byla dve reseni (dve reseni pro s2). Zadane poloze odpovida prvni z nich. Odchylky tohoto prvniho reseni od zadaneho jsou pro ruzne hodnoty promenne Digits uvedny v sekci 3.
+# 
+tt := <D1,D2,D3,theta3,theta2,theta1>:
+# Toto zadani melo dve reseni, zadanym hodnotam parametru odpovida pouze prvni z nich:
+<tt | Transpose(convert(solution2a1,Matrix))>;
+# chyby (oproti zadanym hodnotam) jsou:
+<<D3|D2|D1|s3|c3|s2|c2|s1|c1>, convert(errors2a1, Matrix)>;
+# Druhe reseni vyslo:
+<tt | Transpose(convert(solution2a2,Matrix))>;
+# chyby (oproti zadanym hodnotam) jsou:
+<<D3|D2|D1|s3|c3|s2|c2|s1|c1>, convert(errors2a2, Matrix)>;
+# 
 # 2. b
 # 
 # al1=-Pi/3	al2=Pi/5	al3=-Pi/7	A1=1	A2=1	A3=1
 # th1=0.1	th2=0.0	th3=0.3	D1=1	D2=2	D3=3
 # 
-# Vypoctena byla dve reseni.  Prvni z nich dalo: errors:=[85.7501584186986577918080150277,-40.2733354310711825340178500433,-58.2000000000000000000000000000,1. 10^(-30),0.,0.,0.,3.0 10^(-30),-2. 10^(-30)]  u druheho byla navic velka chyba i v promenne s3    Problem se mi nepodarilo vyresit.  ;
+# Zjistili*jsme, ze*pro*toto*zadani*ma*uloha*nekonecne*mnoho*reseni, ktere*je*mozno*popsat*pomoci*jedineho*parametru*t;
+tt := <D1,D2,D3,theta3,theta2,theta1>:
+<tt | Transpose(convert(solution2b,Matrix))>;
+# Zadanym hodnotam odpovida hodnota parametru t == 1:
+<tt | Transpose(convert(subs({t=1},solution2b), Matrix))>;
+# Rozdil reseni pro t ==1 oproti zadanym hodnotam:
+<<D3|D2|D1|s3|c3|s2|c2|s1|c1>, convert(errors2b, Matrix)>;
+
 # 3. Vliv Digits na presnost ziskanych vysledku
 # Ziskane hodnoty errors pro zadani 2.a.:
 # - pro Digits = 30:     errors := [3.8*10^(-28), -1.9*10^(-28), -2.3*10^(-28), -1.3*10^(-29), 0., 5.*10^(-30), -1.*10^(-30), 7.8*10^(-30), -2.*10^(-30)];
@@ -347,9 +551,6 @@ errors := subs(evalf(Pos),[D3,D2,D1,s3,c3,s2,c2,s1,c1])-subs({D3=D3s,D2=D2s,D1=D
 # 
 # Typesetting:-Parse:-ConvertTo1D, "first argument to _Inert_ASSIGN must be assignable";
 # 
-# {th1=0.0,th2=0.2,th3=0.0}
+# V puvodnim zadani ve worksheetu bylo jeste zadani: {th1=0.0,th2=0.2,th3=0.0}
 # Vypada to, ze s touto alternativou neni problem, jedine jsem si vsimnul,, ze pro s3 a s1 vysel rozdil vysledku oproti puvodni hodnote na vyssi pocet platnych mist:
 #     errors := [-1.1*10^(-28), 8.*10^(-29), 6.2*10^(-29), 1.12237272943531195877167605453*10^(-29), 0., -5.*10^(-30), 1.*10^(-30), -8.28206014728042101468891029684*10^(-30), 0.];
-# {th1=0.1,th2=0.0,th3=0.3}
-# 
-
